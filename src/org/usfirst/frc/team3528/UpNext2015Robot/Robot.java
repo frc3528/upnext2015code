@@ -2,11 +2,12 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team3528.UpNext2015Robot.commands.ExampleCommand;
-import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.ExampleSubsystem;
+//import org.usfirst.frc.team3528.UpNext2015Robot.commands.;
+import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.DriveTrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -17,7 +18,7 @@ import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -29,7 +30,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        //autonomousCommand = new ExampleCommand();
     }
 	
 	public void disabledPeriodic() {
