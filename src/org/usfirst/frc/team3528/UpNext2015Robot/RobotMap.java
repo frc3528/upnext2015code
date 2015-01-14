@@ -31,7 +31,10 @@ public class RobotMap {
 	
 	public static void init() {
 		
-		
+		frontLeftMotor = new Talon(DRIVE_LEFT_FRONT_TALON);
+		backLeftMotor = new Talon(DRIVE_LEFT_BACK_TALON);
+		frontRightMotor = new Talon(DRIVE_RIGHT_FRONT_TALON);
+		backRightMotor = new Talon(DRIVE_RIGHT_BACK_TALON);
 		
 		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
 		
