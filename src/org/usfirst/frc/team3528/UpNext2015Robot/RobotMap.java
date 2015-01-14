@@ -1,18 +1,48 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
+
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Talon;
+
+
+
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static int leftMotor = 1;
-    // public static int rightMotor = 2;
     
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static int rangefinderPort = 1;
-    // public static int rangefinderModule = 1;
+	
+// Objects
+	
+	public static Talon frontLeftMotor;
+	public static Talon backLeftMotor;
+	public static Talon frontRightMotor;
+	public static Talon backRightMotor;
+	
+	public static RobotDrive driveTrain;
+	
+	
+	
+	
+// Constants
+	
+	public static double SENSITIVITY = .5;
+	
+	public static final int DRIVE_LEFT_FRONT_TALON = 3;
+	public static final int DRIVE_LEFT_BACK_TALON = 2;
+	public static final int DRIVE_RIGHT_FRONT_TALON = 1;
+	public static final int DRIVE_RIGHT_BACK_TALON = 0;
+	
+	public static void init() {
+		
+		
+		
+		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
+		
+		driveTrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+		driveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+		
+		
+		
+	}
+	
+	
 }
+
+
