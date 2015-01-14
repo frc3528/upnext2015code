@@ -1,5 +1,11 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+import org.usfirst.frc.team3528.UpNext2015Robot.Utils;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -7,12 +13,30 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
     
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+    Talon frontLeftMotor = RobotMap.frontLeftMotor;
+    Talon backLeftMotor = RobotMap.backLeftMotor;
+    Talon frontRightMotor = RobotMap.frontRightMotor;
+    Talon backRightMotor = RobotMap.backRightMotor;
+    RobotDrive robotDrive = RobotMap.driveTrain;
+    
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        
+    	
+    	
     }
+    
+    public void driveWithJoystick(Joystick joystick) {
+    	
+    	driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0);
+    	
+    }
+    
+    public void driveWithJoystick(double x, double y, double rotation, double gyroAngle) {
+    	
+    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0);
+    	
+    }
+    
 }
 
