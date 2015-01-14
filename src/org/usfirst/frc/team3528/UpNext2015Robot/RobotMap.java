@@ -30,6 +30,7 @@ public class RobotMap {
 	public static final int DRIVE_RIGHT_BACK_TALON = 0;
 	
 	public static void init() {
+		System.out.println("IN ROBOTMAP");
 		
 		frontLeftMotor = new Talon(DRIVE_LEFT_FRONT_TALON);
 		backLeftMotor = new Talon(DRIVE_LEFT_BACK_TALON);
@@ -38,6 +39,7 @@ public class RobotMap {
 		
 		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
 		
+		driveTrain.setSafetyEnabled(false);
 		driveTrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		driveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		

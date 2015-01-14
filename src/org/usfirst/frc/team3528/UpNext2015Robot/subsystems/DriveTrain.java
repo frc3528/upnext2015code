@@ -1,7 +1,9 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
+import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import org.usfirst.frc.team3528.UpNext2015Robot.Utils;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -21,14 +23,16 @@ public class DriveTrain extends Subsystem {
     
 
     public void initDefaultCommand() {
+    	setDefaultCommand(new DriveWithJoystick());
         
     	
     	
     }
     
     public void driveWithJoystick(Joystick joystick) {
-    	
-    	driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0);
+    	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
+    	driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), 0); //joystick.getThrottle(), 0);
+    	//driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0);
     	
     }
     
