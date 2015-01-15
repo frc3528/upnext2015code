@@ -1,1 +1,24 @@
+# Eclipse Specific #
+/build/
 /bin/
+/dist/
+target/
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+
+
+# FRC Specific #
+
+
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
