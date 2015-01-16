@@ -2,6 +2,7 @@ package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -26,6 +27,8 @@ public class RobotMap {
 	public static CANTalon backRightMotor;
 	*/
 	
+	public static Gyro gyro;
+	
 	public static RobotDrive driveTrain;
 	
 	
@@ -37,6 +40,11 @@ public class RobotMap {
 	
 // ======================Constants===========================
 	
+	//Controllers
+	public static final int DRIVESTICK = 0;
+	public static final int BACKBUTTON = 7;
+	public static final int STARTBUTTON = 8;
+	
 	
 	//DriveTrain
 	public static double SENSITIVITY = .5;
@@ -46,6 +54,7 @@ public class RobotMap {
 	public static final int DRIVE_RIGHT_FRONT_TALON = 1;
 	public static final int DRIVE_RIGHT_BACK_TALON = 0;
 	
+	public static final int GYRO = 0;
 	
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;
@@ -68,6 +77,9 @@ public class RobotMap {
 		frontRightMotor = new CANTalon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new CANTalon(DRIVE_RIGHT_BACK_TALON);		
 		*/
+		
+		gyro = new Gyro(GYRO);
+		
 		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
 		
 		driveTrain.setSafetyEnabled(false);

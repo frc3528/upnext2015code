@@ -4,6 +4,9 @@ import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import org.usfirst.frc.team3528.UpNext2015Robot.Utils;
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
+
+import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
@@ -18,15 +21,15 @@ public class DriveTrain extends Subsystem {
     Talon backLeftMotor = RobotMap.backLeftMotor;
     Talon frontRightMotor = RobotMap.frontRightMotor;
     Talon backRightMotor = RobotMap.backRightMotor;
+    
     RobotDrive robotDrive = RobotMap.driveTrain;
     
+    Gyro gyro = RobotMap.gyro;
 
     public void initDefaultCommand() {
-    	setDefaultCommand(new DriveWithJoystick());
-        
-    	
-    	
+    	setDefaultCommand(new DriveWithJoystick());	
     }
+    
     
     public void driveWithJoystick(Joystick joystick) {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
@@ -35,11 +38,49 @@ public class DriveTrain extends Subsystem {
     	
     }
     
+    
     public void driveWithJoystick(double x, double y, double rotation, double gyroAngle) {
     	
     	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0);
-    	
+    	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
+    
     }
     
-}
+    
+    public double gyro() {
+    	return gyro.getAngle();
+    }
+    
+    
+    public void increaseSensitivity() {
+        if(RobotMap.SENSITIVITY < .9) {
+            RobotMap.SENSITIVITY += .1;
+        }
+    }
 
+    
+    public void decreaseSensitivity() {
+        if(RobotMap.SENSITIVITY > .2) {
+            RobotMap.SENSITIVITY -= .1;
+        }
+    }
+    
+    
+    public void zeroEncoders(CANTalon tal) {
+    	tal.changeControlMode(CANTalon.ControlMode.Position);
+    	tal.setPosition(0.0);
+    	tal.changeControlMode(CANTalon.ControlMode.PercentVbus);
+    	}
+    
+    
+    public void setBrakeMode(CANTalon tal) {
+    	tal.enableBrakeMode(true);
+    }
+    
+    
+    public void setCoastMode(CANTalon tal) {
+    	tal.enableBrakeMode(false);
+    }
+    
+    
+}
