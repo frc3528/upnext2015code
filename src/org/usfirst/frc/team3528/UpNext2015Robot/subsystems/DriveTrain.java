@@ -4,7 +4,6 @@ import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import org.usfirst.frc.team3528.UpNext2015Robot.Utils;
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
