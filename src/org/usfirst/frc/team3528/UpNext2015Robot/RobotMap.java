@@ -15,17 +15,18 @@ public class RobotMap {
 // ======================Objects===========================
 	
 	//DriveTrain
+	/*
 	public static Talon frontLeftMotor;
 	public static Talon backLeftMotor;
 	public static Talon frontRightMotor;
 	public static Talon backRightMotor;
+	*/
 	
-	/*
 	public static CANTalon frontLeftMotor;
 	public static CANTalon backLeftMotor;
 	public static CANTalon frontRightMotor;
 	public static CANTalon backRightMotor;
-	*/
+	
 	
 	public static Gyro gyro;
 	
@@ -67,16 +68,18 @@ public class RobotMap {
 		
 		
 		// DriveTrain
+		/*
 		frontLeftMotor = new Talon(DRIVE_LEFT_FRONT_TALON);
 		backLeftMotor = new Talon(DRIVE_LEFT_BACK_TALON);
 		frontRightMotor = new Talon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new Talon(DRIVE_RIGHT_BACK_TALON);
-		/*
+		*/
+		
 		frontLeftMotor = new CANTalon(DRIVE_LEFT_FRONT_TALON);
 		backLeftMotor = new CANTalon(DRIVE_LEFT_BACK_TALON);
 		frontRightMotor = new CANTalon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new CANTalon(DRIVE_RIGHT_BACK_TALON);		
-		*/
+		
 		
 		gyro = new Gyro(GYRO);
 		

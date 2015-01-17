@@ -17,10 +17,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
     
-    Talon frontLeftMotor = RobotMap.frontLeftMotor;
-    Talon backLeftMotor = RobotMap.backLeftMotor;
-    Talon frontRightMotor = RobotMap.frontRightMotor;
-    Talon backRightMotor = RobotMap.backRightMotor;
+    CANTalon frontLeftMotor = RobotMap.frontLeftMotor;
+    CANTalon backLeftMotor = RobotMap.backLeftMotor;
+    CANTalon frontRightMotor = RobotMap.frontRightMotor;
+    CANTalon backRightMotor = RobotMap.backRightMotor;
     
     RobotDrive robotDrive = RobotMap.driveTrain;
     
