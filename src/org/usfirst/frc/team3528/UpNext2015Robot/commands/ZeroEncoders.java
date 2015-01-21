@@ -22,10 +22,10 @@ public class ZeroEncoders extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.zeroEncoders(RobotMap.frontLeftMotor);
-    	Robot.driveTrain.zeroEncoders(RobotMap.backLeftMotor);
-    	Robot.driveTrain.zeroEncoders(RobotMap.frontRightMotor);
-    	Robot.driveTrain.zeroEncoders(RobotMap.backRightMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.frontLeftMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.backLeftMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.frontRightMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.backRightMotor);
     	System.out.println("zeroing");
     }
 

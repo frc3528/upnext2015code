@@ -33,13 +33,13 @@ public class DriveTrain extends Subsystem {
     
     public void driveWithJoystick(Joystick joystick) {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
-    	driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), 0); //joystick.getThrottle(), 0);
+    	drive(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), 0); //joystick.getThrottle(), 0);
     	//driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0);
     	
     }
     
     
-    public void driveWithJoystick(double x, double y, double rotation, double gyroAngle) {
+    public void drive(double x, double y, double rotation, double gyroAngle) {
     	
     	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0);
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
@@ -76,11 +76,11 @@ public class DriveTrain extends Subsystem {
     }
     
     
-    public void zeroEncoders(CANTalon tal) {
+    public void zeroEncoder(CANTalon tal) {
     	tal.changeControlMode(CANTalon.ControlMode.Position);
     	tal.setPosition(0.0);
     	tal.changeControlMode(CANTalon.ControlMode.PercentVbus);
-    	}
+    }
     
     
     public void setBrakeMode(CANTalon tal) {

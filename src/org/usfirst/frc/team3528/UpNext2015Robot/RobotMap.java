@@ -57,10 +57,22 @@ public class RobotMap {
 	
 	public static final int GYRO = 0;
 	
+	
+	// ********** Wheels and Encoders and Distance Oh My **********
+	
+	// Wheel Size
 	public static final double WHEEL_DIAMETER = 8.0;
+	
+	// Calculate Wheel Diameter
 	public static final double INCHES_PER_REV = Math.PI * WHEEL_DIAMETER;
+	
+	// Encoder Counts/Ticks per one revolution
 	public static final double COUNTS_PER_REV = 360;
+	
+	// Calculate how many inches are in one encoder count/tick
 	public static final double INCHES_PER_COUNT = INCHES_PER_REV / COUNTS_PER_REV;
+
+	// ********** And they all lived happily ever after. The End. **********
 	
 	
 	//Elevator

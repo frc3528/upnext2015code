@@ -35,13 +35,14 @@ public class DriveByFeet extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	// convert distance to inches
+    	// convert distance from feet to inches
     	distance = distance * 12;
     	
     	// calculate the number of encoderCounts to drive
         encoderCounts =  distance / RobotMap.INCHES_PER_COUNT;
     
-        // get our initial positions
+        
+        // get our initial positions (just in case ZeroEncoders command didn't work)
         initialFrontRight = Robot.driveTrain.frontLeftPos();
         initialFrontLeft = Robot.driveTrain.backLeftPos();
         initialBackRight = Robot.driveTrain.frontRightPos();
@@ -54,19 +55,20 @@ public class DriveByFeet extends Command {
     protected void execute() {
         
     	angle = Robot.driveTrain.gyro();
-        Robot.driveTrain.driveWithJoystick(0, -power, 0.09, 0); //Math.abs(angle) > 5 ? angle/360 : 0 );
+        Robot.driveTrain.drive(0, -power, 0.09, 0); //Math.abs(angle) > 5 ? angle/360 : 0 );
         
         System.out.println("FR = " + Robot.driveTrain.frontRightPos());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (((Robot.driveTrain.frontRightPos() - initialFrontRight) >= encoderCounts) || isTimedOut());
+    	// drive until we hit our timeout or our calculated encoder count distance
+        return ( ( (Robot.driveTrain.frontRightPos() - initialFrontRight) >= encoderCounts ) || isTimedOut() );
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.driveTrain.driveWithJoystick(0, 0, 0, 0);
+        Robot.driveTrain.drive(0, 0, 0, 0);
     }
 
     // Called when another command which requires one or more of the same
