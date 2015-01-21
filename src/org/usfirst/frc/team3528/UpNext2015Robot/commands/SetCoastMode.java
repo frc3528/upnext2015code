@@ -1,5 +1,8 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
+import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -14,6 +17,10 @@ public class SetCoastMode extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveTrain.setCoastMode(RobotMap.frontLeftMotor);
+    	Robot.driveTrain.setCoastMode(RobotMap.backLeftMotor);
+    	Robot.driveTrain.setCoastMode(RobotMap.frontRightMotor);
+    	Robot.driveTrain.setCoastMode(RobotMap.backRightMotor);
     }
 
     // Called repeatedly when this Command is scheduled to run

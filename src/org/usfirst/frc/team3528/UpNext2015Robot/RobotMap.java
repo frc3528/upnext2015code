@@ -57,10 +57,12 @@ public class RobotMap {
 	
 	public static final int GYRO = 0;
 	
+	
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;
 	
 	public static final int SETPOINT1 = 0;
+	
 	
 	public static void init() {
 		//System.out.println("IN ROBOTMAP");
@@ -79,7 +81,6 @@ public class RobotMap {
 		backLeftMotor = new CANTalon(DRIVE_LEFT_BACK_TALON);
 		frontRightMotor = new CANTalon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new CANTalon(DRIVE_RIGHT_BACK_TALON);		
-		
 		
 		gyro = new Gyro(GYRO);
 		

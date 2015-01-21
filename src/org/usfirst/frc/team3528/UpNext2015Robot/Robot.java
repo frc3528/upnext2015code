@@ -2,9 +2,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-
-
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -37,7 +34,9 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        new ZeroEncoders();
+        new SetBrakeMode();
+		if (autonomousCommand != null) autonomousCommand.start();
     }
 
     
@@ -47,11 +46,13 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopInit() {
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        new SetCoastMode();
+    	if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     
     public void disabledInit(){
+    	new SetCoastMode();
 
     }
 

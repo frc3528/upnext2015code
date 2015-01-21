@@ -1,5 +1,8 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
+import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -14,7 +17,10 @@ public class ZeroEncoders extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.driveTrain.zeroEncoders(RobotMap.frontLeftMotor);
+    	Robot.driveTrain.zeroEncoders(RobotMap.backLeftMotor);
+    	Robot.driveTrain.zeroEncoders(RobotMap.frontRightMotor);
+    	Robot.driveTrain.zeroEncoders(RobotMap.backRightMotor);
     }
 
     // Called repeatedly when this Command is scheduled to run

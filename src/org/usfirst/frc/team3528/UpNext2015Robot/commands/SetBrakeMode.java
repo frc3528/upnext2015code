@@ -1,5 +1,8 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
+import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -14,6 +17,10 @@ public class SetBrakeMode extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveTrain.setBrakeMode(RobotMap.frontLeftMotor);
+    	Robot.driveTrain.setBrakeMode(RobotMap.backLeftMotor);
+    	Robot.driveTrain.setBrakeMode(RobotMap.frontRightMotor);
+    	Robot.driveTrain.setBrakeMode(RobotMap.backRightMotor);
     }
 
     // Called repeatedly when this Command is scheduled to run

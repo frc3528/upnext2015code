@@ -28,10 +28,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			back.whenPressed(new DecreaseSensitivity()); 
+			//back.whenPressed(new DecreaseSensitivity()); 
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			start.whenPressed(new IncreaseSensitivity());
+			//start.whenPressed(new IncreaseSensitivity());
 			
 		}
 }
