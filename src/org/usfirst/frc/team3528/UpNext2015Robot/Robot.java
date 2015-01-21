@@ -46,19 +46,22 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopInit() {
-        new SetCoastMode();
+    	new ZeroEncoders();
+    	new SetCoastMode();
     	if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     
     public void disabledInit(){
+    	new ZeroEncoders();
     	new SetCoastMode();
 
     }
 
     
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+    	System.out.println(Robot.driveTrain.frontRightPos());
+    	Scheduler.getInstance().run();
     }
     
    

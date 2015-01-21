@@ -57,6 +57,8 @@ public class RobotMap {
 	
 	public static final int GYRO = 0;
 	
+	public static final double INCHES_PER_REV = 25.133;
+	
 	
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;

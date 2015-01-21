@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
-import org.usfirst.frc.team3528.UpNext2015Robot.commands.DecreaseSensitivity;
-import org.usfirst.frc.team3528.UpNext2015Robot.commands.IncreaseSensitivity;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -29,9 +28,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
 			//back.whenPressed(new DecreaseSensitivity()); 
+			back.whenPressed(new AutoDriveForward());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
 			//start.whenPressed(new IncreaseSensitivity());
+			//start.whenPressed(new TestDriveForward());
 			
 		}
 }

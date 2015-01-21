@@ -29,23 +29,7 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoystick());	
     }
-    
-    public double frontLeftPos() {
-    	return frontLeftMotor.getPosition();
-    }
-    
-    public double frontRightPos() {
-    	return frontRightMotor.getPosition();
-    }
-    
-    public double backLeftPos() {
-    	return backLeftMotor.getPosition();
-    }
-    
-    public double backRightPos() {
-    	return backRightMotor.getPosition();
-    }
-    
+
     
     public void driveWithJoystick(Joystick joystick) {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
@@ -60,6 +44,16 @@ public class DriveTrain extends Subsystem {
     	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0);
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
     
+    }
+    
+    public void driveByFeet(CANTalon tal, double distance) {
+    	tal.changeControlMode(CANTalon.ControlMode.Position);
+    	double newDistance = distance * 12;
+    	double position = tal.getPosition();
+    	double newPosition = position + (newDistance / RobotMap.INCHES_PER_REV);
+    	tal.setPosition(newPosition);
+    	System.out.println(tal.getPosition());
+    	
     }
     
     
@@ -97,6 +91,25 @@ public class DriveTrain extends Subsystem {
     public void setCoastMode(CANTalon tal) {
     	tal.enableBrakeMode(false);
     }
-    
-    
+
+	
+	public double frontLeftPos() {
+		return frontLeftMotor.getPosition();
+	}
+
+	
+	public double frontRightPos() {
+		return frontRightMotor.getPosition();
+	}
+
+	
+	public double backLeftPos() {
+		return backLeftMotor.getPosition();
+	}
+	
+	
+	public double backRightPos() {
+		return backRightMotor.getPosition();
+	}
+
 }
