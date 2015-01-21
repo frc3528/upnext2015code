@@ -50,10 +50,10 @@ public class RobotMap {
 	//DriveTrain
 	public static double SENSITIVITY = .5;
 	
-	public static final int DRIVE_LEFT_FRONT_TALON = 3;
-	public static final int DRIVE_LEFT_BACK_TALON = 2;
-	public static final int DRIVE_RIGHT_FRONT_TALON = 1;
-	public static final int DRIVE_RIGHT_BACK_TALON = 0;
+	public static final int DRIVE_LEFT_FRONT_TALON = 1;
+	public static final int DRIVE_LEFT_BACK_TALON = 3;
+	public static final int DRIVE_RIGHT_FRONT_TALON = 2;
+	public static final int DRIVE_RIGHT_BACK_TALON = 4;
 	
 	public static final int GYRO = 0;
 	
