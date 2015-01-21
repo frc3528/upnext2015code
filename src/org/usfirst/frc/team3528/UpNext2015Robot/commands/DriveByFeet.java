@@ -22,7 +22,6 @@ public class DriveByFeet extends Command {
     private double initialBackLeft = 0;
     private double angle = 0;
     private double timeout = 0;
-    private double countsPerRev = RobotMap.INCHES_PER_REV / 1440;
     
     
     public DriveByFeet(double distance, double timeout, double power) {
@@ -36,9 +35,13 @@ public class DriveByFeet extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-        //inches = distance;
-        encoderCounts =  distance;//(inches / countsPerRev);
+    	// convert distance to inches
+    	distance = distance * 12;
+    	
+    	// calculate the number of encoderCounts to drive
+        encoderCounts =  distance / RobotMap.INCHES_PER_COUNT;
     
+        // get our initial positions
         initialFrontRight = Robot.driveTrain.frontLeftPos();
         initialFrontLeft = Robot.driveTrain.backLeftPos();
         initialBackRight = Robot.driveTrain.frontRightPos();

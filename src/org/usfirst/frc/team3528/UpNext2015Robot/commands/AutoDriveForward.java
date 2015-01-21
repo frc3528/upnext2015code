@@ -9,7 +9,7 @@ public class AutoDriveForward extends CommandGroup {
     
     public  AutoDriveForward() {
         
-        addSequential(new DriveByFeet(1440, 5.0, 0.5));
+        addSequential(new DriveByFeet(5.0, 5.0, 0.5));
 
       
     }

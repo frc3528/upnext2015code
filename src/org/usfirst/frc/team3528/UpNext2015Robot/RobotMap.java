@@ -57,7 +57,10 @@ public class RobotMap {
 	
 	public static final int GYRO = 0;
 	
-	public static final double INCHES_PER_REV = 25.133;
+	public static final double WHEEL_DIAMETER = 8.0;
+	public static final double INCHES_PER_REV = Math.PI * WHEEL_DIAMETER;
+	public static final double COUNTS_PER_REV = 360;
+	public static final double INCHES_PER_COUNT = INCHES_PER_REV / COUNTS_PER_REV;
 	
 	
 	//Elevator

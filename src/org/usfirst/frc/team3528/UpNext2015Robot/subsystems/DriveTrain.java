@@ -94,22 +94,22 @@ public class DriveTrain extends Subsystem {
 
 	
 	public double frontLeftPos() {
-		return frontLeftMotor.getPosition();
+		return frontLeftMotor.getPosition() / 4;
 	}
 
 	
 	public double frontRightPos() {
-		return frontRightMotor.getPosition();
+		return frontRightMotor.getPosition() / 4;
 	}
 
 	
 	public double backLeftPos() {
-		return backLeftMotor.getPosition();
+		return backLeftMotor.getPosition() / 4;
 	}
 	
 	
 	public double backRightPos() {
-		return backRightMotor.getPosition();
+		return backRightMotor.getPosition() / 4;
 	}
 
 }
