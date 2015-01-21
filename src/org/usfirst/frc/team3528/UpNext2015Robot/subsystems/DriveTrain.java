@@ -30,6 +30,22 @@ public class DriveTrain extends Subsystem {
     	setDefaultCommand(new DriveWithJoystick());	
     }
     
+    public double frontLeftPos() {
+    	return frontLeftMotor.getPosition();
+    }
+    
+    public double frontRightPos() {
+    	return frontRightMotor.getPosition();
+    }
+    
+    public double backLeftPos() {
+    	return backLeftMotor.getPosition();
+    }
+    
+    public double backRightPos() {
+    	return backRightMotor.getPosition();
+    }
+    
     
     public void driveWithJoystick(Joystick joystick) {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
