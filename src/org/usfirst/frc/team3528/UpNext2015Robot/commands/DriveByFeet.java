@@ -55,9 +55,10 @@ public class DriveByFeet extends Command {
     protected void execute() {
         
     	angle = Robot.driveTrain.gyro();
-        Robot.driveTrain.drive(0, -power, 0.09, 0); //Math.abs(angle) > 5 ? angle/360 : 0 );
+        Robot.driveTrain.drive(0, -power, 0.0, 0); //Math.abs(angle) > 5 ? angle/360 : 0 );
         
-        System.out.println("FR = " + Robot.driveTrain.frontRightPos());
+        System.out.println(encoderCounts);
+        //System.out.println("FR = " + Robot.driveTrain.frontRightPos());
     }
 
     // Make this return true when this Command no longer needs to run execute()

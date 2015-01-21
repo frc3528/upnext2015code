@@ -99,6 +99,11 @@ public class RobotMap {
 		frontRightMotor = new CANTalon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new CANTalon(DRIVE_RIGHT_BACK_TALON);		
 		
+		frontLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		backLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		frontRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		backRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		
 		gyro = new Gyro(GYRO);
 		
 		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
@@ -107,6 +112,7 @@ public class RobotMap {
 		driveTrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		driveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		driveTrain.setSensitivity(SENSITIVITY);
+		
 		
 		
 		//Elevator

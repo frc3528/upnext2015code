@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	System.out.println(Robot.driveTrain.frontRightPos());
+    	//System.out.println(Robot.driveTrain.frontRightPos());
     	Scheduler.getInstance().run();
     }
     
