@@ -26,7 +26,6 @@ public class ZeroEncoders extends Command {
     	Robot.driveTrain.zeroEncoder(RobotMap.backLeftMotor);
     	Robot.driveTrain.zeroEncoder(RobotMap.frontRightMotor);
     	Robot.driveTrain.zeroEncoder(RobotMap.backRightMotor);
-    	System.out.println("zeroing");
     }
 
     // Make this return true when this Command no longer needs to run execute()

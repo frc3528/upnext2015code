@@ -99,7 +99,7 @@ public class DriveTrain extends Subsystem {
 
 	
 	public double frontRightPos() {
-		return frontRightMotor.getPosition() / 4;
+		return (frontRightMotor.getPosition() / 4) * -1;
 	}
 
 	
@@ -109,7 +109,7 @@ public class DriveTrain extends Subsystem {
 	
 	
 	public double backRightPos() {
-		return backRightMotor.getPosition() / 4;
+		return (backRightMotor.getPosition() / 4) * -1;
 	}
 
 }

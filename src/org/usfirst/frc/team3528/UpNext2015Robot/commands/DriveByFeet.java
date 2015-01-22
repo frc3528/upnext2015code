@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveByFeet extends Command {
     
-    double distance;
+    private double distance = 0;
     private double encoderCounts = 0;
     private double inches = 0;
     private double power = .0;
@@ -25,9 +25,14 @@ public class DriveByFeet extends Command {
     
     
     public DriveByFeet(double distance, double timeout, double power) {
-        // Use requires() here to declare subsystem dependencies
+    	System.out.println(" BOOO! ");
+        
+    	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
-        this.distance = distance;
+        
+        // grab distance and convert from feet to inches
+        this.distance = distance * 12;
+        
         this.power = power;
         this.timeout = timeout;
     }
@@ -35,8 +40,9 @@ public class DriveByFeet extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	// convert distance from feet to inches
-    	distance = distance * 12;
+    	
+    	
+    	System.out.println("i'm here!  --> " + distance);
     	
     	// calculate the number of encoderCounts to drive
         encoderCounts =  distance / RobotMap.INCHES_PER_COUNT;
@@ -57,14 +63,16 @@ public class DriveByFeet extends Command {
     	angle = Robot.driveTrain.gyro();
         Robot.driveTrain.drive(0, -power, 0.0, 0); //Math.abs(angle) > 5 ? angle/360 : 0 );
         
-        System.out.println(encoderCounts);
         //System.out.println("FR = " + Robot.driveTrain.frontRightPos());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// drive until we hit our timeout or our calculated encoder count distance
-        return ( ( (Robot.driveTrain.frontRightPos() - initialFrontRight) >= encoderCounts ) || isTimedOut() );
+        //System.out.println( Robot.driveTrain.frontRightPos() + " : " + initialFrontRight + " : " + encoderCounts );
+    	return ( ( (Robot.driveTrain.frontRightPos() - initialFrontRight) >= encoderCounts ) || isTimedOut() );
+    
+    
     }
 
     // Called once after isFinished returns true

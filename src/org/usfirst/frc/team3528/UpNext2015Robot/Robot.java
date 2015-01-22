@@ -34,8 +34,8 @@ public class Robot extends IterativeRobot {
 
 	public void autonomousInit() {
         // schedule the autonomous command (example)
-        new ZeroEncoders();
-        new SetBrakeMode();
+        new ZeroEncoders().start();
+        new SetBrakeMode().start();
 		if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -46,15 +46,15 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopInit() {
-    	new ZeroEncoders();
-    	new SetCoastMode();
+    	new ZeroEncoders().start();
+    	new SetCoastMode().start();
     	if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     
     public void disabledInit(){
-    	new ZeroEncoders();
-    	new SetCoastMode();
+    	new ZeroEncoders().start();
+    	new SetCoastMode().start();
 
     }
 
