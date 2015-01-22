@@ -52,7 +52,7 @@ public class DriveTrain extends Subsystem {
     	double position = tal.getPosition();
     	double newPosition = position + (newDistance / RobotMap.INCHES_PER_REV);
     	tal.setPosition(newPosition);
-    	System.out.println(tal.getPosition());
+    	//System.out.println(tal.getPosition());
     	
     }
     
@@ -77,9 +77,9 @@ public class DriveTrain extends Subsystem {
     
     
     public void zeroEncoder(CANTalon tal) {
-    	tal.changeControlMode(CANTalon.ControlMode.Position);
+    	//tal.changeControlMode(CANTalon.ControlMode.Position);
     	tal.setPosition(0.0);
-    	tal.changeControlMode(CANTalon.ControlMode.PercentVbus);
+    	//tal.changeControlMode(CANTalon.ControlMode.PercentVbus);
     }
     
     
