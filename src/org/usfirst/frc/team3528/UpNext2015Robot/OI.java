@@ -32,7 +32,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
 			//start.whenPressed(new IncreaseSensitivity());
-			//start.whenPressed(new TestDriveForward());
+			start.whenPressed(new ZeroEncoders());
 			
 		}
 }

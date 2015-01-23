@@ -45,17 +45,7 @@ public class DriveTrain extends Subsystem {
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
     
     }
-    
-    public void driveByFeet(CANTalon tal, double distance) {
-    	tal.changeControlMode(CANTalon.ControlMode.Position);
-    	double newDistance = distance * 12;
-    	double position = tal.getPosition();
-    	double newPosition = position + (newDistance / RobotMap.INCHES_PER_REV);
-    	tal.setPosition(newPosition);
-    	//System.out.println(tal.getPosition());
-    	
-    }
-    
+
     
     public double gyro() {
     	return gyro.getAngle();
@@ -77,9 +67,7 @@ public class DriveTrain extends Subsystem {
     
     
     public void zeroEncoder(CANTalon tal) {
-    	//tal.changeControlMode(CANTalon.ControlMode.Position);
-    	tal.setPosition(0.0);
-    	//tal.changeControlMode(CANTalon.ControlMode.PercentVbus);
+    	tal.setPosition(0);
     }
     
     
@@ -94,22 +82,22 @@ public class DriveTrain extends Subsystem {
 
 	
 	public double frontLeftPos() {
-		return frontLeftMotor.getPosition() / 4;
+		return frontLeftMotor.getEncPosition() / 4;
 	}
 
 	
 	public double frontRightPos() {
-		return (frontRightMotor.getPosition() / 4) * -1;
+		return (frontRightMotor.getEncPosition() / 4) * -1;
 	}
 
 	
 	public double backLeftPos() {
-		return backLeftMotor.getPosition() / 4;
+		return backLeftMotor.getEncPosition() / 4;
 	}
 	
 	
 	public double backRightPos() {
-		return (backRightMotor.getPosition() / 4) * -1;
+		return (backRightMotor.getEncPosition() / 4) * -1;
 	}
 
 }

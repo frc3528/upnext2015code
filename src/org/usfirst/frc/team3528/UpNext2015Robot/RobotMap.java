@@ -48,7 +48,7 @@ public class RobotMap {
 	
 	
 	//DriveTrain
-	public static double SENSITIVITY = .5;
+	public static double SENSITIVITY = .7;
 	
 	public static final int DRIVE_LEFT_FRONT_TALON = 1;
 	public static final int DRIVE_LEFT_BACK_TALON = 3;
@@ -103,6 +103,9 @@ public class RobotMap {
 		backLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		frontRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		backRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
+		
+		frontRightMotor.reverseSensor(true);
+		backRightMotor.reverseSensor(true);
 		
 		gyro = new Gyro(GYRO);
 		

@@ -17,7 +17,10 @@ public class ZeroEncoders extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-
+    	Robot.driveTrain.zeroEncoder(RobotMap.frontLeftMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.backLeftMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.frontRightMotor);
+    	Robot.driveTrain.zeroEncoder(RobotMap.backRightMotor);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,6 +29,7 @@ public class ZeroEncoders extends Command {
     	Robot.driveTrain.zeroEncoder(RobotMap.backLeftMotor);
     	Robot.driveTrain.zeroEncoder(RobotMap.frontRightMotor);
     	Robot.driveTrain.zeroEncoder(RobotMap.backRightMotor);
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +39,7 @@ public class ZeroEncoders extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+
     }
 
     // Called when another command which requires one or more of the same

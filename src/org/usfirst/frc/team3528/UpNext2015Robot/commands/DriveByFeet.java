@@ -14,13 +14,11 @@ public class DriveByFeet extends Command {
     
     private double distance = 0;
     private double encoderCounts = 0;
-    private double inches = 0;
     private double power = .0;
-    private double initialFrontRight = 0;
-    private double initialFrontLeft = 0;
-    private double initialBackRight = 0;
-    private double initialBackLeft = 0;
-    private double angle = 0;
+    private double currentFrontRight = 0;
+    private double currentFrontLeft = 0;
+    private double newFrontRight = 0;
+    private double newFrontLeft = 0;
     private double timeout = 0;
     
     
@@ -41,33 +39,45 @@ public class DriveByFeet extends Command {
     	// calculate the number of encoderCounts to drive
         encoderCounts =  distance / RobotMap.INCHES_PER_COUNT;
         
-    
         // get our initial positions (just in case ZeroEncoders command didn't work)
-        initialFrontRight = Robot.driveTrain.frontRightPos();
-        initialFrontLeft = Robot.driveTrain.frontLeftPos();
-        initialBackRight = Robot.driveTrain.backRightPos();
-        initialBackLeft = Robot.driveTrain.backLeftPos();
-    
+        currentFrontLeft = Robot.driveTrain.frontLeftPos();
+        currentFrontRight = Robot.driveTrain.frontRightPos();
+         newFrontLeft = currentFrontLeft;
+        //newFrontRight = currentFrontRight;
+        
+        Robot.driveTrain.drive(0, -power, 0, 0);
+        
         setTimeout(timeout);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	//angle = Robot.driveTrain.gyro();
-        Robot.driveTrain.drive(0, -power, 0.0, 0); //Math.abs(angle) > 5 ? angle/360 : 0 );
+    	double leftPos = Robot.driveTrain.frontLeftPos();
+    	double rightPos = Robot.driveTrain.frontRightPos();
+    	
+    	newFrontLeft = leftPos - currentFrontLeft;
+    	newFrontRight = rightPos - currentFrontRight;
+    	
+    	currentFrontLeft = leftPos;
+    	currentFrontRight = rightPos;
+    	
+    	encoderCounts = encoderCounts + currentFrontLeft;
+        //encoderCounts = (encoderCounts - newFrontLeft);
         
-        encoderCounts = encoderCounts - Robot.driveTrain.frontLeftPos();
-        
+    	/*
         Robot.driveTrain.zeroEncoder(RobotMap.frontLeftMotor);
         Robot.driveTrain.zeroEncoder(RobotMap.frontRightMotor);
+        Robot.driveTrain.zeroEncoder(RobotMap.backLeftMotor);
+        Robot.driveTrain.zeroEncoder(RobotMap.backRightMotor);
+    	*/
     }
     
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	// drive until we hit our timeout or our calculated encoder count distance
-    	System.out.println(encoderCounts);
+    	//System.out.println(encoderCounts);
     	return (encoderCounts <= 0 || isTimedOut());
     
     
@@ -76,6 +86,11 @@ public class DriveByFeet extends Command {
     
     // Called once after isFinished returns true
     protected void end() {
+        encoderCounts = 0;
+        currentFrontLeft = 0;
+        currentFrontRight = 0;
+    	newFrontLeft = 0;
+    	newFrontRight = 0;
         Robot.driveTrain.drive(0, 0, 0, 0);
     }
 
