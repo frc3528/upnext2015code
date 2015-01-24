@@ -5,13 +5,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoDriveForward extends CommandGroup {
+public class AutoStrafe extends CommandGroup {
     
-    public  AutoDriveForward() {
-    	
+    public  AutoStrafe() {
+
     	addSequential(new SetBrakeMode());
     	addSequential(new ZeroEncoders());
-    	addSequential(new DriveByFeet(4, 6.0, 0.5));
+    	addSequential(new DriveByFeetSideways(4, 6.0, 0.5));
     	addSequential(new ZeroEncoders());
+    	
     }
 }

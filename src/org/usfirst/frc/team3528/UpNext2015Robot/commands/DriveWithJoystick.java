@@ -2,6 +2,7 @@ package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
 
 import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +24,7 @@ public class DriveWithJoystick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.driveTrain.driveWithJoystick(Robot.oi.driveStick);
+    	Robot.driveTrain.driveWithJoystick(Robot.oi.driveStick, RobotMap.gyro);
     	
     }
 

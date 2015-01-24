@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		driveTrain = new DriveTrain();
     	oi = new OI();
-        
+        driveTrain.gyroInit(RobotMap.gyro);
         //autonomousCommand = new ExampleCommand();
     }
 	
@@ -61,6 +61,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
+    	//System.out.println(RobotMap.SENSITIVITY);
     	Scheduler.getInstance().run();
     }
     

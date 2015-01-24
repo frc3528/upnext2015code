@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.hal.CanTalonSRX;
 
 
 
@@ -27,7 +28,6 @@ public class RobotMap {
 	public static CANTalon frontRightMotor;
 	public static CANTalon backRightMotor;
 	
-	
 	public static Gyro gyro;
 	
 	public static RobotDrive driveTrain;
@@ -48,7 +48,7 @@ public class RobotMap {
 	
 	
 	//DriveTrain
-	public static double SENSITIVITY = .7;
+	public static double SENSITIVITY = .6;
 	
 	public static final int DRIVE_LEFT_FRONT_TALON = 1;
 	public static final int DRIVE_LEFT_BACK_TALON = 3;
@@ -67,7 +67,7 @@ public class RobotMap {
 	public static final double INCHES_PER_REV = Math.PI * WHEEL_DIAMETER;
 	
 	// Encoder Counts/Ticks per one revolution
-	public static final double COUNTS_PER_REV = 360;
+	public static final double COUNTS_PER_REV = 1440;//360;
 	
 	// Calculate how many inches are in one encoder count/tick
 	public static final double INCHES_PER_COUNT = INCHES_PER_REV / COUNTS_PER_REV;
@@ -99,13 +99,11 @@ public class RobotMap {
 		frontRightMotor = new CANTalon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new CANTalon(DRIVE_RIGHT_BACK_TALON);		
 		
+		
 		frontLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		backLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		frontRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		backRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		
-		frontRightMotor.reverseSensor(true);
-		backRightMotor.reverseSensor(true);
 		
 		gyro = new Gyro(GYRO);
 		
@@ -116,8 +114,7 @@ public class RobotMap {
 		driveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 		driveTrain.setSensitivity(SENSITIVITY);
 		
-		
-		
+	
 		//Elevator
 		elevatorV = new VictorSP(ELEVATOR_VICTOR);
 		

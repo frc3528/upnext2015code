@@ -31,9 +31,9 @@ public class DriveTrain extends Subsystem {
     }
 
     
-    public void driveWithJoystick(Joystick joystick) {
+    public void driveWithJoystick(Joystick joystick, Gyro gyro) {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
-    	drive(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), 0); //joystick.getThrottle(), 0);
+    	drive(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), gyro.getAngle()); //joystick.getThrottle(), 0);
     	//driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0);
     	
     }
@@ -41,16 +41,23 @@ public class DriveTrain extends Subsystem {
     
     public void drive(double x, double y, double rotation, double gyroAngle) {
     	
-    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0);
+    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), gyroAngle);
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0);
     
     }
-
     
-    public double gyro() {
+    
+    public double gyroAngle() {
     	return gyro.getAngle();
     }
     
+    
+    public void gyroInit(Gyro gyro) {
+    	gyro.initGyro();
+    	gyro.reset();
+    	System.out.println("Initializing Gyro" + gyro.getAngle());
+    }
+
     
     public void increaseSensitivity() {
         if(RobotMap.SENSITIVITY < .9) {
@@ -82,22 +89,22 @@ public class DriveTrain extends Subsystem {
 
 	
 	public double frontLeftPos() {
-		return frontLeftMotor.getEncPosition() / 4;
+		return frontLeftMotor.getEncPosition();
 	}
 
 	
 	public double frontRightPos() {
-		return (frontRightMotor.getEncPosition() / 4) * -1;
+		return frontRightMotor.getEncPosition() * -1;
 	}
 
 	
 	public double backLeftPos() {
-		return backLeftMotor.getEncPosition() / 4;
+		return backLeftMotor.getEncPosition();
 	}
 	
 	
 	public double backRightPos() {
-		return (backRightMotor.getEncPosition() / 4) * -1;
+		return backRightMotor.getEncPosition()* -1;
 	}
 
 }
