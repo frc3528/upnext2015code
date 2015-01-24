@@ -20,11 +20,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public Joystick driveStick;
 		public JoystickButton back;
 		public JoystickButton start;
+		public JoystickButton a;
+		
 		
 		public OI() {
 			
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
 			
+			
+			a = new JoystickButton(driveStick, RobotMap.A);
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
 			//back.whenPressed(new DecreaseSensitivity()); 

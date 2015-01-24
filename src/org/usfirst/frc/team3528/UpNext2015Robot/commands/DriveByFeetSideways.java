@@ -40,7 +40,7 @@ public class DriveByFeetSideways extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.drive(power, 0, 0, 0);
+        Robot.driveTrain.autoDrive(power, 0, 0, 0);
         
         setTimeout(timeout);
     }

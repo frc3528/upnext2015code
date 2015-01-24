@@ -47,6 +47,11 @@ public class DriveTrain extends Subsystem {
     }
     
     
+    public void autoDrive(double x, double y, double rotation, double gyroAngle) {
+    	robotDrive.mecanumDrive_Cartesian(x, y, rotation, gyroAngle);
+    }
+    
+    
     public double gyroAngle() {
     	return gyro.getAngle();
     }
@@ -55,7 +60,6 @@ public class DriveTrain extends Subsystem {
     public void gyroInit(Gyro gyro) {
     	gyro.initGyro();
     	gyro.reset();
-    	System.out.println("Initializing Gyro" + gyro.getAngle());
     }
 
     

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
-import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.Robot; 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,7 +25,7 @@ public class DriveByFeet extends Command {
         
         // grab distance and convert from feet to inches
         this.distance = distance * 12;
-        this.power = power;
+        this.power = power * -1;
         this.timeout = timeout;
     }
 
@@ -40,7 +40,7 @@ public class DriveByFeet extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.drive(0,-power, 0, 0);
+        Robot.driveTrain.autoDrive(0, power, 0, 0);
         
         setTimeout(timeout);
     }
@@ -51,8 +51,12 @@ public class DriveByFeet extends Command {
     	double rightPos = Robot.driveTrain.frontRightPos();
     	error = leftPos - rightPos;
     	
-    	if (error < 0 ){
-    		
+    	if (error < -10 ) {
+    		 Robot.driveTrain.autoDrive(0, power, 0.09, 0);
+    	} 
+    	
+    	if (error > 10) {
+    		Robot.driveTrain.autoDrive(0, power, -0.09, 0);
     	}
      }
      

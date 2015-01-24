@@ -43,6 +43,7 @@ public class RobotMap {
 	
 	//Controllers
 	public static final int DRIVESTICK = 0;
+	public static final int A = 1;
 	public static final int BACKBUTTON = 7;
 	public static final int STARTBUTTON = 8;
 	

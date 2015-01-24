@@ -61,7 +61,6 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	//System.out.println(RobotMap.SENSITIVITY);
     	Scheduler.getInstance().run();
     }
     
