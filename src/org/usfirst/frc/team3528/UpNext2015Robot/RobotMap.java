@@ -1,12 +1,19 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
+
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+import com.ni.vision.NIVision.ImageType;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.hal.CanTalonSRX;
+import edu.wpi.first.wpilibj.vision.AxisCamera;
 
 
 
@@ -38,12 +45,21 @@ public class RobotMap {
 	
 	public static DigitalInput setPoint1;
 	
+	// Camera
+	
+	public static AxisCamera camera;
+	public static Relay light;
+	public static Image frame;
+	public static Image binaryFrame;
+	
 	
 // ======================Constants===========================
 	
 	//Controllers
 	public static final int DRIVESTICK = 0;
 	public static final int A = 1;
+	public static final int X = 3;
+	public static final int Y = 4;
 	public static final int BACKBUTTON = 7;
 	public static final int STARTBUTTON = 8;
 	
@@ -57,6 +73,20 @@ public class RobotMap {
 	public static final int DRIVE_RIGHT_BACK_TALON = 4;
 	
 	public static final int GYRO = 0;
+	
+	//Camera
+	
+	public static NIVision.Range TOTE_HUE_RANGE = new NIVision.Range(24, 49);	//Default hue range for yellow tote
+	public static NIVision.Range TOTE_SAT_RANGE = new NIVision.Range(67, 255);	//Default saturation range for yellow tote
+	public static NIVision.Range TOTE_VAL_RANGE = new NIVision.Range(49, 255);	//Default value range for yellow tote
+	public static final double AREA_MINIMUM = 0.5; //Default Area minimum for particle as a percentage of total image area
+	public static final double LONG_RATIO = 2.22; //Tote long side = 26.9 / Tote height = 12.1 = 2.22
+	public static final double SHORT_RATIO = 1.4; //Tote short side = 16.9 / Tote height = 12.1 = 1.4
+	public static final double SCORE_MIN = 75.0;  //Minimum score to be considered a tote
+	public static final double VIEW_ANGLE = 49.4; //View angle for camera, set to Axis m1011 by default, 64 for m1013, 51.7 for 206, 52 for HD3000 square, 60 for HD3000 640x480
+	public static NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
+	public static NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
+	
 	
 	
 	// ********** Wheels and Encoders and Distance Oh My **********
@@ -120,6 +150,13 @@ public class RobotMap {
 		elevatorV = new VictorSP(ELEVATOR_VICTOR);
 		
 		setPoint1 = new DigitalInput(SETPOINT1);
+		
+		
+		//Camera
+		
+		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
+		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM, 100.0, 0, 0);
 		
 		
 	}	
