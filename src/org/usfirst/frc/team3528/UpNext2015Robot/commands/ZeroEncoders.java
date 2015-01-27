@@ -17,26 +17,15 @@ public class ZeroEncoders extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(.1);
+    	setTimeout(.075);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
     	RobotMap.frontLeftMotor.setPosition(0);
     	RobotMap.backLeftMotor.setPosition(0);
     	RobotMap.frontRightMotor.setPosition(0);
     	RobotMap.backRightMotor.setPosition(0);
-      	
-    	/*
-    	Robot.driveTrain.zeroEncoder(RobotMap.frontLeftMotor);
-    	Robot.driveTrain.zeroEncoder(RobotMap.backLeftMotor);
-    	Robot.driveTrain.zeroEncoder(RobotMap.frontRightMotor);
-    	Robot.driveTrain.zeroEncoder(RobotMap.backRightMotor);
-		*/
-   
-    		
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

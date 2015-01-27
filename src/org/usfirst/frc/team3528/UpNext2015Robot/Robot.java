@@ -13,6 +13,7 @@ import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static DriveTrain driveTrain;
+	public static Elevator elevator;
 	public static OI oi;
 
     Command autonomousCommand;
@@ -22,9 +23,10 @@ public class Robot extends IterativeRobot {
 		System.out.println("====> UpNext2015Robot <====");
 		RobotMap.init();
 		driveTrain = new DriveTrain();
-    	oi = new OI();
+    	elevator = new Elevator();
+		oi = new OI();
         driveTrain.gyroInit(RobotMap.gyro);
-        //autonomousCommand = new ExampleCommand();
+        autonomousCommand = new AutoDriveForward();
     }
 	
 	

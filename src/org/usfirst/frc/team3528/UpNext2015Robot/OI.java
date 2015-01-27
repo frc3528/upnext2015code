@@ -29,6 +29,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			
 			a = new JoystickButton(driveStick, RobotMap.A);
+			a.whenPressed(new ResetGyro());
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
 			//back.whenPressed(new DecreaseSensitivity()); 

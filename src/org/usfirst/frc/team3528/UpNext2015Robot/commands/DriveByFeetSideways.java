@@ -32,7 +32,7 @@ public class DriveByFeetSideways extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	startingLeftPos = Robot.driveTrain.backLeftPos();
+    	startingLeftPos = Robot.driveTrain.frontLeftPos();
     	startingRightPos = Robot.driveTrain.backRightPos();
     	
     	// calculate the number of encoderCounts to drive
@@ -40,7 +40,7 @@ public class DriveByFeetSideways extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.autoDrive(power, 0, 0, 0);
+        Robot.driveTrain.drive(power, 0, 0, 0);
         
         setTimeout(timeout);
     }
@@ -51,7 +51,7 @@ public class DriveByFeetSideways extends Command {
      
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.driveTrain.backLeftPos() >= encoderCounts || isTimedOut();
+    	return Robot.driveTrain.frontLeftPos() >= encoderCounts || isTimedOut();
 
     }
 

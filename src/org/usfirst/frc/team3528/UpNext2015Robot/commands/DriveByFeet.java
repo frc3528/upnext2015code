@@ -25,7 +25,7 @@ public class DriveByFeet extends Command {
         
         // grab distance and convert from feet to inches
         this.distance = distance * 12;
-        this.power = power * -1;
+        this.power = -power;
         this.timeout = timeout;
     }
 
@@ -40,7 +40,7 @@ public class DriveByFeet extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.autoDrive(0, power, 0, 0);
+        Robot.driveTrain.drive(0, power, 0, 0);
         
         setTimeout(timeout);
     }
@@ -52,12 +52,17 @@ public class DriveByFeet extends Command {
     	error = leftPos - rightPos;
     	
     	if (error < -10 ) {
-    		 Robot.driveTrain.autoDrive(0, power, 0.09, 0);
-    	} 
+    		 Robot.driveTrain.drive(0, power, 0.1, 0);
+    	} else {
+    		Robot.driveTrain.drive(0, power, 0, 0);
+    	}
     	
     	if (error > 10) {
-    		Robot.driveTrain.autoDrive(0, power, -0.09, 0);
+    		Robot.driveTrain.drive(0, power, -0.1, 0);
+    	} else {
+    		Robot.driveTrain.drive(0, power, 0, 0);
     	}
+    	System.out.println(error);
      }
      
     // Make this return true when this Command no longer needs to run execute()
