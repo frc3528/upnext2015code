@@ -6,13 +6,13 @@ import java.util.Vector;
 //import org.usfirst.frc.team3528.robot.Robot.ParticleReport;
 
 
+
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -115,7 +115,7 @@ public class Camera extends Subsystem {
 			scores.LongAspect = LongSideScore(particles.elementAt(0));
 			scores.ShortAspect = ShortSideScore(particles.elementAt(0));
 			scores.AreaToConvexHullArea = ConvexHullAreaScore(particles.elementAt(0));
-			boolean isTote = scores.Trapezoid > SCORE_MIN && (scores.LongAspect > SCORE_MIN || scores.ShortAspect > SCORE_MIN) && scores.AreaToConvexHullArea > SCORE_MIN;
+			boolean isTote = scores.Trapezoid > RobotMap.SCORE_MIN && (scores.LongAspect > RobotMap.SCORE_MIN || scores.ShortAspect > RobotMap.SCORE_MIN) && scores.AreaToConvexHullArea > RobotMap.SCORE_MIN;
 			boolean isLong = scores.LongAspect > scores.ShortAspect;
 
 		} else {
@@ -123,5 +123,78 @@ public class Camera extends Subsystem {
 		}
 	
     }
+
+    
+    
+    
+	//Comparator function for sorting particles. Returns true if particle 1 is larger
+	static boolean CompareParticleSizes(ParticleReport particle1, ParticleReport particle2)
+	{
+		//we want descending sort order
+		return particle1.PercentAreaToImageArea > particle2.PercentAreaToImageArea;
+	}
+
+	/**
+	 * Converts a ratio with ideal value of 1 to a score. The resulting function is piecewise
+	 * linear going from (0,0) to (1,100) to (2,0) and is 0 for all inputs outside the range 0-2
+	 */
+	double ratioToScore(double ratio)
+	{
+		return (Math.max(0, Math.min(100*(1-Math.abs(1-ratio)), 100)));
+	}
+
+	/**
+	 * Method to score convex hull area. This scores how "complete" the particle is. Particles with large holes will score worse than a filled in shape
+	 */
+	double ConvexHullAreaScore(ParticleReport report)
+	{
+		return ratioToScore((report.Area/report.ConvexHullArea)*1.18);
+	}
+
+	/**
+	 * Method to score if the particle appears to be a trapezoid. Compares the convex hull (filled in) area to the area of the bounding box.
+	 * The expectation is that the convex hull area is about 95.4% of the bounding box area for an ideal tote.
+	 */
+	double TrapezoidScore(ParticleReport report)
+	{
+		return ratioToScore(report.ConvexHullArea/((report.BoundingRectRight-report.BoundingRectLeft)*(report.BoundingRectBottom-report.BoundingRectTop)*.954));
+	}
+
+	/**
+	 * Method to score if the aspect ratio of the particle appears to match the long side of a tote.
+	 */
+	double LongSideScore(ParticleReport report)
+	{
+		return ratioToScore(((report.BoundingRectRight-report.BoundingRectLeft)/(report.BoundingRectBottom-report.BoundingRectTop)) / RobotMap.LONG_RATIO);
+	}
+
+	/**
+	 * Method to score if the aspect ratio of the particle appears to match the short side of a tote.
+	 */
+	double ShortSideScore(ParticleReport report){
+		return ratioToScore(((report.BoundingRectRight-report.BoundingRectLeft)/(report.BoundingRectBottom-report.BoundingRectTop)) / RobotMap.SHORT_RATIO);
+	}
+
+	/**
+	 * Computes the estimated distance to a target using the width of the particle in the image. For more information and graphics
+	 * showing the math behind this approach see the Vision Processing section of the ScreenStepsLive documentation.
+	 *
+	 * @param image The image to use for measuring the particle estimated rectangle
+	 * @param report The Particle Analysis Report for the particle
+	 * @param isLong Boolean indicating if the target is believed to be the long side of a tote
+	 * @return The estimated distance to the target in feet.
+	 */
+	double computeDistance (Image image, ParticleReport report, boolean isLong) {
+		double normalizedWidth, targetWidth;
+		NIVision.GetImageSizeResult size;
+
+		size = NIVision.imaqGetImageSize(image);
+		normalizedWidth = 2*(report.BoundingRectRight - report.BoundingRectLeft)/size.width;
+		targetWidth = isLong ? 26.0 : 16.9;
+
+		return  targetWidth / ( normalizedWidth * 12 * Math.tan( RobotMap.VIEW_ANGLE * Math.PI / (180 * 2) ));
+	}    
+    
+    
 }
 
