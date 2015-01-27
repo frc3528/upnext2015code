@@ -154,6 +154,8 @@ public class RobotMap {
 		
 		//Camera
 		
+		camera = new AxisCamera("10.35.28.11");
+		light = new Relay(0);
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM, 100.0, 0, 0);
