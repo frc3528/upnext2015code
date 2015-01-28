@@ -7,7 +7,9 @@ import java.util.Vector;
 
 
 
+
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.DetectTote;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -22,6 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Camera extends Subsystem {
 	
 	boolean isOn = false;
+	public static boolean toteDetected = false;
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -61,6 +64,7 @@ public class Camera extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new DetectTote());
     }
     
     public void detectTote() {
@@ -117,8 +121,12 @@ public class Camera extends Subsystem {
 			scores.AreaToConvexHullArea = ConvexHullAreaScore(particles.elementAt(0));
 			boolean isTote = scores.Trapezoid > RobotMap.SCORE_MIN && (scores.LongAspect > RobotMap.SCORE_MIN || scores.ShortAspect > RobotMap.SCORE_MIN) && scores.AreaToConvexHullArea > RobotMap.SCORE_MIN;
 			boolean isLong = scores.LongAspect > scores.ShortAspect;
-
+			if (isTote) {
+				toteDetected = true;
+				System.out.println("Tote Detected.");
+			}
 		} else {
+			toteDetected = false;
 			System.out.println("No Tote Detected.");
 		}
 	

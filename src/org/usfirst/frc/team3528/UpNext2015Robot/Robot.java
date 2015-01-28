@@ -15,6 +15,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
 	public static OI oi;
+	public static Camera camera;
 
     Command autonomousCommand;
 
@@ -26,7 +27,8 @@ public class Robot extends IterativeRobot {
     	elevator = new Elevator();
 		oi = new OI();
         driveTrain.gyroInit(RobotMap.gyro);
-        autonomousCommand = new AutoDriveForward();
+        autonomousCommand = new DetectTote();
+        camera = new Camera();
     }
 	
 	
@@ -64,6 +66,7 @@ public class Robot extends IterativeRobot {
     
     public void teleopPeriodic() {
     	Scheduler.getInstance().run();
+    	System.out.println(Camera.toteDetected);
     }
     
    
