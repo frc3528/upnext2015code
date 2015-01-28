@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DetectTote extends Command {
 
     public DetectTote() {
+
         // Use requires() here to declare subsystem dependencies
         requires(Robot.camera);
     }

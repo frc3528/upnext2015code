@@ -24,8 +24,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Camera extends Subsystem {
 	
 	boolean isOn = false;
-	
-	// Put methods for controlling this subsystem
+	public static boolean toteDetected = false;
+    
+    // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	public class ParticleReport implements Comparator<ParticleReport>, Comparable<ParticleReport>{
@@ -117,9 +118,12 @@ public class Camera extends Subsystem {
 			scores.AreaToConvexHullArea = ConvexHullAreaScore(particles.elementAt(0));
 			boolean isTote = scores.Trapezoid > RobotMap.SCORE_MIN && (scores.LongAspect > RobotMap.SCORE_MIN || scores.ShortAspect > RobotMap.SCORE_MIN) && scores.AreaToConvexHullArea > RobotMap.SCORE_MIN;
 			boolean isLong = scores.LongAspect > scores.ShortAspect;
-
+			if (isTote) {
+				toteDetected = true;
+				System.out.println("Tote Detected.");
+			}
 		} else {
-
+			toteDetected = false;
 			System.out.println("No Tote Detected.");
 		}
     }
