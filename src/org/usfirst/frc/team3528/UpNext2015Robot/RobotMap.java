@@ -45,8 +45,8 @@ public class RobotMap {
 	
 	public static DigitalInput setPoint1;
 	
-	// Camera
 	
+	// Camera
 	public static AxisCamera camera;
 	public static Relay light;
 	public static Image frame;
@@ -74,21 +74,6 @@ public class RobotMap {
 	
 	public static final int GYRO = 0;
 	
-	//Camera
-	
-	public static NIVision.Range TOTE_HUE_RANGE = new NIVision.Range(24, 49);	//Default hue range for yellow tote
-	public static NIVision.Range TOTE_SAT_RANGE = new NIVision.Range(67, 255);	//Default saturation range for yellow tote
-	public static NIVision.Range TOTE_VAL_RANGE = new NIVision.Range(49, 255);	//Default value range for yellow tote
-	public static final double AREA_MINIMUM = 0.5; //Default Area minimum for particle as a percentage of total image area
-	public static final double LONG_RATIO = 2.22; //Tote long side = 26.9 / Tote height = 12.1 = 2.22
-	public static final double SHORT_RATIO = 1.4; //Tote short side = 16.9 / Tote height = 12.1 = 1.4
-	public static final double SCORE_MIN = 75.0;  //Minimum score to be considered a tote
-	public static final double VIEW_ANGLE = 49.4; //View angle for camera, set to Axis m1011 by default, 64 for m1013, 51.7 for 206, 52 for HD3000 square, 60 for HD3000 640x480
-	public static NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
-	public static NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
-	
-	
-	
 	// ********** Wheels and Encoders and Distance Oh My **********
 	
 	// Wheel Size
@@ -106,6 +91,19 @@ public class RobotMap {
 	// ********** And they all lived happily ever after. The End. **********
 	
 	
+	//Camera
+	public static NIVision.Range TOTE_HUE_RANGE = new NIVision.Range(24, 49);	//Default hue range for yellow tote
+	public static NIVision.Range TOTE_SAT_RANGE = new NIVision.Range(67, 255);	//Default saturation range for yellow tote
+	public static NIVision.Range TOTE_VAL_RANGE = new NIVision.Range(49, 255);	//Default value range for yellow tote
+	public static final double AREA_MINIMUM = 0.5; //Default Area minimum for particle as a percentage of total image area
+	public static final double LONG_RATIO = 2.22; //Tote long side = 26.9 / Tote height = 12.1 = 2.22
+	public static final double SHORT_RATIO = 1.4; //Tote short side = 16.9 / Tote height = 12.1 = 1.4
+	public static final double SCORE_MIN = 75.0;  //Minimum score to be considered a tote
+	public static final double VIEW_ANGLE = 49.4; //View angle for camera, set to Axis m1011 by default, 64 for m1013, 51.7 for 206, 52 for HD3000 square, 60 for HD3000 640x480
+	public static NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
+	public static NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
+	
+	
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;
 	
@@ -114,8 +112,6 @@ public class RobotMap {
 	
 	public static void init() {
 		//System.out.println("IN ROBOTMAP");
-		
-		
 		
 		// DriveTrain
 		/*
@@ -153,7 +149,6 @@ public class RobotMap {
 		
 		
 		//Camera
-		
 		camera = new AxisCamera("10.35.28.11");
 		light = new Relay(0);
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);

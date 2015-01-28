@@ -7,7 +7,9 @@ import java.util.Vector;
 
 
 
+
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.DetectTote;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -22,8 +24,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Camera extends Subsystem {
 	
 	boolean isOn = false;
-    
-    // Put methods for controlling this subsystem
+	
+	// Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	public class ParticleReport implements Comparator<ParticleReport>, Comparable<ParticleReport>{
@@ -34,8 +36,6 @@ public class Camera extends Subsystem {
 		double BoundingRectTop;
 		double BoundingRectRight;
 		double BoundingRectBottom;
-		
-		
 		
 		public int compareTo(ParticleReport r)
 		{
@@ -60,7 +60,7 @@ public class Camera extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DetectTote());
     }
     
     public void detectTote() {
@@ -119,9 +119,9 @@ public class Camera extends Subsystem {
 			boolean isLong = scores.LongAspect > scores.ShortAspect;
 
 		} else {
+
 			System.out.println("No Tote Detected.");
 		}
-	
     }
 
     
