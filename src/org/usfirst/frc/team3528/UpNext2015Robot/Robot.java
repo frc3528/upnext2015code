@@ -15,6 +15,8 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
 	public static OI oi;
+	public static Flipper flipper;
+	public static Herders herders;
 
     Command autonomousCommand;
 
@@ -22,6 +24,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		System.out.println("====> UpNext2015Robot <====");
 		RobotMap.init();
+		flipper = new Flipper();
+		herders = new Herders();
 		camera = new Camera();
 		driveTrain = new DriveTrain();
     	elevator = new Elevator();
