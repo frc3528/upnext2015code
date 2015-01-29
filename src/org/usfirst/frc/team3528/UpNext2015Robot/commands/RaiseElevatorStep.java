@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class raiseElevatorStep extends Command {
+public class RaiseElevatorStep extends Command {
 	
 	boolean finished = false;
 	
 	
-    public raiseElevatorStep() {
+    public RaiseElevatorStep() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
