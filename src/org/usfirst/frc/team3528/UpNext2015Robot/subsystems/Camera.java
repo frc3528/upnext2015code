@@ -130,7 +130,7 @@ public class Camera extends Subsystem {
 			}
 		} else {
 			toteDetected = false;
-			System.out.println("No Tote Detected.");
+			//System.out.println("No Tote Detected.");
 		}
     }
 

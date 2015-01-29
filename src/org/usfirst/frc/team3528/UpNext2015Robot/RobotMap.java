@@ -81,6 +81,8 @@ public class RobotMap {
 	public static final int Y = 4;
 	public static final int BACKBUTTON = 7;
 	public static final int STARTBUTTON = 8;
+	public static final int LEFTTRIGGER = 5;
+	public static final int RIGHTTRIGGER = 6;
 	
 	
 	//DriveTrain
@@ -113,10 +115,11 @@ public class RobotMap {
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;
 	
-	public static final int SETPOINT1 = 0;
-	public static final int SETPOINT2 = 1;
-	public static final int SETPOINT3 = 2;
-	public static final int SETPOINT4 = 3;
+	public static final int SETPOINT0 = 0;
+	public static final int SETPOINT1 = 1;
+	public static final int SETPOINT2 = 2;
+	public static final int SETPOINT3 = 3;
+	public static final int SETPOINT4 = 4;
 	
 	
 	//Camera
@@ -135,10 +138,10 @@ public class RobotMap {
 	//Arm
 	public static final int LOWER_ARM = 2;
 	public static final int UPPER_ARM = 3;
-	public static final int LOWER_ENCODER_A = 2;  
-	public static final int LOWER_ENCODER_B = 3;
-	public static final int UPPER_ENCODER_A = 4;
-	public static final int UPPER_ENCODER_B = 5;
+	public static final int LOWER_ENCODER_A = 5;  
+	public static final int LOWER_ENCODER_B = 6;
+	public static final int UPPER_ENCODER_A = 7;
+	public static final int UPPER_ENCODER_B = 8;
 	
 	
 	//Flipper
@@ -181,6 +184,7 @@ public class RobotMap {
 		//Elevator
 		elevatorV = new VictorSP(ELEVATOR_VICTOR);
 		
+		setPoint0 = new DigitalInput(SETPOINT0);
 		setPoint1 = new DigitalInput(SETPOINT1);
 		setPoint2 = new DigitalInput(SETPOINT2);
 		setPoint3 = new DigitalInput(SETPOINT3);

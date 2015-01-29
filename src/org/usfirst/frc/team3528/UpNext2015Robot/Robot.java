@@ -68,7 +68,6 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	System.out.println(elevator.getPoint1());
     	Scheduler.getInstance().run();
     }
     

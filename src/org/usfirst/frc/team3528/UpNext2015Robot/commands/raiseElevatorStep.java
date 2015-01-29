@@ -20,43 +20,42 @@ public class raiseElevatorStep extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.elevator.runElevator(.5);
     	finished = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//System.out.println(Robot.elevator.getPoint1());
+    	System.out.println(RobotMap.elevatorPosition);
     	switch(RobotMap.elevatorPosition) {
     	case 0:
     		if (Robot.elevator.getPoint1()) {
-    			Robot.elevator.runElevator(.5);
-    		} else {
     			Robot.elevator.runElevator(0);
     			finished = true;
     		}
     		break;
     	case 1:
     		if (Robot.elevator.getPoint2()) {
-    			Robot.elevator.runElevator(.5);
-    		} else {
     			Robot.elevator.runElevator(0);
     			finished = true;
     		}
     		break;
     	case 2:
     		if (Robot.elevator.getPoint3()) {
-    			Robot.elevator.runElevator(.5);
-    		} else {
     			Robot.elevator.runElevator(0);
     			finished = true;
     		}
     		break;
     	case 3:
     		if (Robot.elevator.getPoint4()) {
-    			Robot.elevator.runElevator(.5);
-    		} else {
     			Robot.elevator.runElevator(0);
     			finished = true;
     		}
+    		break;
+    	case 4:
+    		Robot.elevator.runElevator(0);
+    		finished = true;
     		break;
     	}
     }
@@ -68,7 +67,10 @@ public class raiseElevatorStep extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.elevatorPosition++;
+    	if (RobotMap.elevatorPosition <= 3) {
+    		RobotMap.elevatorPosition++;
+    	}
+    	
     }
 
     // Called when another command which requires one or more of the same

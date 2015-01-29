@@ -24,6 +24,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton a;
 		public JoystickButton x;
 		public JoystickButton y;
+		public JoystickButton leftTrigger;
+		public JoystickButton rightTrigger;
 		
 		
 		public OI() {
@@ -37,6 +39,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			
 			y = new JoystickButton(driveStick, RobotMap.Y);
+			
+			leftTrigger = new JoystickButton(driveStick, RobotMap.LEFTTRIGGER);
+			
+			rightTrigger = new JoystickButton(driveStick, RobotMap.RIGHTTRIGGER);
+			rightTrigger.whenPressed(new raiseElevatorStep());
 
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
