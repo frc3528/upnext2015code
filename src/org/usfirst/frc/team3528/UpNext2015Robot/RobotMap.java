@@ -7,6 +7,7 @@ import com.ni.vision.NIVision.ImageType;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -51,6 +52,21 @@ public class RobotMap {
 	public static Relay light;
 	public static Image frame;
 	public static Image binaryFrame;
+	
+	// Arm
+	
+	public static VictorSP lowerArm;
+	public static VictorSP upperArm;
+	public static Encoder lowerEncoder;
+	public static Encoder upperEncoder;
+	
+	// Flipper
+	
+	public static Relay flipperRelay;
+	
+	// Herders
+	
+	
 	
 	
 // ======================Constants===========================
@@ -110,6 +126,7 @@ public class RobotMap {
 	public static final int SETPOINT1 = 0;
 	
 	
+	
 	public static void init() {
 		//System.out.println("IN ROBOTMAP");
 		
@@ -154,6 +171,18 @@ public class RobotMap {
 		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM, 100.0, 0, 0);
+		
+		// Arm
+		
+		lowerArm = new VictorSP(2);
+		upperArm = new VictorSP(3);
+		lowerEncoder = new Encoder(2, 3);
+		upperEncoder = new Encoder(4, 5);
+		
+		
+		// Flipper
+		
+		flipperRelay = new Relay(1);
 		
 		
 	}	
