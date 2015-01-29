@@ -19,5 +19,12 @@ public class Elevator extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+
+    public boolean getPoint1() { 
+    	return setPoint1.get();
+    }
+
+
 }
 
