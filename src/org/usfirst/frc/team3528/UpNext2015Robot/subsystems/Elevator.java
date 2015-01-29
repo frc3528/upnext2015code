@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
     
     VictorSP victor = RobotMap.elevatorV;
+    DigitalInput setPoint0 = RobotMap.setPoint0;
     DigitalInput setPoint1 = RobotMap.setPoint1;
     DigitalInput setPoint2 = RobotMap.setPoint2;
 	DigitalInput setPoint3 = RobotMap.setPoint3;

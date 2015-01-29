@@ -44,10 +44,12 @@ public class RobotMap {
 	//Elevator
 	public static VictorSP elevatorV;
 	
+	public static DigitalInput setPoint0;
 	public static DigitalInput setPoint1;
 	public static DigitalInput setPoint2;
 	public static DigitalInput setPoint3;
 	public static DigitalInput setPoint4;
+	public static int elevatorPosition = 0;
 	
 	
 	// Camera
