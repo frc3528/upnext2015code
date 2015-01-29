@@ -53,20 +53,16 @@ public class RobotMap {
 	public static Image frame;
 	public static Image binaryFrame;
 	
-	// Arm
 	
+	// Arm
 	public static VictorSP lowerArm;
 	public static VictorSP upperArm;
 	public static Encoder lowerEncoder;
 	public static Encoder upperEncoder;
 	
+	
 	// Flipper
-	
 	public static Relay flipperRelay;
-	
-	// Herders
-	
-	
 	
 	
 // ======================Constants===========================
@@ -107,6 +103,12 @@ public class RobotMap {
 	// ********** And they all lived happily ever after. The End. **********
 	
 	
+	//Elevator
+	public static final int ELEVATOR_VICTOR = 0;
+	
+	public static final int SETPOINT1 = 0;
+	
+	
 	//Camera
 	public static NIVision.Range TOTE_HUE_RANGE = new NIVision.Range(24, 49);	//Default hue range for yellow tote
 	public static NIVision.Range TOTE_SAT_RANGE = new NIVision.Range(67, 255);	//Default saturation range for yellow tote
@@ -120,11 +122,17 @@ public class RobotMap {
 	public static NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
 	
 	
-	//Elevator
-	public static final int ELEVATOR_VICTOR = 0;
+	//Arm
+	public static final int LOWER_ARM = 2;
+	public static final int UPPER_ARM = 3;
+	public static final int LOWER_ENCODER_A = 2;  
+	public static final int LOWER_ENCODER_B = 3;
+	public static final int UPPER_ENCODER_A = 4;
+	public static final int UPPER_ENCODER_B = 5;
 	
-	public static final int SETPOINT1 = 0;
 	
+	//Flipper
+	public static final int FLIPPER_RELAY = 1;
 	
 	
 	public static void init() {
@@ -172,18 +180,16 @@ public class RobotMap {
 		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM, 100.0, 0, 0);
 		
-		// Arm
 		
-		lowerArm = new VictorSP(2);
-		upperArm = new VictorSP(3);
-		lowerEncoder = new Encoder(2, 3);
-		upperEncoder = new Encoder(4, 5);
+		// Arm
+		lowerArm = new VictorSP(LOWER_ARM);
+		upperArm = new VictorSP(UPPER_ARM);
+		lowerEncoder = new Encoder(LOWER_ENCODER_A, LOWER_ENCODER_B);
+		upperEncoder = new Encoder(UPPER_ENCODER_A, UPPER_ENCODER_B);
 		
 		
 		// Flipper
-		
-		flipperRelay = new Relay(1);
-		
+		flipperRelay = new Relay(FLIPPER_RELAY);
 		
 	}	
 }
