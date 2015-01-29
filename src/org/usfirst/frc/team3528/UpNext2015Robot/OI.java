@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 	public class OI {
 	
 		public Joystick driveStick;
+		public Joystick controlStick;
 		public JoystickButton back;
 		public JoystickButton start;
 		public JoystickButton a;
@@ -29,21 +30,23 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
 			
-			
 			a = new JoystickButton(driveStick, RobotMap.A);
 			a.whenPressed(new ResetGyro());
 
 			x = new JoystickButton(driveStick, RobotMap.X);
+			
+			
 			y = new JoystickButton(driveStick, RobotMap.Y);
 
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			//back.whenPressed(new DecreaseSensitivity()); 
-			back.whenPressed(new AutoDriveForward());
+			back.whenPressed(new DecreaseSensitivity()); 
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			//start.whenPressed(new IncreaseSensitivity());
-			start.whenPressed(new AutoStrafe());
+			start.whenPressed(new IncreaseSensitivity());
+			
+			
+			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
 		}
 }

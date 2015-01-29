@@ -8,6 +8,8 @@ import java.util.Vector;
 
 
 
+
+
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.DetectTote;
 
@@ -15,6 +17,8 @@ import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -22,6 +26,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Camera extends Subsystem {
+	
+	Relay light = RobotMap.light;
 	
 	boolean isOn = false;
 	public static boolean toteDetected = false;
@@ -200,5 +206,13 @@ public class Camera extends Subsystem {
 	}    
     
     
+	public void turnOnLight() {
+		light.set(Value.kOn);;
+	}
+	
+	
+	public void turnOffLight() {
+		light.set(Value.kOff);
+	}
 }
 

@@ -4,7 +4,6 @@ package org.usfirst.frc.team3528.UpNext2015Robot;
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 import com.ni.vision.NIVision.ImageType;
-
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -21,7 +20,8 @@ import edu.wpi.first.wpilibj.vision.AxisCamera;
 public class RobotMap {
     
 	
-// ======================Objects===========================
+//======================Objects===========================\\
+	
 	
 	//DriveTrain
 	/*
@@ -45,6 +45,9 @@ public class RobotMap {
 	public static VictorSP elevatorV;
 	
 	public static DigitalInput setPoint1;
+	public static DigitalInput setPoint2;
+	public static DigitalInput setPoint3;
+	public static DigitalInput setPoint4;
 	
 	
 	// Camera
@@ -65,9 +68,11 @@ public class RobotMap {
 	public static Relay flipperRelay;
 	
 	
-// ======================Constants===========================
+//======================Constants===========================\\
+	
 	
 	//Controllers
+	public static final int CONTROLSTICK = 1;
 	public static final int DRIVESTICK = 0;
 	public static final int A = 1;
 	public static final int X = 3;
@@ -107,6 +112,9 @@ public class RobotMap {
 	public static final int ELEVATOR_VICTOR = 0;
 	
 	public static final int SETPOINT1 = 0;
+	public static final int SETPOINT2 = 1;
+	public static final int SETPOINT3 = 2;
+	public static final int SETPOINT4 = 3;
 	
 	
 	//Camera
@@ -135,6 +143,7 @@ public class RobotMap {
 	public static final int FLIPPER_RELAY = 1;
 	
 	
+//===================InitializeMap===================\\
 	public static void init() {
 		//System.out.println("IN ROBOTMAP");
 		
@@ -171,6 +180,9 @@ public class RobotMap {
 		elevatorV = new VictorSP(ELEVATOR_VICTOR);
 		
 		setPoint1 = new DigitalInput(SETPOINT1);
+		setPoint2 = new DigitalInput(SETPOINT2);
+		setPoint3 = new DigitalInput(SETPOINT3);
+		setPoint4 = new DigitalInput(SETPOINT4);
 		
 		
 		//Camera
@@ -181,14 +193,14 @@ public class RobotMap {
 		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM, 100.0, 0, 0);
 		
 		
-		// Arm
+		//Arm
 		lowerArm = new VictorSP(LOWER_ARM);
 		upperArm = new VictorSP(UPPER_ARM);
 		lowerEncoder = new Encoder(LOWER_ENCODER_A, LOWER_ENCODER_B);
 		upperEncoder = new Encoder(UPPER_ENCODER_A, UPPER_ENCODER_B);
 		
 		
-		// Flipper
+		//Flipper
 		flipperRelay = new Relay(FLIPPER_RELAY);
 		
 	}	
