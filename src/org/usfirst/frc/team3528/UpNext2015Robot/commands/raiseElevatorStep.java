@@ -20,7 +20,10 @@ public class raiseElevatorStep extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.elevator.runElevator(.5);
+    	System.out.println("Button Pressed.");
+    	if (RobotMap.elevatorPosition < 4) {
+    		Robot.elevator.runElevator(.5);
+    	}
     	finished = false;
     }
 
