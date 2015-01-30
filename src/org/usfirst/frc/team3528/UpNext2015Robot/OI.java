@@ -41,6 +41,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			y = new JoystickButton(driveStick, RobotMap.Y);
 			
 			leftTrigger = new JoystickButton(driveStick, RobotMap.LEFTTRIGGER);
+			leftTrigger = new JoystickButton(driveStick, RobotMap.RIGHTTRIGGER);
 			
 			rightTrigger = new JoystickButton(driveStick, RobotMap.RIGHTTRIGGER);
 			//rightTrigger.whenPressed(new RaiseElevatorStep());
