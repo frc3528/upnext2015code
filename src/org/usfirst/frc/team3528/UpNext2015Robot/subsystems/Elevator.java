@@ -18,6 +18,7 @@ public class Elevator extends Subsystem {
 	DigitalInput setPoint3 = RobotMap.setPoint3;
 	DigitalInput setPoint4 = RobotMap.setPoint4;
 
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -29,6 +30,11 @@ public class Elevator extends Subsystem {
     }
     
 
+    public boolean getPoint0() {
+    	return setPoint0.get();
+    }
+    
+    
     public boolean getPoint1() { 
     	return setPoint1.get();
     }
