@@ -28,7 +28,11 @@ public class Elevator extends Subsystem {
     	victor.set(power);
     }
     
-
+    public boolean getPoint0() {
+    	return setPoint0.get();
+    }
+    
+    
     public boolean getPoint1() { 
     	return setPoint1.get();
     }
