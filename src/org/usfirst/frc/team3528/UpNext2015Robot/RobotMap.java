@@ -49,6 +49,7 @@ public class RobotMap {
 	public static DigitalInput setPoint2;
 	public static DigitalInput setPoint3;
 	public static DigitalInput setPoint4;
+	//public static Encoder elevatorPos;
 	public static int elevatorPosition = 0;
 	
 	
@@ -62,6 +63,7 @@ public class RobotMap {
 	// Arm
 	public static VictorSP lowerArm;
 	public static VictorSP upperArm;
+	public static Relay clawSpike;
 	public static Encoder lowerEncoder;
 	public static Encoder upperEncoder;
 	
@@ -121,6 +123,9 @@ public class RobotMap {
 	public static final int SETPOINT3 = 3;
 	public static final int SETPOINT4 = 4;
 	
+	public static final int ELEVATOR_ENCODER_A = 4;
+	public static final int ELEVATOR_ENCODER_B = 5;
+	
 	
 	//Camera
 	public static NIVision.Range TOTE_HUE_RANGE = new NIVision.Range(24, 49);	//Default hue range for yellow tote
@@ -138,10 +143,11 @@ public class RobotMap {
 	//Arm
 	public static final int LOWER_ARM = 2;
 	public static final int UPPER_ARM = 3;
-	public static final int LOWER_ENCODER_A = 5;  
-	public static final int LOWER_ENCODER_B = 6;
-	public static final int UPPER_ENCODER_A = 7;
-	public static final int UPPER_ENCODER_B = 8;
+	public static final int WRIST_RELAY = 2;
+	public static final int LOWER_ENCODER_A = 6;  
+	public static final int LOWER_ENCODER_B = 7;
+	public static final int UPPER_ENCODER_A = 8;
+	public static final int UPPER_ENCODER_B = 9;
 	
 	
 	//Flipper
@@ -190,6 +196,8 @@ public class RobotMap {
 		setPoint3 = new DigitalInput(SETPOINT3);
 		setPoint4 = new DigitalInput(SETPOINT4);
 		
+		//elevatorPos = new Encoder(ELEVATOR_ENCODER_A, ELEVATOR_ENCODER_B);
+		
 		
 		//Camera
 		camera = new AxisCamera("10.35.28.11");
@@ -202,6 +210,7 @@ public class RobotMap {
 		//Arm
 		lowerArm = new VictorSP(LOWER_ARM);
 		upperArm = new VictorSP(UPPER_ARM);
+		clawSpike = new Relay(WRIST_RELAY);
 		lowerEncoder = new Encoder(LOWER_ENCODER_A, LOWER_ENCODER_B);
 		upperEncoder = new Encoder(UPPER_ENCODER_A, UPPER_ENCODER_B);
 		

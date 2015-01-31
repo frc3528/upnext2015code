@@ -3,6 +3,7 @@ package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,7 +18,7 @@ public class Elevator extends Subsystem {
     DigitalInput setPoint2 = RobotMap.setPoint2;
 	DigitalInput setPoint3 = RobotMap.setPoint3;
 	DigitalInput setPoint4 = RobotMap.setPoint4;
-
+	//Encoder position = RobotMap.elevatorPos;
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -29,7 +30,17 @@ public class Elevator extends Subsystem {
     	victor.set(power);
     }
     
+    /*
+    public int elevatorPosition() {
+    	return position.get();
+    }
 
+    
+    public void resetPosition() {
+    	position.reset();
+    }
+    */
+    
     public boolean getPoint0() {
     	return setPoint0.get();
     }
