@@ -14,16 +14,18 @@ public class Robot extends IterativeRobot {
 	public static Camera camera;
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
-	public static OI oi;
+	public static Arm arm;
 	public static Flipper flipper;
 	public static Herders herders;
-
+	public static OI oi;
+	
     Command autonomousCommand;
 
     
     public void robotInit() {
 		System.out.println("====> UpNext2015Robot <====");
 		RobotMap.init();
+		arm = new Arm();
 		flipper = new Flipper();
 		herders = new Herders();
 		camera = new Camera();

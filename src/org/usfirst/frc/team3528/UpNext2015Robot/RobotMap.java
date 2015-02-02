@@ -49,7 +49,9 @@ public class RobotMap {
 	public static DigitalInput setPoint2;
 	public static DigitalInput setPoint3;
 	public static DigitalInput setPoint4;
+	
 	//public static Encoder elevatorPos;
+	
 	public static int elevatorPosition = 0;
 	
 	
