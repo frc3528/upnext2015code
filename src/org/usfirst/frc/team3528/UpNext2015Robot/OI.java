@@ -40,12 +40,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			y = new JoystickButton(driveStick, RobotMap.Y);
 			
-			leftTrigger = new JoystickButton(driveStick, RobotMap.LEFTTRIGGER);
-			leftTrigger = new JoystickButton(driveStick, RobotMap.RIGHTTRIGGER);
+			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
+			leftTrigger.whenPressed(new LowerElevatorStep());
 			
-			rightTrigger = new JoystickButton(driveStick, RobotMap.RIGHTTRIGGER);
+			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
 			//rightTrigger.whenPressed(new RaiseElevatorStep());
-			rightTrigger.whenPressed(new Test());
+			rightTrigger.whenPressed(new RaiseElevatorStep());
 
 			
 			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
@@ -59,4 +59,3 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 		}
 }
-
