@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;

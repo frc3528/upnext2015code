@@ -2,6 +2,7 @@ package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -13,12 +14,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Arm extends Subsystem {
     
-	VictorSP lowerArm = RobotMap.lowerArm;
-	VictorSP upperArm = RobotMap.upperArm;
-	Relay claw = RobotMap.clawSpike;
-	Encoder lowerEncoder = RobotMap.lowerEncoder;
-	Encoder upperEncoder = RobotMap.upperEncoder;
-	
+	VictorSP arm = RobotMap.arm;
+	VictorSP wrist = RobotMap.wrist;
+	Relay claw = RobotMap.claw;
+	Encoder armEncoder = RobotMap.armEncoder;
+	Encoder wristEncoder = RobotMap.wristEncoder;
+	DigitalInput clawLimit = RobotMap.clawLimit;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -29,13 +30,13 @@ public class Arm extends Subsystem {
     }
 
     
-    public void runUpperArm(double power) {
-    	upperArm.set(power);
+    public void runArm(double power) {
+    	arm.set(power);
     }
     
     
-    public void runLowerArm(double power) {
-    	lowerArm.set(power);
+    public void runWrist(double power) {
+    	wrist.set(power);
     }
     
     
@@ -54,13 +55,27 @@ public class Arm extends Subsystem {
     }
     
     
-    public void zeroUpper() {
-    	upperEncoder.reset();
+    public boolean clawLimit() {
+    	return clawLimit.get();
+    }
+    
+    public int getArmPos() {
+    	return armEncoder.get();
+    }
+    
+    
+    public int getWristPos() {
+    	return wristEncoder.get();
+    }
+    
+    
+    public void zeroArmEncoder() {
+    	armEncoder.reset();
     }
 
 
-    public void zeroLower() {
-    	lowerEncoder.reset();
+    public void zeroWristEncoder() {
+    	wristEncoder.reset();
     }
 }
 

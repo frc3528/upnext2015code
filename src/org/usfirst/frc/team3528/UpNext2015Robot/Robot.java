@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
     	elevator = new Elevator();
 		oi = new OI();
         driveTrain.gyroInit(RobotMap.gyro);
-        autonomousCommand = new DetectTote();
+        //autonomousCommand = new DetectTote();
     }
 	
 	

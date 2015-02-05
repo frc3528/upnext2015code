@@ -63,11 +63,12 @@ public class RobotMap {
 	
 	
 	// Arm
-	public static VictorSP lowerArm;
-	public static VictorSP upperArm;
-	public static Relay clawSpike;
-	public static Encoder lowerEncoder;
-	public static Encoder upperEncoder;
+	public static VictorSP arm;
+	public static VictorSP wrist;
+	public static Relay claw;
+	public static Encoder armEncoder;
+	public static Encoder wristEncoder;
+	public static DigitalInput clawLimit;
 	
 	
 	// Flipper
@@ -143,14 +144,14 @@ public class RobotMap {
 	
 	
 	//Arm
-	public static final int LOWER_ARM = 2;
-	public static final int UPPER_ARM = 3;
-	public static final int WRIST_RELAY = 2;
-	public static final int LOWER_ENCODER_A = 6;  
-	public static final int LOWER_ENCODER_B = 7;
-	public static final int UPPER_ENCODER_A = 8;
-	public static final int UPPER_ENCODER_B = 9;
-	
+	public static final int ARM = 2;
+	public static final int WRIST = 3;
+	public static final int CLAW = 2;
+	public static final int ARM_ENCODER_A = 5;  
+	public static final int ARM_ENCODER_B = 6;
+	public static final int WRIST_ENCODER_A =7;
+	public static final int WRIST_ENCODER_B = 8;
+	public static final int CLAW_LIMIT = 9;
 	
 	//Flipper
 	public static final int FLIPPER_RELAY = 1;
@@ -210,16 +211,16 @@ public class RobotMap {
 		
 		
 		//Arm
-		lowerArm = new VictorSP(LOWER_ARM);
-		upperArm = new VictorSP(UPPER_ARM);
-		clawSpike = new Relay(WRIST_RELAY);
-		lowerEncoder = new Encoder(LOWER_ENCODER_A, LOWER_ENCODER_B);
-		upperEncoder = new Encoder(UPPER_ENCODER_A, UPPER_ENCODER_B);
+		arm = new VictorSP(ARM);
+		wrist = new VictorSP(WRIST);
+		claw = new Relay(CLAW);
+		armEncoder = new Encoder(ARM_ENCODER_A, ARM_ENCODER_B);
+		wristEncoder = new Encoder(WRIST_ENCODER_A, WRIST_ENCODER_B);
+		clawLimit = new DigitalInput(CLAW_LIMIT);
 		
 		
 		//Flipper
 		flipperRelay = new Relay(FLIPPER_RELAY);
-		
 	}	
 }
 
