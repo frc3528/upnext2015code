@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton back;
 		public JoystickButton start;
 		public JoystickButton a;
+		public JoystickButton b;
 		public JoystickButton x;
 		public JoystickButton y;
 		public JoystickButton leftTrigger;
@@ -32,13 +33,19 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
 			
+			//Need to change this to control stick when resetting the gyro is automatic.
+			//For picking up recycle bins off floor.
 			a = new JoystickButton(driveStick, RobotMap.A);
 			a.whenPressed(new ResetGyro());
-
-			x = new JoystickButton(driveStick, RobotMap.X);
+			
+			//For lifting bins up to score on tote stack.
+			b = new JoystickButton(controlStick, RobotMap.B);
+			
+			//Picking up totes off the step.
+			x = new JoystickButton(controlStick, RobotMap.X);
 			
 			
-			y = new JoystickButton(driveStick, RobotMap.Y);
+			y = new JoystickButton(controlStick, RobotMap.Y);
 			
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());

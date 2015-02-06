@@ -82,6 +82,7 @@ public class RobotMap {
 	public static final int CONTROLSTICK = 1;
 	public static final int DRIVESTICK = 0;
 	public static final int A = 1;
+	public static final int B = 2;
 	public static final int X = 3;
 	public static final int Y = 4;
 	public static final int BACKBUTTON = 7;

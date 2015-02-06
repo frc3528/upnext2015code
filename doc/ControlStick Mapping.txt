@@ -6,3 +6,15 @@ Lower Elevator by one step
 
 ---Right Button---
 Raise Elevator by one step
+
+
+---A Button---
+Pick up recycling bin off floor?
+
+
+---B Button---
+Lift bin to place on tote stack?
+
+
+---X Button---
+Pick up tote from Step?
