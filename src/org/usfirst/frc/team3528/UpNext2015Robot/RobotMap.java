@@ -65,7 +65,7 @@ public class RobotMap {
 	// Arm
 	public static VictorSP arm;
 	public static VictorSP wrist;
-	public static Relay claw;
+	public static Talon claw;
 	public static Encoder armEncoder;
 	public static Encoder wristEncoder;
 	public static DigitalInput clawLimit;
@@ -147,7 +147,7 @@ public class RobotMap {
 	//Arm
 	public static final int ARM = 2;
 	public static final int WRIST = 3;
-	public static final int CLAW = 2;
+	public static final int CLAW = 1;
 	public static final int ARM_ENCODER_A = 5;  
 	public static final int ARM_ENCODER_B = 6;
 	public static final int WRIST_ENCODER_A =7;
@@ -214,7 +214,7 @@ public class RobotMap {
 		//Arm
 		arm = new VictorSP(ARM);
 		wrist = new VictorSP(WRIST);
-		claw = new Relay(CLAW);
+		claw = new Talon(CLAW);
 		armEncoder = new Encoder(ARM_ENCODER_A, ARM_ENCODER_B);
 		wristEncoder = new Encoder(WRIST_ENCODER_A, WRIST_ENCODER_B);
 		clawLimit = new DigitalInput(CLAW_LIMIT);
