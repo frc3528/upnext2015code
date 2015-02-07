@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -22,6 +21,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton back;
 		public JoystickButton start;
 		public JoystickButton a;
+		public JoystickButton aControl;
 		public JoystickButton b;
 		public JoystickButton x;
 		public JoystickButton y;
@@ -33,10 +33,22 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
 			
-			//Need to change this to control stick when resetting the gyro is automatic.
-			//For picking up recycle bins off floor.
+			
+			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
+			back.whenPressed(new DecreaseSensitivity()); 
+			
+			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
+			start.whenPressed(new IncreaseSensitivity());
+			
 			a = new JoystickButton(driveStick, RobotMap.A);
 			a.whenPressed(new ResetGyro());
+			
+			controlStick = new Joystick(RobotMap.CONTROLSTICK);
+			
+			//Need to change this to control stick when resetting the gyro is automatic.
+			//For picking up recycle bins off floor.
+			aControl = new JoystickButton(driveStick, RobotMap.A);
+			aControl.whenPressed(new ResetGyro());
 			
 			//For lifting bins up to score on tote stack.
 			b = new JoystickButton(controlStick, RobotMap.B);
@@ -51,18 +63,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			leftTrigger.whenPressed(new LowerElevatorStep());
 			
 			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
-			//rightTrigger.whenPressed(new RaiseElevatorStep());
 			rightTrigger.whenPressed(new RaiseElevatorStep());
 
-			
-			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			back.whenPressed(new DecreaseSensitivity()); 
-			
-			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			start.whenPressed(new IncreaseSensitivity());
-			
-			
-			controlStick = new Joystick(RobotMap.CONTROLSTICK);
-			
 		}
 }
