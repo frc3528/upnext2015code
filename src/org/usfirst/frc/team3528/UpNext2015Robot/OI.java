@@ -45,10 +45,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
-			//Need to change this to control stick when resetting the gyro is automatic.
-			//For picking up recycle bins off floor.
-			aControl = new JoystickButton(driveStick, RobotMap.A);
-			aControl.whenPressed(new ResetGyro());
+			
+			aControl = new JoystickButton (controlStick, RobotMap.A);
+			aControl.whenPressed(new LowerElevator());
 			
 			//For lifting bins up to score on tote stack.
 			b = new JoystickButton(controlStick, RobotMap.B);
