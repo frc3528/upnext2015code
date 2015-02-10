@@ -67,7 +67,8 @@ public class RobotMap {
 	public static Encoder armEncoder;
 	public static Encoder wristEncoder;
 	public static DigitalInput clawLimit;
-	
+	public static DigitalInput armZero;
+	public static DigitalInput wristZero;
 	
 	// Flipper
 	public static Relay flipperRelay;

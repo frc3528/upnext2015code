@@ -8,13 +8,20 @@ Lower Elevator by one step
 Raise Elevator by one step
 
 
+---Back Button---
+Reset Elevator
+
 ---A Button---
-Pick up recycling bin off floor?
+Reset Arm
 
 
 ---B Button---
-Lift bin to place on tote stack?
+Lift bin to place on tote stack
 
 
 ---X Button---
-Pick up tote from Step?
+Pick up tote from ground
+
+
+---Y Button---
+Pick up form step
