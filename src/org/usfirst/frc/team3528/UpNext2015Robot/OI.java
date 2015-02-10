@@ -18,7 +18,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 	
 		public Joystick driveStick;
 		public Joystick controlStick;
-		public JoystickButton back;
+		public JoystickButton backDrive;
+		public JoystickButton backControl;
 		public JoystickButton start;
 		public JoystickButton a;
 		public JoystickButton b;
@@ -31,20 +32,23 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public OI() {
 			
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
+			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
 			
-			back = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			back.whenPressed(new DecreaseSensitivity()); 
+			
+			backDrive = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
+			backDrive.whenPressed(new DecreaseSensitivity());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
 			start.whenPressed(new IncreaseSensitivity());
-
 			
-			controlStick = new Joystick(RobotMap.CONTROLSTICK);
-		
+			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
+			backControl.whenPressed(new LowerElevator());
+			
+			
+			
 			//reset arm
 			a = new JoystickButton (controlStick, RobotMap.A);
-			//a.whenPressed();
 			
 			//For lifting bins up to score on tote stack
 			b = new JoystickButton(controlStick, RobotMap.B);
