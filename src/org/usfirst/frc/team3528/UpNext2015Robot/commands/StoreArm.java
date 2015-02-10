@@ -28,21 +28,20 @@ public class StoreArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	int armPos = Robot.arm.getArmPos();
-    	int wristPos = Robot.arm.getWristPos();
-    	
-    	if(armPos <= 0) {
+    	if(Robot.arm.armZeroPos()) {
     		Robot.arm.runArm(endPower);
     		armUp = true;
     	}
     	
-    	if(wristPos <= 0) {
+    	if(Robot.arm.wristZeroPos()) {
     		Robot.arm.runWrist(endPower);
     		wristUp = true;
     	}
     
     	if(armUp && wristUp) {
     		finished = true;
+        	Robot.arm.zeroArmEncoder();
+        	Robot.arm.zeroWristEncoder();
     	}
     
     }
@@ -53,7 +52,7 @@ public class StoreArm extends Command {
     }
 
     // Called once after isFinished returns true
-    protected void end() {
+    protected void end() {    	
     	Robot.arm.zeroArmEncoder();
     	Robot.arm.zeroWristEncoder();
     }

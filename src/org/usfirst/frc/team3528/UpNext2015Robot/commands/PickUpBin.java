@@ -31,24 +31,27 @@ public class PickUpBin extends Command {
     	int armPos = Robot.arm.getArmPos();
     	int wristPos = Robot.arm.getWristPos();
     	
-    	if(armPos >= 0) {
+    	if(armPos >= 20) {
     		Robot.arm.runArm(endPower);
     		armDown = true;
     	}
     	
-    	if(wristPos >= 0) {
+    	if(wristPos >= 20) {
     		Robot.arm.runWrist(endPower);
     		wristDown = true;
     	}
     
+    
     	if(armDown && wristDown) {
     		Robot.arm.closeClaw();
+    		finished = true;
     	}
-
+    	/*
     	if(Robot.arm.clawLimit()) {
     		Robot.arm.stopClaw();
     		finished = true;
     	}
+    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -151,6 +151,8 @@ public class RobotMap {
 	public static final int WRIST_ENCODER_A =7;
 	public static final int WRIST_ENCODER_B = 8;
 	public static final int CLAW_LIMIT = 9;
+	public static final int ARM_ZERO = 10;
+	public static final int WRIST_ZERO = 11;
 	
 	//Flipper
 	public static final int FLIPPER_RELAY = 1;
@@ -216,6 +218,8 @@ public class RobotMap {
 		armEncoder = new Encoder(ARM_ENCODER_A, ARM_ENCODER_B);
 		wristEncoder = new Encoder(WRIST_ENCODER_A, WRIST_ENCODER_B);
 		clawLimit = new DigitalInput(CLAW_LIMIT);
+		armZero = new DigitalInput(ARM_ZERO);
+		wristZero = new DigitalInput(WRIST_ZERO);		
 		
 		
 		//Flipper

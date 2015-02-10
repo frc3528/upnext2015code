@@ -42,7 +42,8 @@ public class StackBin extends Command {
     	}
     
     	if(armUp && wristUp) {
-    		Robot.arm.openClaw();
+    		//Robot.arm.openClaw();
+    		finished = true;
     	}
     }
 

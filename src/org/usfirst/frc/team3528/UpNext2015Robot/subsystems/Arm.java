@@ -21,6 +21,8 @@ public class Arm extends Subsystem {
 	Encoder armEncoder = RobotMap.armEncoder;
 	Encoder wristEncoder = RobotMap.wristEncoder;
 	DigitalInput clawLimit = RobotMap.clawLimit;
+	DigitalInput armZero = RobotMap.armZero;
+	DigitalInput wristZero = RobotMap.wristZero;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -67,6 +69,16 @@ public class Arm extends Subsystem {
     
     public int getWristPos() {
     	return wristEncoder.get();
+    }
+    
+    
+    public boolean armZeroPos() {
+    	return armZero.get();
+    }
+    
+    
+    public boolean wristZeroPos() {
+    	return wristZero.get();
     }
     
     
