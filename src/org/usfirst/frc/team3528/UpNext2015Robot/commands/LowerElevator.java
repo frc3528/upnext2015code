@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -30,6 +31,7 @@ public class LowerElevator extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.elevatorPosition = 0;
     }
 
     // Called when another command which requires one or more of the same

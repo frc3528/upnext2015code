@@ -50,8 +50,6 @@ public class RobotMap {
 	public static DigitalInput setPoint3;
 	public static DigitalInput setPoint4;
 	
-	//public static Encoder elevatorPos;
-	
 	public static int elevatorPosition = 0;
 	
 	
@@ -89,8 +87,7 @@ public class RobotMap {
 	public static final int STARTBUTTON = 8;
 	public static final int LEFTTRIGGER = 5;
 	public static final int RIGHTTRIGGER = 6;
-	
-	
+	public static final int LEFTSTICKCLICK = 10;	
 	//DriveTrain
 	public static double SENSITIVITY = .6;
 	

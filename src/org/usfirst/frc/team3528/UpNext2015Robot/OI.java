@@ -21,13 +21,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton back;
 		public JoystickButton start;
 		public JoystickButton a;
-		public JoystickButton aControl;
 		public JoystickButton b;
 		public JoystickButton x;
 		public JoystickButton y;
 		public JoystickButton leftTrigger;
 		public JoystickButton rightTrigger;
-		
+		public JoystickButton leftStick;
 		
 		public OI() {
 			
@@ -39,23 +38,21 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
 			start.whenPressed(new IncreaseSensitivity());
-			
-			a = new JoystickButton(driveStick, RobotMap.A);
-			a.whenPressed(new ResetGyro());
+
 			
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
+		
+			//reset arm
+			a = new JoystickButton (controlStick, RobotMap.A);
+			//a.whenPressed();
 			
-			
-			aControl = new JoystickButton (controlStick, RobotMap.A);
-			aControl.whenPressed(new LowerElevator());
-			
-			//For lifting bins up to score on tote stack.
+			//For lifting bins up to score on tote stack
 			b = new JoystickButton(controlStick, RobotMap.B);
 			
-			//Picking up totes off the step.
+			//Picking up totes off the ground
 			x = new JoystickButton(controlStick, RobotMap.X);
 			
-			
+			//picking up totes off the step
 			y = new JoystickButton(controlStick, RobotMap.Y);
 			
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
@@ -64,5 +61,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
 			rightTrigger.whenPressed(new RaiseElevatorStep());
 
+			
+			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
+			leftStick.whenPressed(new FlipTote());
 		}
 }
