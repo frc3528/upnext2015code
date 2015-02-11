@@ -49,15 +49,19 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			//reset arm
 			a = new JoystickButton (controlStick, RobotMap.A);
+			a.whenPressed(new StoreArm());
 			
 			//For lifting bins up to score on tote stack
 			b = new JoystickButton(controlStick, RobotMap.B);
+			b.whenPressed(new StackBin());
 			
 			//Picking up totes off the ground
 			x = new JoystickButton(controlStick, RobotMap.X);
+			x.whenPressed(new PickUpBin());
 			
 			//picking up totes off the step
 			y = new JoystickButton(controlStick, RobotMap.Y);
+			y.whenPressed(new PickUpFromStep());
 			
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());
