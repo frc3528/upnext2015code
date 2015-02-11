@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LowerElevator extends Command {
 
-	double setPower = .2;
+	double setPower = .75;
 	
     public LowerElevator() {
         // Use requires() here to declare subsystem dependencies
@@ -34,6 +34,7 @@ public class LowerElevator extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.elevatorPosition = 0;
+    	Robot.elevator.runElevator(0);
     }
 
     // Called when another command which requires one or more of the same

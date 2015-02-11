@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LowerElevatorStep extends Command {
 
-	double setPower = .2;
+	double setPower = .75;
 	boolean finished = false;
 	
 	
@@ -22,7 +22,7 @@ public class LowerElevatorStep extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("Left Button Pressed.");
-    	if (RobotMap.elevatorPosition > 1) {
+    	if (RobotMap.elevatorPosition > 0) {
     		Robot.elevator.runElevator(setPower);
     	}
     	finished = false;
