@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LowerElevator extends Command {
 
+	double setPower = .2;
+	
     public LowerElevator() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -17,7 +19,7 @@ public class LowerElevator extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.elevator.runElevator(-.5);
+    	Robot.elevator.runElevator(setPower);
     }
 
     // Called repeatedly when this Command is scheduled to run
