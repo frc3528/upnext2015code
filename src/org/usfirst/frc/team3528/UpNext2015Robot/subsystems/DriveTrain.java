@@ -21,10 +21,11 @@ public class DriveTrain extends Subsystem {
     CANTalon frontRightMotor = RobotMap.frontRightMotor;
     CANTalon backRightMotor = RobotMap.backRightMotor;
     
-    RobotDrive robotDrive = RobotMap.driveTrain;
-    
     Gyro gyro = RobotMap.gyro;
+    
+    RobotDrive robotDrive = RobotMap.driveTrain;
 
+    
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoystick());	
     }
@@ -34,30 +35,26 @@ public class DriveTrain extends Subsystem {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
     	drive(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), gyro.getAngle()); //Xbox
     	//driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0); //Flight Stick
-    	
     }
     
     
     public void drive(double x, double y, double rotation, double gyroAngle) {
-    	
     	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), gyroAngle); //Field Oriented
     	//robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0); //Non-Field Oriented
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0); //Non-Ramping
-    
     }
+
     
-    
-    public double gyroAngle() {
-    	return gyro.getAngle();
-    }
-    
-    
-    public void gyroInit(Gyro gyro) {
-    	System.out.println("InitializeGyro" );
+    public void initGyro() {
     	gyro.initGyro();
     	gyro.reset();
     }
 
+    
+    public double getGyro() {
+    	return gyro.getAngle();
+    }
+    
     
     public void increaseSensitivity() {
         if(RobotMap.SENSITIVITY < .9) {
@@ -106,5 +103,4 @@ public class DriveTrain extends Subsystem {
 	public double backRightPos() {
 		return backRightMotor.getEncPosition()* -1;
 	}
-
 }

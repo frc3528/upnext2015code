@@ -11,29 +11,34 @@ import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
 
 public class Robot extends IterativeRobot {
 
-	public static Camera camera;
+	//Subsystems
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
 	public static Arm arm;
 	public static Flipper flipper;
-	public static Herders herders;
+	
+	//Operator Interface
 	public static OI oi;
 	
+	//Autonomous Command
     Command autonomousCommand;
 
     
     public void robotInit() {
 		System.out.println("====> UpNext2015Robot <====");
 		RobotMap.init();
-		arm = new Arm();
-		flipper = new Flipper();
-		herders = new Herders();
-		camera = new Camera();
+		
+		//Subsystems
 		driveTrain = new DriveTrain();
     	elevator = new Elevator();
+		arm = new Arm();
+		flipper = new Flipper();
+	
+		//Operator Interface
 		oi = new OI();
-        driveTrain.gyroInit(RobotMap.gyro);
-        //autonomousCommand = new DetectTote();
+       
+		//Start Gyro
+		Robot.driveTrain.initGyro();
     }
 	
 	
@@ -56,6 +61,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopInit() {
+    	System.out.println("===TeleOp===");
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
     	if (autonomousCommand != null) autonomousCommand.cancel();
@@ -71,15 +77,15 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
+    	System.out.println(RobotMap.elevatorPosition);
     	Scheduler.getInstance().run();
     }
 
     
     public void testInit() {
-    	arm.zeroArmEncoder();
-    	arm.zeroWristEncoder();
     }
-   
+    
+    
     public void testPeriodic() {
         LiveWindow.run();
     }

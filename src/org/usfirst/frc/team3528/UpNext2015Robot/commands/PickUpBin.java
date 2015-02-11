@@ -40,18 +40,6 @@ public class PickUpBin extends Command {
     		Robot.arm.runWrist(endPower);
     		wristDown = true;
     	}
-    
-    
-    	if(armDown && wristDown) {
-    		Robot.arm.closeClaw();
-    		finished = true;
-    	}
-    	/*
-    	if(Robot.arm.clawLimit()) {
-    		Robot.arm.stopClaw();
-    		finished = true;
-    	}
-    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

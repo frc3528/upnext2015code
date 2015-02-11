@@ -4,28 +4,25 @@ import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
+
 public class Arm extends Subsystem {
     
 	VictorSP arm = RobotMap.arm;
 	VictorSP wrist = RobotMap.wrist;
+	
 	Talon claw = RobotMap.claw;
+	
 	Encoder armEncoder = RobotMap.armEncoder;
 	Encoder wristEncoder = RobotMap.wristEncoder;
+	
 	DigitalInput clawLimit = RobotMap.clawLimit;
 	DigitalInput armZero = RobotMap.armZero;
 	DigitalInput wristZero = RobotMap.wristZero;
 	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -43,24 +40,25 @@ public class Arm extends Subsystem {
     }
     
     
-    public void closeClaw() {
-    	claw.set(.5);
-    }
-    
-    
-    public void openClaw() {
-    	claw.set(-.5);
-    }
-    
-    
-    public void stopClaw() {
-    	claw.set(0);
+    public void runClaw(double power) {
+    	claw.set(power);
     }
     
     
     public boolean clawLimit() {
     	return clawLimit.get();
     }
+    
+    
+    public boolean armZero() {
+    	return armZero.get();
+    }
+    
+    
+    public boolean wristZero() {
+    	return wristZero.get();
+    }
+    
     
     public int getArmPos() {
     	return armEncoder.get();

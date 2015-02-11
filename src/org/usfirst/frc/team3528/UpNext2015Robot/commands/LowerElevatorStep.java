@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LowerElevatorStep extends Command {
 
-	double setPower = .75;
+	double setPower = 1.0;
 	boolean finished = false;
 	
 	

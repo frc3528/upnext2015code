@@ -31,22 +31,22 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		
 		public OI() {
 			
+			//DriveStick
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
-			controlStick = new Joystick(RobotMap.CONTROLSTICK);
-			
 			
 			
 			backDrive = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			backDrive.whenPressed(new DecreaseSensitivity());
+			//backDrive.whenPressed(new DecreaseSensitivity());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			start.whenPressed(new IncreaseSensitivity());
-			
-			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
-			backControl.whenPressed(new LowerElevator());
+			//start.whenPressed(new IncreaseSensitivity());
 			
 			
+			//Control Stick
+			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
+		
+			//Arm
 			//reset arm
 			a = new JoystickButton (controlStick, RobotMap.A);
 			//a.whenPressed(new StoreArm());
@@ -63,13 +63,19 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			y = new JoystickButton(controlStick, RobotMap.Y);
 			//y.whenPressed(new PickUpFromStep());
 			
+			
+			//Elevator
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());
 			
 			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
 			rightTrigger.whenPressed(new RaiseElevatorStep());
 
+			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
+			backControl.whenPressed(new LowerElevator());
 			
+			
+			//Flipper
 			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
 			//leftStick.whenPressed(new FlipTote());
 		}

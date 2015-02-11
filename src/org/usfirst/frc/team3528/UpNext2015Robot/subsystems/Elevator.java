@@ -2,7 +2,6 @@ package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -12,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
     
     VictorSP victor = RobotMap.elevatorV;
+    
     DigitalInput setPoint0 = RobotMap.setPoint0;
     DigitalInput setPoint1 = RobotMap.setPoint1;
     DigitalInput setPoint2 = RobotMap.setPoint2;

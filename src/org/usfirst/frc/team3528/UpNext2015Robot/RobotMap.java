@@ -1,9 +1,5 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
-
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
-import com.ni.vision.NIVision.ImageType;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -12,9 +8,6 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.hal.CanTalonSRX;
-import edu.wpi.first.wpilibj.vision.AxisCamera;
-
 
 
 public class RobotMap {
@@ -24,13 +17,6 @@ public class RobotMap {
 	
 	
 	//DriveTrain
-	/*
-	public static Talon frontLeftMotor;
-	public static Talon backLeftMotor;
-	public static Talon frontRightMotor;
-	public static Talon backRightMotor;
-	*/
-	
 	public static CANTalon frontLeftMotor;
 	public static CANTalon backLeftMotor;
 	public static CANTalon frontRightMotor;
@@ -53,13 +39,6 @@ public class RobotMap {
 	public static int elevatorPosition = 0;
 	
 	
-	// Camera
-	public static AxisCamera camera;
-	public static Relay light;
-	public static Image frame;
-	public static Image binaryFrame;
-	
-	
 	// Arm
 	public static VictorSP arm;
 	public static VictorSP wrist;
@@ -69,6 +48,7 @@ public class RobotMap {
 	public static DigitalInput clawLimit;
 	public static DigitalInput armZero;
 	public static DigitalInput wristZero;
+	
 	
 	// Flipper
 	public static Relay flipperRelay;
@@ -89,6 +69,8 @@ public class RobotMap {
 	public static final int LEFTTRIGGER = 5;
 	public static final int RIGHTTRIGGER = 6;
 	public static final int LEFTSTICKCLICK = 10;	
+	
+	
 	//DriveTrain
 	public static double SENSITIVITY = .6;
 	
@@ -100,7 +82,7 @@ public class RobotMap {
 	public static final int GYRO = 0;
 	
 	// ********** Wheels and Encoders and Distance Oh My **********
-	
+
 	// Wheel Size
 	public static final double WHEEL_DIAMETER = 8.0;
 	
@@ -125,31 +107,17 @@ public class RobotMap {
 	public static final int SETPOINT3 = 3;
 	public static final int SETPOINT4 = 4;
 	
-	public static final int ELEVATOR_ENCODER_A = 4;
-	public static final int ELEVATOR_ENCODER_B = 5;
-	
-	
-	//Camera
-	public static NIVision.Range TOTE_HUE_RANGE = new NIVision.Range(24, 49);	//Default hue range for yellow tote
-	public static NIVision.Range TOTE_SAT_RANGE = new NIVision.Range(67, 255);	//Default saturation range for yellow tote
-	public static NIVision.Range TOTE_VAL_RANGE = new NIVision.Range(49, 255);	//Default value range for yellow tote
-	public static final double AREA_MINIMUM = 0.5; //Default Area minimum for particle as a percentage of total image area
-	public static final double LONG_RATIO = 2.22; //Tote long side = 26.9 / Tote height = 12.1 = 2.22
-	public static final double SHORT_RATIO = 1.4; //Tote short side = 16.9 / Tote height = 12.1 = 1.4
-	public static final double SCORE_MIN = 75.0;  //Minimum score to be considered a tote
-	public static final double VIEW_ANGLE = 49.4; //View angle for camera, set to Axis m1011 by default, 64 for m1013, 51.7 for 206, 52 for HD3000 square, 60 for HD3000 640x480
-	public static NIVision.ParticleFilterCriteria2 criteria[] = new NIVision.ParticleFilterCriteria2[1];
-	public static NIVision.ParticleFilterOptions2 filterOptions = new NIVision.ParticleFilterOptions2(0,0,1,1);
-	
 	
 	//Arm
 	public static final int ARM = 2;
 	public static final int WRIST = 3;
 	public static final int CLAW = 1;
+	
 	public static final int ARM_ENCODER_A = 5;  
 	public static final int ARM_ENCODER_B = 6;
 	public static final int WRIST_ENCODER_A =7;
 	public static final int WRIST_ENCODER_B = 8;
+	
 	public static final int CLAW_LIMIT = 9;
 	public static final int ARM_ZERO = 10;
 	public static final int WRIST_ZERO = 11;
@@ -162,25 +130,18 @@ public class RobotMap {
 	public static void init() {
 		//System.out.println("IN ROBOTMAP");
 		
-		// DriveTrain
-		/*
-		frontLeftMotor = new Talon(DRIVE_LEFT_FRONT_TALON);
-		backLeftMotor = new Talon(DRIVE_LEFT_BACK_TALON);
-		frontRightMotor = new Talon(DRIVE_RIGHT_FRONT_TALON);
-		backRightMotor = new Talon(DRIVE_RIGHT_BACK_TALON);
-		*/
 		
+		// DriveTrain
 		frontLeftMotor = new CANTalon(DRIVE_LEFT_FRONT_TALON);
 		backLeftMotor = new CANTalon(DRIVE_LEFT_BACK_TALON);
 		frontRightMotor = new CANTalon(DRIVE_RIGHT_FRONT_TALON);
 		backRightMotor = new CANTalon(DRIVE_RIGHT_BACK_TALON);		
 		
-		
 		frontLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		backLeftMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		frontRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		backRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
-		
+
 		gyro = new Gyro(GYRO);
 		
 		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
@@ -200,23 +161,15 @@ public class RobotMap {
 		setPoint3 = new DigitalInput(SETPOINT3);
 		setPoint4 = new DigitalInput(SETPOINT4);
 		
-		//elevatorPos = new Encoder(ELEVATOR_ENCODER_A, ELEVATOR_ENCODER_B);
-		
-		
-		//Camera
-		camera = new AxisCamera("10.35.28.11");
-		light = new Relay(0);
-		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-		binaryFrame = NIVision.imaqCreateImage(ImageType.IMAGE_U8, 0);
-		criteria[0] = new NIVision.ParticleFilterCriteria2(NIVision.MeasurementType.MT_AREA_BY_IMAGE_AREA, AREA_MINIMUM, 100.0, 0, 0);
-		
-		
+
 		//Arm
 		arm = new VictorSP(ARM);
 		wrist = new VictorSP(WRIST);
 		claw = new Talon(CLAW);
+		
 		armEncoder = new Encoder(ARM_ENCODER_A, ARM_ENCODER_B);
 		wristEncoder = new Encoder(WRIST_ENCODER_A, WRIST_ENCODER_B);
+		
 		clawLimit = new DigitalInput(CLAW_LIMIT);
 		armZero = new DigitalInput(ARM_ZERO);
 		wristZero = new DigitalInput(WRIST_ZERO);		
