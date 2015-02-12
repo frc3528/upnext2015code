@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	System.out.println(RobotMap.elevatorPosition);
+    	//System.out.println(RobotMap.elevatorPosition);
     	Scheduler.getInstance().run();
     }
 
