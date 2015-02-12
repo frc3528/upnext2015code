@@ -62,6 +62,7 @@ public class Robot extends IterativeRobot {
     
     public void teleopInit() {
     	System.out.println("===TeleOp===");
+    	System.out.println("elevPos:" + RobotMap.elevatorPosition);
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
     	if (autonomousCommand != null) autonomousCommand.cancel();

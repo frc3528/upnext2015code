@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class StoreArm extends Command {
 
-    double setPower = .25;
+	double armPower = .6;
+    double wristPower = .25;
 	double endPower = 0;
     boolean armUp = false;
     boolean wristUp = false;
@@ -22,18 +23,18 @@ public class StoreArm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.runArm(setPower);
-    	Robot.arm.runWrist(setPower);
+    	Robot.arm.runArm(armPower);
+    	Robot.arm.runWrist(wristPower);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.arm.armZeroPos()) {
+    	if(Robot.arm.armZero()) {
     		Robot.arm.runArm(endPower);
     		armUp = true;
     	}
     	
-    	if(Robot.arm.wristZeroPos()) {
+    	if(Robot.arm.wristZero()) {
     		Robot.arm.runWrist(endPower);
     		wristUp = true;
     	}

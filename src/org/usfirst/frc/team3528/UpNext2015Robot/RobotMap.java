@@ -7,8 +7,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -50,12 +57,16 @@ public class RobotMap {
 	public static int elevatorPosition;
 	
 	public static String positionString;
+	public static Path file;
 	
+	/*
 	public static File positionFile;
 	public static FileReader fileReader; 
 	public static BufferedReader bufferedReader;
 	public static FileWriter fileWriter;
 	public static BufferedWriter bufferedWriter;
+	*/
+	
 	
 	// Arm
 	public static VictorSP arm;
@@ -214,8 +225,16 @@ public class RobotMap {
 	
 	//Read Elevator Position File\\
 	public static int readElevatorPosition() {
-		positionFile = new File("/home/lvuser/last_known_elevator.txt");
+		//positionFile = new File("/home/lvuser/last_known_elevator.txt");
+		file = Paths.get("/home/lvuser/last_known_elevator.txt");
 		
+		try {
+			positionString = Files.lines(file).collect(Collectors.joining());
+		} catch(IOException e) {
+			System.out.println("error reading file");
+			e.printStackTrace();
+		}
+		/*
 		try {
 		fileReader = new FileReader(positionFile);
 		} catch (IOException e) {
@@ -231,15 +250,25 @@ public class RobotMap {
     		e.printStackTrace();
     	}
 		
+		*/
 		elevatorPosition = Integer.parseInt(positionString);
 		
-		bufferedReader = null;
+		//bufferedReader = null;
 		return elevatorPosition;
 	}
 
 
 	//Write To Position File\\
 	public static void writeElevatorPosition(int elevatorPosition) {
+		positionString = "" + elevatorPosition;
+		
+		try {
+			Files.write(file, positionString.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		/*
 		try {
     			if(!positionFile.exists()){
     			positionFile.createNewFile();
@@ -258,7 +287,7 @@ public class RobotMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 }
 

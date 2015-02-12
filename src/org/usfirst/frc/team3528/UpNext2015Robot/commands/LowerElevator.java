@@ -11,11 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LowerElevator extends Command {
 
 	double setPower = 1.0;
-	boolean finished = false;
 	
     public LowerElevator() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.elevator);
     }
 
     // Called just before this Command runs the first time
@@ -23,8 +22,7 @@ public class LowerElevator extends Command {
     	
     	if(RobotMap.elevatorPosition != 0) {
     		Robot.elevator.runElevator(setPower);
-    		RobotMap.elevatorPosition = 0;
-    	}
+    	} 
     }
     
     // Called repeatedly when this Command is scheduled to run
@@ -33,12 +31,13 @@ public class LowerElevator extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.elevator.getPoint0();
+        return Robot.elevator.getPoint0() || RobotMap.elevatorPosition == 0;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	System.out.println("ending");
+    	RobotMap.elevatorPosition = 0;
     	Robot.elevator.runElevator(0);
     	RobotMap.writeElevatorPosition(RobotMap.elevatorPosition);
     }

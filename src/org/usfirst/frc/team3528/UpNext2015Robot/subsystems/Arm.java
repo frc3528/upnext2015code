@@ -45,12 +45,12 @@ public class Arm extends Subsystem {
 
     
     public boolean armZero() {
-    	return armZero.get();
+    	return !armZero.get();
     }
     
     
     public boolean wristZero() {
-    	return wristZero.get();
+    	return !wristZero.get();
     }
     
     
@@ -61,16 +61,6 @@ public class Arm extends Subsystem {
     
     public int getWristPos() {
     	return wristEncoder.get();
-    }
-    
-    
-    public boolean armZeroPos() {
-    	return armZero.get();
-    }
-    
-    
-    public boolean wristZeroPos() {
-    	return wristZero.get();
     }
     
     

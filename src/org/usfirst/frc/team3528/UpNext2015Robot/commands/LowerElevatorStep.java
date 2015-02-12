@@ -16,7 +16,7 @@ public class LowerElevatorStep extends Command {
 	
     public LowerElevatorStep() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.elevator);
     }
 
     // Called just before this Command runs the first time
