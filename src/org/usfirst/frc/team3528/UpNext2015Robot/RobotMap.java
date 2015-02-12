@@ -1,13 +1,16 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
@@ -15,6 +18,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.vision.AxisCamera;
 
 
 public class RobotMap {
@@ -69,6 +73,11 @@ public class RobotMap {
 	
 	// Flipper
 	public static Relay flipperRelay;
+	
+	
+	// Camera
+	public static Image frame;
+	public static AxisCamera camera;
 	
 	
 //======================Constants===========================\\
@@ -196,6 +205,10 @@ public class RobotMap {
 		
 		//Flipper
 		flipperRelay = new Relay(FLIPPER_RELAY);
+		
+		//Camera
+		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+		camera = new AxisCamera("10.35.28.11");
 	}	
 
 	

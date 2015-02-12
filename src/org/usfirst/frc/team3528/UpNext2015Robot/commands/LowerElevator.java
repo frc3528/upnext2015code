@@ -21,10 +21,10 @@ public class LowerElevator extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	//if(RobotMap.elevatorPosition =) {
+    	if(RobotMap.elevatorPosition == 0) {
     		Robot.elevator.runElevator(setPower);
     		RobotMap.elevatorPosition = 0;
-    	//}
+    	}
     }
     
     // Called repeatedly when this Command is scheduled to run
