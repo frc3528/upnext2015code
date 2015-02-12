@@ -2,7 +2,6 @@ package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 //import org.usfirst.frc.team3528.UpNext2015Robot.commands.ExampleCommand;
@@ -36,10 +35,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			
 			backDrive = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			//backDrive.whenPressed(new DecreaseSensitivity());
+			backDrive.whenPressed(new DecreaseSensitivity());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			//start.whenPressed(new IncreaseSensitivity());
+			start.whenPressed(new IncreaseSensitivity());
 			
 			
 			//Control Stick

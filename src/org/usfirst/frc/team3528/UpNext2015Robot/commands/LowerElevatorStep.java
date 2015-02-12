@@ -73,7 +73,7 @@ public class LowerElevatorStep extends Command {
     	if (RobotMap.elevatorPosition >= 1) {
     		RobotMap.elevatorPosition--;
     	}
-    	
+    	RobotMap.writeElevatorPosition(RobotMap.elevatorPosition);
     }
 
     // Called when another command which requires one or more of the same

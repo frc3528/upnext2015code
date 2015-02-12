@@ -74,7 +74,7 @@ public class RaiseElevatorStep extends Command {
     	if (RobotMap.elevatorPosition <= 3) {
     		RobotMap.elevatorPosition++;
     	}
-    	
+    	RobotMap.writeElevatorPosition(RobotMap.elevatorPosition);
     }
 
     // Called when another command which requires one or more of the same

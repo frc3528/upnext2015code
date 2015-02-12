@@ -1,5 +1,12 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -36,8 +43,15 @@ public class RobotMap {
 	public static DigitalInput setPoint3;
 	public static DigitalInput setPoint4;
 	
-	public static int elevatorPosition = 0;
+	public static int elevatorPosition;
 	
+	public static String positionString;
+	
+	public static File positionFile;
+	public static FileReader fileReader; 
+	public static BufferedReader bufferedReader;
+	public static FileWriter fileWriter;
+	public static BufferedWriter bufferedWriter;
 	
 	// Arm
 	public static VictorSP arm;
@@ -48,7 +62,6 @@ public class RobotMap {
 	public static Encoder armEncoder;
 	public static Encoder wristEncoder;
 	
-	public static DigitalInput clawLimit;
 	public static DigitalInput armZero;
 	public static DigitalInput wristZero;
 	
@@ -126,6 +139,7 @@ public class RobotMap {
 	public static final int ARM_ZERO = 10;
 	public static final int WRIST_ZERO = 11;
 	
+	
 	//Flipper
 	public static final int FLIPPER_RELAY = 1;
 	
@@ -165,7 +179,9 @@ public class RobotMap {
 		setPoint3 = new DigitalInput(SETPOINT3);
 		setPoint4 = new DigitalInput(SETPOINT4);
 		
+		elevatorPosition = readElevatorPosition();
 
+		
 		//Arm
 		arm = new VictorSP(ARM);
 		wrist = new VictorSP(WRIST);
@@ -174,7 +190,6 @@ public class RobotMap {
 		armEncoder = new Encoder(ARM_ENCODER_A, ARM_ENCODER_B);
 		wristEncoder = new Encoder(WRIST_ENCODER_A, WRIST_ENCODER_B);
 		
-		clawLimit = new DigitalInput(CLAW_LIMIT);
 		armZero = new DigitalInput(ARM_ZERO);
 		wristZero = new DigitalInput(WRIST_ZERO);		
 		
@@ -182,6 +197,56 @@ public class RobotMap {
 		//Flipper
 		flipperRelay = new Relay(FLIPPER_RELAY);
 	}	
+
+	
+	//Read Elevator Position File\\
+	public static int readElevatorPosition() {
+		positionFile = new File("/home/lvuser/last_known_elevator.txt");
+		
+		try {
+		fileReader = new FileReader(positionFile);
+		} catch (IOException e) {
+			System.out.println("ERROR GETTING FILE");
+			e.printStackTrace();
+		}
+		
+		bufferedReader = new BufferedReader(fileReader);
+		
+		try {
+    		positionString = bufferedReader.readLine();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+		
+		elevatorPosition = Integer.parseInt(positionString);
+		
+		bufferedReader = null;
+		return elevatorPosition;
+	}
+
+
+	//Write To Position File\\
+	public static void writeElevatorPosition(int elevatorPosition) {
+		try {
+    			if(!positionFile.exists()){
+    			positionFile.createNewFile();
+    		}
+			fileWriter = new FileWriter(positionFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    	bufferedWriter = new BufferedWriter(fileWriter);
+    	
+    	try {
+			bufferedWriter.write("" + elevatorPosition);
+			bufferedWriter.close();
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
 
 

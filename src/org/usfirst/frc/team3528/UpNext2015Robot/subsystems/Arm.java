@@ -19,7 +19,6 @@ public class Arm extends Subsystem {
 	Encoder armEncoder = RobotMap.armEncoder;
 	Encoder wristEncoder = RobotMap.wristEncoder;
 	
-	DigitalInput clawLimit = RobotMap.clawLimit;
 	DigitalInput armZero = RobotMap.armZero;
 	DigitalInput wristZero = RobotMap.wristZero;
 	
@@ -43,12 +42,7 @@ public class Arm extends Subsystem {
     public void runClaw(double power) {
     	claw.set(power);
     }
-    
-    
-    public boolean clawLimit() {
-    	return clawLimit.get();
-    }
-    
+
     
     public boolean armZero() {
     	return armZero.get();
