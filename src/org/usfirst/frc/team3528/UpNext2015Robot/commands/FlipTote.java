@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,7 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class FlipTote extends Command {
 
-	double timeout = .2;
+	double timeout = .4;
+	
 	
     public FlipTote() {
         // Use requires() here to declare subsystem dependencies
@@ -25,12 +27,14 @@ public class FlipTote extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.oi.controlStick.getRawAxis(5) < -.9) {
+    	if (Robot.oi.controlStick.getRawAxis(5) < -.9 && RobotMap.flipperPos <= 0) {
     		Robot.flipper.flipperForward();
-    	}
+    		RobotMap.flipperPos++;
+    		}
     
-    	if (Robot.oi.controlStick.getRawAxis(5) > .9) {
+    	if (Robot.oi.controlStick.getRawAxis(5) > .9 && RobotMap.flipperPos >= 0) {
     		Robot.flipper.flipperReverse();
+    		RobotMap.flipperPos--;
     	}
     }
 

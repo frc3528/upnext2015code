@@ -42,13 +42,17 @@ public class RobotMap {
 	// Arm
 	public static VictorSP arm;
 	public static VictorSP wrist;
+	
 	public static Talon claw;
+	
 	public static Encoder armEncoder;
 	public static Encoder wristEncoder;
+	
 	public static DigitalInput clawLimit;
 	public static DigitalInput armZero;
 	public static DigitalInput wristZero;
 	
+	public static int flipperPos = 0;
 	
 	// Flipper
 	public static Relay flipperRelay;

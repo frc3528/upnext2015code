@@ -77,6 +77,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			//Flipper
 			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
-			//leftStick.whenPressed(new FlipTote());
+			leftStick.whenPressed(new FlipTote());
 		}
 }

@@ -71,7 +71,6 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
-    	RobotMap.elevatorPosition = 0;
 
     }
 
