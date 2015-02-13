@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class StoreArm extends Command {
 
-	double armPower = .6;
+	double armPower = .75;
     double wristPower = .25;
 	double endPower = 0;
     boolean armUp = false;
@@ -41,24 +41,25 @@ public class StoreArm extends Command {
     	}
     
     	if(armUp && wristUp) {
-    		//Robot.arm.zeroArmEncoder();
-        	//Robot.arm.zeroWristEncoder();
-    		finished = true;
+    		Robot.arm.zeroArmEncoder();
+        	Robot.arm.zeroWristEncoder();
+        	finished = true;
     	}
-    
+    	/*
+    	if(Robot.arm.getArmPos() == 0 && Robot.arm.getWristPos() == 0) {
+    		finished = true;
+    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;//Robot.arm.getArmPos() == 0 && Robot.arm.getWristPos() == 0; //finished;
+        return finished;
     }
 
     // Called once after isFinished returns true
     protected void end() {    	
     	Robot.arm.zeroArmEncoder();
     	Robot.arm.zeroWristEncoder();
-    	
-    
     }
 
     // Called when another command which requires one or more of the same
