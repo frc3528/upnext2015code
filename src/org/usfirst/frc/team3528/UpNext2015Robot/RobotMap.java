@@ -150,10 +150,13 @@ public class RobotMap {
 	public static final int WRIST = 3;
 	public static final int CLAW = 1;
 	
-	public static final int ARM_ENCODER_A = 5;  
+	public static final int ARM_ENCODER_A = 5; 
 	public static final int ARM_ENCODER_B = 6;
 	public static final int WRIST_ENCODER_A =7;
 	public static final int WRIST_ENCODER_B = 8;
+	
+	public static final int ARM_FLOOR_PICK_UP = -1800;
+	public static final int WRIST_FLOOR_PICK_UP = 295;
 	
 	public static final int CLAW_LIMIT = 9;
 	public static final int ARM_ZERO = 10;

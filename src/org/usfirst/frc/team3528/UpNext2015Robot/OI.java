@@ -56,7 +56,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			//Picking up totes off the ground
 			x = new JoystickButton(controlStick, RobotMap.X);
-			//x.whenPressed(new PickUpBin());
+			x.whenPressed(new PickUpBin());
 			
 			//picking up totes off the step
 			y = new JoystickButton(controlStick, RobotMap.Y);

@@ -29,6 +29,7 @@ public class StoreArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	if(Robot.arm.armZero()) {
     		Robot.arm.runArm(endPower);
     		armUp = true;
@@ -40,22 +41,24 @@ public class StoreArm extends Command {
     	}
     
     	if(armUp && wristUp) {
+    		//Robot.arm.zeroArmEncoder();
+        	//Robot.arm.zeroWristEncoder();
     		finished = true;
-        	Robot.arm.zeroArmEncoder();
-        	Robot.arm.zeroWristEncoder();
     	}
     
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return finished;
+        return finished;//Robot.arm.getArmPos() == 0 && Robot.arm.getWristPos() == 0; //finished;
     }
 
     // Called once after isFinished returns true
     protected void end() {    	
     	Robot.arm.zeroArmEncoder();
     	Robot.arm.zeroWristEncoder();
+    	
+    
     }
 
     // Called when another command which requires one or more of the same

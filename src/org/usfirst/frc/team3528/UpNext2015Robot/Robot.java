@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
 
@@ -77,7 +78,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	//System.out.println(RobotMap.elevatorPosition);
+    	System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
     	Scheduler.getInstance().run();
     }
 
