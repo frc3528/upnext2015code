@@ -55,7 +55,7 @@ public class RobotMap {
 	public static DigitalInput setPoint4;
 	
 	public static int elevatorPosition;
-	
+	public static int readPos;
 	public static String positionString;
 	public static Path file;
 	
@@ -105,7 +105,7 @@ public class RobotMap {
 	public static final int STARTBUTTON = 8;
 	public static final int LEFTTRIGGER = 5;
 	public static final int RIGHTTRIGGER = 6;
-	public static final int LEFTSTICKCLICK = 10;	
+	public static final int RIGHTSTICKCLICK = 10;	
 	
 	
 	//DriveTrain
@@ -202,6 +202,8 @@ public class RobotMap {
 		setPoint3 = new DigitalInput(SETPOINT3);
 		setPoint4 = new DigitalInput(SETPOINT4);
 		
+		file = Paths.get("/home/lvuser/last_known_elevator.txt");
+		
 		elevatorPosition = readElevatorPosition();
 
 		
@@ -228,8 +230,6 @@ public class RobotMap {
 	
 	//Read Elevator Position File\\
 	public static int readElevatorPosition() {
-		//positionFile = new File("/home/lvuser/last_known_elevator.txt");
-		file = Paths.get("/home/lvuser/last_known_elevator.txt");
 		
 		try {
 			positionString = Files.lines(file).collect(Collectors.joining());
@@ -237,27 +237,9 @@ public class RobotMap {
 			System.out.println("error reading file");
 			e.printStackTrace();
 		}
-		/*
-		try {
-		fileReader = new FileReader(positionFile);
-		} catch (IOException e) {
-			System.out.println("ERROR GETTING FILE");
-			e.printStackTrace();
-		}
-		
-		bufferedReader = new BufferedReader(fileReader);
-		
-		try {
-    		positionString = bufferedReader.readLine();
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
-		
-		*/
-		elevatorPosition = Integer.parseInt(positionString);
-		
-		//bufferedReader = null;
-		return elevatorPosition;
+
+		readPos = Integer.parseInt(positionString);
+		return readPos;
 	}
 
 
@@ -270,27 +252,17 @@ public class RobotMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		/*
-		try {
-    			if(!positionFile.exists()){
-    			positionFile.createNewFile();
-    		}
-			fileWriter = new FileWriter(positionFile);
+	}
+	
+	
+	public static void checkForfile() {
+		if(!Files.exists(file)) {
+			try {
+			Files.write(file, "0".getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
+			}
 		}
-    	
-    	bufferedWriter = new BufferedWriter(fileWriter);
-    	
-    	try {
-			bufferedWriter.write("" + elevatorPosition);
-			bufferedWriter.close();
-			fileWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 }
 

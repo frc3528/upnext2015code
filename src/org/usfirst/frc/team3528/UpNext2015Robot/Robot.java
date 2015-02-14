@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
 
@@ -17,6 +16,7 @@ public class Robot extends IterativeRobot {
 	public static Elevator elevator;
 	public static Arm arm;
 	public static Flipper flipper;
+	
 	
 	//Operator Interface
 	public static OI oi;
@@ -40,6 +40,8 @@ public class Robot extends IterativeRobot {
        
 		//Start Gyro
 		Robot.driveTrain.initGyro();
+		
+		RobotMap.checkForfile();
     }
 	
 	
@@ -79,6 +81,7 @@ public class Robot extends IterativeRobot {
     
     public void teleopPeriodic() {
     	System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
+    	//System.out.println(Robot.driveTrain.frontLeftPos());
     	Scheduler.getInstance().run();
     }
 

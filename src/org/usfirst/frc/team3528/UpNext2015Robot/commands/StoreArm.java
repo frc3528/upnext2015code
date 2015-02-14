@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class StoreArm extends Command {
 
-	double armPower = .75;
+	double armPower = .6;
     double wristPower = .25;
 	double endPower = 0;
     boolean armUp = false;
@@ -41,8 +41,6 @@ public class StoreArm extends Command {
     	}
     
     	if(armUp && wristUp) {
-    		Robot.arm.zeroArmEncoder();
-        	Robot.arm.zeroWristEncoder();
         	finished = true;
     	}
     	/*

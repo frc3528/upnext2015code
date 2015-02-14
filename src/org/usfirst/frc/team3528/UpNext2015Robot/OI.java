@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 	public class OI {
 	
+		public Joystick testStick;
 		public Joystick driveStick;
 		public Joystick controlStick;
 		public JoystickButton backDrive;
@@ -26,7 +27,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton y;
 		public JoystickButton leftTrigger;
 		public JoystickButton rightTrigger;
-		public JoystickButton leftStick;
+		public JoystickButton rightStick;
+		public JoystickButton rightStickTEST;
 		
 		public OI() {
 			
@@ -67,15 +69,22 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());
 			
+			
 			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
 			rightTrigger.whenPressed(new RaiseElevatorStep());
 
 			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
-			backControl.whenPressed(new LowerElevator());
+			backControl.whenPressed(new ResetElevator());
 			
 			
 			//Flipper
-			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
-			leftStick.whenPressed(new FlipTote());
+			rightStick = new JoystickButton(controlStick, RobotMap.RIGHTSTICKCLICK);
+			rightStick.whenPressed(new FlipTote());
+			
+			
+			testStick = new Joystick(3);
+			
+			rightStickTEST = new JoystickButton(testStick, RobotMap.RIGHTSTICKCLICK);
+			rightStickTEST.whenPressed(new RunArmManual());
 		}
 }

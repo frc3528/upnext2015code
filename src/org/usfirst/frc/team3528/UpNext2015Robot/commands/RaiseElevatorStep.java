@@ -16,12 +16,12 @@ public class RaiseElevatorStep extends Command {
 	
     public RaiseElevatorStep() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.elevator);
+    	setInterruptible(false);
+    	requires(Robot.elevator);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("Button Pressed.");
     	if (RobotMap.elevatorPosition < 4) {
     		Robot.elevator.runElevator(setPower);
     	}
@@ -69,6 +69,7 @@ public class RaiseElevatorStep extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("ending");
     	if (RobotMap.elevatorPosition <= 3) {
     		RobotMap.elevatorPosition++;
     	}
@@ -78,5 +79,6 @@ public class RaiseElevatorStep extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	System.out.println("raise interrupted");
     }
 }
