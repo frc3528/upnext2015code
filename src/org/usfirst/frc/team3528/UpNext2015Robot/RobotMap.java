@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.AxisCamera;
 
 
@@ -252,6 +253,7 @@ public class RobotMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		SmartDashboard.putNumber("Elevator Position: ", elevatorPosition);
 	}
 	
 	
