@@ -34,8 +34,17 @@ public class Arm extends Subsystem {
     }
     
     
+    public void stopArm() {
+    	arm.disable();
+    }
+    
     public void runWrist(double power) {
     	wrist.set(power);
+    }
+    
+    
+    public void stopWrist() {
+    	wrist.disable();
     }
     
     

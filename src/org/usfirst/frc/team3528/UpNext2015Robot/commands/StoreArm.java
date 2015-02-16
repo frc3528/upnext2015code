@@ -31,22 +31,18 @@ public class StoreArm extends Command {
     protected void execute() {
     	
     	if(Robot.arm.armZero()) {
-    		Robot.arm.runArm(endPower);
+    		Robot.arm.stopArm();
     		armUp = true;
     	}
     	
     	if(Robot.arm.wristZero()) {
-    		Robot.arm.runWrist(endPower);
+    		Robot.arm.stopWrist();
     		wristUp = true;
     	}
     
     	if(armUp && wristUp) {
         	finished = true;
     	}
-    	/*
-    	if(Robot.arm.getArmPos() == 0 && Robot.arm.getWristPos() == 0) {
-    		finished = true;
-    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

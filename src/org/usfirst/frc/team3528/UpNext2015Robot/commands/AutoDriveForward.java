@@ -11,7 +11,7 @@ public class AutoDriveForward extends CommandGroup {
     	
     	addSequential(new SetBrakeMode());
     	addSequential(new ZeroEncoders());
-    	addSequential(new DriveByFeet(2, 6.0, 0.5));
+    	addSequential(new DriveByFeet(5.0, 6.0, 0.5));
     	addSequential(new ZeroEncoders());
     }
 }

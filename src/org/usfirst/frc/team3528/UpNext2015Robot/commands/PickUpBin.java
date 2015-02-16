@@ -9,11 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class PickUpBin extends Command {
 
+	int startingPos = 0;
 	double armPower = -.6;
-	double wristPower = -.25;
-	double endPower = 0;
-    boolean armDown = false;
-    boolean wristDown = false;
+	double wristPower = .05;
+    boolean inPosition = false;
 	boolean finished = false;
 	
     public PickUpBin() {
@@ -25,25 +24,22 @@ public class PickUpBin extends Command {
     protected void initialize() {
     	Robot.arm.runArm(armPower);
     	Robot.arm.runWrist(wristPower);
+   
+    	startingPos = Robot.arm.getArmPos();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	int armPos = Robot.arm.getArmPos();
-    	int wristPos = Robot.arm.getWristPos();
+    	int armPos = Robot.arm.getArmPos() + startingPos;
     	
-    	if(armPos <= -1820) {
-    		Robot.arm.runArm(endPower);
-    		armDown = true;
+    	if(armPos <= -1800) {
+    		Robot.arm.stopArm();
+    		Robot.arm.stopWrist();
+    		inPosition = true;
     	}
     	
-    	if(wristPos >= 0) {
-    		Robot.arm.runWrist(endPower);
-    		wristDown = true;
-    	}
-    	
-    	if(armDown && wristDown) {
-    		finished =true;
+    	if(inPosition) {
+    		finished = true;
     	}
     }
 

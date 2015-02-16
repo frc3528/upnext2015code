@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -40,8 +41,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			backDrive.whenPressed(new DecreaseSensitivity());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			start.whenPressed(new IncreaseSensitivity());
-			
+			//start.whenPressed(new IncreaseSensitivity());
+			start.whenPressed(new AutoDriveForward());
 			
 			//Control Stick
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
@@ -82,9 +83,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			rightStick.whenPressed(new FlipTote());
 			
 			
-			testStick = new Joystick(3);
+			//testStick = new Joystick(3);
 			
-			rightStickTEST = new JoystickButton(testStick, RobotMap.RIGHTSTICKCLICK);
-			rightStickTEST.whenPressed(new RunArmManual());
+			//rightStickTEST = new JoystickButton(testStick, RobotMap.RIGHTSTICKCLICK);
+			//rightStickTEST.whenPressed(new RunArmManual());
 		}
 }
