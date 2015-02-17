@@ -4,6 +4,7 @@ import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -60,6 +61,11 @@ public class RaiseElevatorStep extends Command {
     		finished = true;
     		break;
     	}
+    	SmartDashboard.putBoolean("Position 0: ", Robot.elevator.getPoint0());
+        SmartDashboard.putBoolean("Position 1: ", Robot.elevator.getPoint1());
+        SmartDashboard.putBoolean("Position 2: ", Robot.elevator.getPoint2());
+        SmartDashboard.putBoolean("Position 3: ", Robot.elevator.getPoint3());
+        SmartDashboard.putBoolean("Position 4: ", Robot.elevator.getPoint4());
     }
 
     // Make this return true when this Command no longer needs to run execute()
