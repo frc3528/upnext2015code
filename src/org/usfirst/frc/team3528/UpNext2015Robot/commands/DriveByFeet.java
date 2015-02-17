@@ -48,7 +48,7 @@ public class DriveByFeet extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double leftPos = Robot.driveTrain.backLeftPos();
-    	double rightPos = Robot.driveTrain.frontRightPos();
+    	double rightPos = Robot.driveTrain.backRightPos();
     	error = leftPos - rightPos;
     	
     	if (error < -10 ) {
@@ -73,6 +73,7 @@ public class DriveByFeet extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.drive(0, 0, 0, 0);
     	System.out.println("done");
     }
 

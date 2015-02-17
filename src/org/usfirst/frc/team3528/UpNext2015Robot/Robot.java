@@ -80,8 +80,8 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
-    	//System.out.println(Robot.driveTrain.frontLeftPos());
+    	//System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
+    	System.out.println(Robot.driveTrain.backLeftPos() + "+" + Robot.driveTrain.backRightPos());
     	Scheduler.getInstance().run();
     }
 

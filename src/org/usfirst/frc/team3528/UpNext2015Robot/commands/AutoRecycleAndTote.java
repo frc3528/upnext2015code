@@ -8,9 +8,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoRecycleAndTote extends CommandGroup {
     
     public  AutoRecycleAndTote() {
+    	addSequential(new ZeroEncoders());
+    	addSequential(new SetBrakeMode());
     	addSequential(new RaiseElevatorStep());
-    	addSequential(new RaiseElevatorStep());
-    	addSequential(new RaiseElevatorStep());
-    	addSequential(new DriveByFeetSideways(1.9, 2.0, 5.0));
+    	addParallel(new RaiseElevatorStep());
+    	addSequential(new DriveByFeetSideways(1.4, 2.0, 0.5));
+    	//addSequential(new DriveByFeet(.6, 1.0, 0.3));
+    	//addSequential(new RaiseElevatorStep());
+    	addSequential(new ZeroEncoders());
+    	addSequential(new DriveByFeet(10.0, 15.0, 0.5));
+    	
+    	//addSequential(new LowerElevatorStep());
+    	//addSequential(new LowerElevatorStep());
     }
 }

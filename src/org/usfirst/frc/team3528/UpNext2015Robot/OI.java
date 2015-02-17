@@ -38,11 +38,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			
 			backDrive = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
-			backDrive.whenPressed(new DecreaseSensitivity());
+			//backDrive.whenPressed(new DecreaseSensitivity());
+			backDrive.whenPressed(new ALilTwist());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
 			//start.whenPressed(new IncreaseSensitivity());
-			start.whenPressed(new AutoDriveForward());
+			start.whenPressed(new AutoRecycleAndTote());
 			
 			//Control Stick
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
