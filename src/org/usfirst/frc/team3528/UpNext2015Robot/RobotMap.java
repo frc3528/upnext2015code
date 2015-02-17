@@ -135,7 +135,14 @@ public class RobotMap {
 
 	// ********** And they all lived happily ever after. The End. **********
 	
+	// Auto Stuff \\
+	public static final double DRIVEFORWARDPOWER = 0.5;
+	public static final double DRIVEFORWARDTIME = 15.0;
+	public static final double DRIVEFORWARDFEET = 10.0;
 	
+	public static final double STRAFEPOWER = 0.5;
+	public static final double STRAFETIME = 2.0;
+	public static final double STRAFEFEET = 1.4;
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;
 	

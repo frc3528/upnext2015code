@@ -7,17 +7,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoRecycleAndTote extends CommandGroup {
+public class AutoRecycleBin extends CommandGroup {
     
-    public  AutoRecycleAndTote() {
+    public  AutoRecycleBin() {
     	addSequential(new ZeroEncoders());
     	addSequential(new SetBrakeMode());
     	addSequential(new RaiseElevatorStep());
     	addParallel(new RaiseElevatorStep());
-    	addSequential(new DriveByFeetSideways(RobotMap.STRAFEFEET, RobotMap.STRAFETIME, RobotMap.STRAFEPOWER));
-    	addSequential(new ZeroEncoders());
     	addSequential(new DriveByFeet(RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));
-    	addSequential(new ALilTwist());
     	addSequential(new LowerElevatorStep());
     	addSequential(new LowerElevatorStep());
     	addSequential(new SetCoastMode());

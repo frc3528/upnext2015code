@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ALilTwist extends Command {
 
 	double power = .5;
-	double timeout = 3.0;
+	double timeout = 1.3;
 	
     public ALilTwist() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -25,6 +25,7 @@ public class ALilTwist extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
