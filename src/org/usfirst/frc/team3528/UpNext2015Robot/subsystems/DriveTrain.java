@@ -33,8 +33,8 @@ public class DriveTrain extends Subsystem {
     
     public void driveWithJoystick(Joystick joystick, Gyro gyro) {
     	//System.out.println((joystick.getTwist() * -1 + joystick.getThrottle()));//Creating "one" axis from two
-    	drive(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), gyro.getAngle()); //Xbox
-    	//driveWithJoystick(joystick.getX(), joystick.getY(), joystick.getThrottle(), 0); //Flight Stick
+    	//drive(joystick.getX(), joystick.getY(), joystick.getTwist() * -1 + joystick.getThrottle(), gyro.getAngle()); //Xbox
+    	drive(joystick.getX(), joystick.getY(), joystick.getThrottle(), gyro.getAngle()); //Flight Stick
     }
     
     

@@ -73,6 +73,8 @@ public class Robot extends IterativeRobot {
 
     
     public void disabledInit(){
+    	Scheduler.getInstance().removeAll();
+    	Robot.elevator.runElevator(0);
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
 
@@ -81,7 +83,7 @@ public class Robot extends IterativeRobot {
     
     public void teleopPeriodic() {
     	//System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
-    	System.out.println(Robot.driveTrain.backLeftPos() + "+" + Robot.driveTrain.backRightPos());
+    	//System.out.println(Robot.driveTrain.backLeftPos() + "+" + Robot.driveTrain.backRightPos());
     	Scheduler.getInstance().run();
     }
 

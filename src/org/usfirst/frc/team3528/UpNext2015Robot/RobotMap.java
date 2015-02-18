@@ -81,15 +81,14 @@ public class RobotMap {
 	public static DigitalInput armZero;
 	public static DigitalInput wristZero;
 	
-	public static int flipperPos = 0;
+	public static int flipperPos = 1;
 	
 	// Flipper
 	public static Relay flipperRelay;
 	
 	
 	// Camera
-	public static Image frame;
-	public static AxisCamera camera;
+	public static CameraServer server;
 	
 	
 //======================Constants===========================\\
@@ -107,6 +106,7 @@ public class RobotMap {
 	public static final int LEFTTRIGGER = 5;
 	public static final int RIGHTTRIGGER = 6;
 	public static final int RIGHTSTICKCLICK = 10;	
+	public static final int LEFTSTICKCLICK = 9;
 	
 	
 	//DriveTrain
@@ -231,8 +231,9 @@ public class RobotMap {
 		flipperRelay = new Relay(FLIPPER_RELAY);
 		
 		//Camera
-		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-		camera = new AxisCamera("10.35.28.11");
+		server = CameraServer.getInstance();
+		server.setQuality(50);
+		server.startAutomaticCapture("cam1");
 	}	
 
 	
@@ -260,7 +261,7 @@ public class RobotMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		SmartDashboard.putNumber("Elevator Position: ", elevatorPosition);
+		SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + positionString);
 	}
 	
 	

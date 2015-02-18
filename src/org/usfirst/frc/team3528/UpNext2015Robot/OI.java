@@ -30,6 +30,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton rightTrigger;
 		public JoystickButton rightStick;
 		public JoystickButton rightStickTEST;
+		public JoystickButton leftStick;
 		
 		public OI() {
 			
@@ -41,8 +42,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			backDrive.whenPressed(new DecreaseSensitivity());
 			
 			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			//start.whenPressed(new IncreaseSensitivity());
-			start.whenPressed(new AutoRecycleAndTote());
+			start.whenPressed(new IncreaseSensitivity());
+			//start.whenPressed(new AutoRecycleAndTote());
 			
 			//Control Stick
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
@@ -82,6 +83,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			rightStick = new JoystickButton(controlStick, RobotMap.RIGHTSTICKCLICK);
 			rightStick.whenPressed(new FlipTote());
 			
+			
+			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
+			leftStick.whenPressed(new ManualElevatorReset());
 			
 			//testStick = new Joystick(3);
 			
