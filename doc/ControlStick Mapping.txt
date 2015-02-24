@@ -1,5 +1,3 @@
-
-
 ---Left Button---
 Lower Elevator by one step
 
@@ -24,4 +22,11 @@ Pick up tote from ground
 
 
 ---Y Button---
-Pick up form step
+Pick up from step
+
+---Right Joystick Up + Pressed---
+Raise Flipper (Flip Tote)
+
+
+---Right Joystick Down + Pressed---
+Lower Flipper

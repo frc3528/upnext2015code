@@ -1,5 +1,3 @@
-
-
 ---Back---
 Decrease Sensitivity
 
@@ -8,7 +6,9 @@ Decrease Sensitivity
 Increase Sensitivity
 
 
----A---
-Reset Gyro
+---Button 3---
+Decrease Sensitivity
 
 
+---Button 4---
+Increase Sensitivity

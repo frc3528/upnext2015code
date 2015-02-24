@@ -107,6 +107,8 @@ public class RobotMap {
 	public static final int RIGHTTRIGGER = 6;
 	public static final int RIGHTSTICKCLICK = 10;	
 	public static final int LEFTSTICKCLICK = 9;
+	public static final int JOYSTICKBUTTON3 = 3;
+	public static final int JOYSTICKBUTTON4 = 4;
 	
 	
 	//DriveTrain
