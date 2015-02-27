@@ -52,20 +52,20 @@ public class ResetElevator extends Command {
     
     	if(Robot.elevator.getPoint0()) {
     		RobotMap.elevatorPosition = 0;
-    		SmartDashboard.putString("DB/String 0", "Position 0: XXXXX");
-    		SmartDashboard.putString("DB/String 1", "Position 1:");
-    		SmartDashboard.putString("DB/String 2", "Position 2:");
-    		SmartDashboard.putString("DB/String 3", "Position 3:");
-    		SmartDashboard.putString("DB/String 4", "Position 4:");
+    		//SmartDashboard.putString("DB/String 0", "Position 0: XXXXX");
+    		//SmartDashboard.putString("DB/String 1", "Position 1:");
+    		//SmartDashboard.putString("DB/String 2", "Position 2:");
+    		//SmartDashboard.putString("DB/String 3", "Position 3:");
+    		//SmartDashboard.putString("DB/String 4", "Position 4:");
     		RobotMap.writeElevatorPosition(RobotMap.elevatorPosition);
     	}
-    	/*
+    	
     	SmartDashboard.putBoolean("Position 0 ", Robot.elevator.getPoint0());
         SmartDashboard.putBoolean("Position 1 ", Robot.elevator.getPoint1());
         SmartDashboard.putBoolean("Position 2 ", Robot.elevator.getPoint2());
         SmartDashboard.putBoolean("Position 3 ", Robot.elevator.getPoint3());
         SmartDashboard.putBoolean("Position 4 ", Robot.elevator.getPoint4());
-    	*/
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
