@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
 
@@ -23,11 +26,19 @@ public class Robot extends IterativeRobot {
 	
 	//Autonomous Command
     Command autonomousCommand;
+    SendableChooser autoChooser;
 
     
     public void robotInit() {
 		System.out.println("====> UpNext2015Robot <====");
 		RobotMap.init();
+		
+		//AutoChooser
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Drive Forward", new AutoDriveForward());
+		autoChooser.addObject("Recycle Bin & Tote", new AutoRecycleAndTote());
+		autoChooser.addObject("Recycle Bin", new AutoRecycleBin());
+		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 		//Subsystems
 		driveTrain = new DriveTrain();
