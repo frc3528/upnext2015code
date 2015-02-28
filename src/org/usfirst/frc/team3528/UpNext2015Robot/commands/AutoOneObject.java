@@ -7,16 +7,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoRecycleBin extends CommandGroup {
+public class AutoOneObject extends CommandGroup {
     
-    public  AutoRecycleBin() {
+    public  AutoOneObject() {
     	addSequential(new ZeroEncoders());
     	addSequential(new SetBrakeMode());
     	addSequential(new RaiseElevatorStep());
-    	addParallel(new RaiseElevatorStep());
-    	addSequential(new DriveByFeet(RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));
-    	addSequential(new LowerElevatorStep());
-    	addSequential(new LowerElevatorStep());
+    	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, -RobotMap.DRIVEFORWARDPOWER));//Negatives for driving backward
     	addSequential(new SetCoastMode());
     }
 }
