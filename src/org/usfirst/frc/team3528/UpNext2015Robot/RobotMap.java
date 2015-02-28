@@ -88,8 +88,9 @@ public class RobotMap {
 	
 	
 	// Camera
-	public static CameraServer server;
-	
+	//public static CameraServer server;
+	public static int session;
+    public static Image frame;
 	
 //======================Constants===========================\\
 	
@@ -233,9 +234,17 @@ public class RobotMap {
 		flipperRelay = new Relay(FLIPPER_RELAY);
 		
 		//Camera
-		server = CameraServer.getInstance();
-		server.setQuality(50);
-		server.startAutomaticCapture("cam1");
+		//server = CameraServer.getInstance();
+		//server.setQuality(50);
+		//server.startAutomaticCapture("cam1");
+		
+		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+
+        // the camera name (ex "cam0") can be found through the roborio web interface
+        session = NIVision.IMAQdxOpenCamera("cam1", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+        NIVision.IMAQdxConfigureGrab(session);
+	
+	
 	}	
 
 	
@@ -263,7 +272,8 @@ public class RobotMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + positionString);
+		SmartDashboard.putNumber("Elevator Position: ", elevatorPosition);
+		//SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + positionString);
 	}
 	
 	

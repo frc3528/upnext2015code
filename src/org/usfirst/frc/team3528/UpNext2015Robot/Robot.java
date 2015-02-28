@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -10,6 +11,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
+
+import com.ni.vision.NIVision;
 
 
 public class Robot extends IterativeRobot {
@@ -37,7 +40,7 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Drive Forward", new AutoDriveForward());
 		autoChooser.addObject("Recycle Bin & Tote", new AutoRecycleAndTote());
-		autoChooser.addObject("Recycle Bin", new AutoRecycleBin());
+		autoChooser.addObject("Recycle Bin", new AutoOneObject());
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 		//Subsystems
@@ -65,7 +68,8 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
         new ZeroEncoders().start();
         new SetBrakeMode().start();
-		if (autonomousCommand != null) autonomousCommand.start();
+        autonomousCommand = (Command) autoChooser.getSelected();
+        autonomousCommand.start();
     }
 
     
@@ -76,7 +80,8 @@ public class Robot extends IterativeRobot {
     
     public void teleopInit() {
     	System.out.println("===TeleOp===");
-    	System.out.println("elevPos:" + RobotMap.elevatorPosition);
+    	//System.out.println("elevPos:" + RobotMap.elevatorPosition);
+    	NIVision.IMAQdxStartAcquisition(RobotMap.session);
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
     	if (autonomousCommand != null) autonomousCommand.cancel();
@@ -86,15 +91,17 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
     	Scheduler.getInstance().removeAll();
     	Robot.elevator.runElevator(0);
+    	NIVision.IMAQdxStopAcquisition(RobotMap.session);
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
-
     }
 
     
     public void teleopPeriodic() {
     	//System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
     	//System.out.println(Robot.driveTrain.backLeftPos() + "+" + Robot.driveTrain.backRightPos());
+        NIVision.IMAQdxGrab(RobotMap.session, RobotMap.frame, 1);
+        CameraServer.getInstance().setImage(RobotMap.frame);
     	Scheduler.getInstance().run();
     }
 
