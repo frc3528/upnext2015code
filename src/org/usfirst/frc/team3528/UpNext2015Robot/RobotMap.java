@@ -77,7 +77,7 @@ public class RobotMap {
 	// Flipper
 	public static Relay flipperRelay;
 	
-	
+
 	// Camera
 	//public static CameraServer server;
 	//public static int session;

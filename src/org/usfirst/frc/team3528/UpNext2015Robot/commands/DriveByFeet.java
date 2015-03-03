@@ -25,7 +25,7 @@ public class DriveByFeet extends Command {
         
         // grab distance and convert from feet to inches
         this.distance = distance * 12;
-        this.power = -power;
+        this.power = power;
         this.timeout = timeout;
     }
 

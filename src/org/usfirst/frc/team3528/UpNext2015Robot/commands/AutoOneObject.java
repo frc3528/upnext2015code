@@ -13,7 +13,7 @@ public class AutoOneObject extends CommandGroup {
     	addSequential(new ZeroEncoders());
     	addSequential(new SetBrakeMode());
     	addSequential(new RaiseElevatorStep());
-    	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, -RobotMap.DRIVEFORWARDPOWER));//Negatives for driving backward
+    	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));//Negatives for driving backward
     	addSequential(new SetCoastMode());
     }
 }

@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
     }
 
     
-    public void disabledInit(){
+    public void disabledInit() {
     	Scheduler.getInstance().removeAll();
     	Robot.elevator.runElevator(0);
     	new ZeroEncoders().start();
