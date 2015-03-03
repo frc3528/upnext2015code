@@ -1,21 +1,13 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
-
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -26,7 +18,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.vision.AxisCamera;
+
 
 
 public class RobotMap {
@@ -76,7 +68,6 @@ public class RobotMap {
 	public static Talon claw;
 	
 	public static Encoder armEncoder;
-	public static Encoder wristEncoder;
 	
 	public static DigitalInput armZero;
 	public static DigitalInput wristZero;
@@ -89,8 +80,8 @@ public class RobotMap {
 	
 	// Camera
 	//public static CameraServer server;
-	public static int session;
-    public static Image frame;
+	//public static int session;
+    //public static Image frame;
 	
 //======================Constants===========================\\
 	
@@ -140,8 +131,9 @@ public class RobotMap {
 	
 	// Auto Stuff \\
 	public static final double DRIVEFORWARDPOWER = 0.5;
-	public static final double DRIVEFORWARDTIME = 15.0;
-	public static final double DRIVEFORWARDFEET = 10.0;
+	public static final double DRIVEFORWARDTIME = 8.0;
+	public static final double DRIVEFORWARDFEET = 9.0;
+	public static final double SHORTDRIVEFEET = 0.3;
 	
 	public static final double STRAFEPOWER = 0.5;
 	public static final double STRAFETIME = 2.0;
@@ -163,15 +155,14 @@ public class RobotMap {
 	
 	public static final int ARM_ENCODER_A = 5; 
 	public static final int ARM_ENCODER_B = 6;
-	public static final int WRIST_ENCODER_A =7;
-	public static final int WRIST_ENCODER_B = 8;
+
 	
 	public static final int ARM_FLOOR_PICK_UP = -1800;
 	public static final int WRIST_FLOOR_PICK_UP = 295;
 	
 	public static final int CLAW_LIMIT = 9;
-	public static final int ARM_ZERO = 10;
-	public static final int WRIST_ZERO = 11;
+	public static final int ARM_ZERO = 7;
+	public static final int WRIST_ZERO = 8;
 	
 	
 	//Flipper
@@ -224,7 +215,6 @@ public class RobotMap {
 		claw = new Talon(CLAW);
 		
 		armEncoder = new Encoder(ARM_ENCODER_A, ARM_ENCODER_B);
-		wristEncoder = new Encoder(WRIST_ENCODER_A, WRIST_ENCODER_B);
 		
 		armZero = new DigitalInput(ARM_ZERO);
 		wristZero = new DigitalInput(WRIST_ZERO);		
@@ -237,14 +227,6 @@ public class RobotMap {
 		//server = CameraServer.getInstance();
 		//server.setQuality(50);
 		//server.startAutomaticCapture("cam1");
-		
-		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-
-        // the camera name (ex "cam0") can be found through the roborio web interface
-        session = NIVision.IMAQdxOpenCamera("cam1", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-        NIVision.IMAQdxConfigureGrab(session);
-	
-	
 	}	
 
 	

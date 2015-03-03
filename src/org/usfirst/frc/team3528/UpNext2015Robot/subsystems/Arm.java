@@ -17,7 +17,6 @@ public class Arm extends Subsystem {
 	Talon claw = RobotMap.claw;
 	
 	Encoder armEncoder = RobotMap.armEncoder;
-	Encoder wristEncoder = RobotMap.wristEncoder;
 	
 	DigitalInput armZero = RobotMap.armZero;
 	DigitalInput wristZero = RobotMap.wristZero;
@@ -68,18 +67,8 @@ public class Arm extends Subsystem {
     }
     
     
-    public int getWristPos() {
-    	return wristEncoder.get();
-    }
-    
-    
     public void zeroArmEncoder() {
     	armEncoder.reset();
-    }
-
-
-    public void zeroWristEncoder() {
-    	wristEncoder.reset();
     }
 }
 

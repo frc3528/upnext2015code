@@ -52,7 +52,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			//Arm
 			//reset arm
 			a = new JoystickButton (controlStick, RobotMap.A);
-			a.whenPressed(new StoreArm());
+			//a.whenPressed(new StoreArm());
 			
 			//For lifting bins up to score on tote stack
 			b = new JoystickButton(controlStick, RobotMap.B);

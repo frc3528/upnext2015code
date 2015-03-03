@@ -27,7 +27,7 @@ public class Robot extends IterativeRobot {
 	//Operator Interface
 	public static OI oi;
 	
-	//Autonomous Command
+	//Autonomous Stuff
     Command autonomousCommand;
     SendableChooser autoChooser;
 
@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Drive Forward", new AutoDriveForward());
 		autoChooser.addObject("Recycle Bin & Tote", new AutoRecycleAndTote());
-		autoChooser.addObject("Recycle Bin", new AutoOneObject());
+		autoChooser.addObject("Recycle Bin or Tote", new AutoOneObject());
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 		//Subsystems
@@ -55,6 +55,7 @@ public class Robot extends IterativeRobot {
 		//Start Gyro
 		Robot.driveTrain.initGyro();
 		
+		//Look for Elevator Position
 		RobotMap.checkForfile();
     }
 	
@@ -65,7 +66,6 @@ public class Robot extends IterativeRobot {
 
 
 	public void autonomousInit() {
-        // schedule the autonomous command (example)
         new ZeroEncoders().start();
         new SetBrakeMode().start();
         autonomousCommand = (Command) autoChooser.getSelected();
@@ -81,7 +81,6 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	System.out.println("===TeleOp===");
     	//System.out.println("elevPos:" + RobotMap.elevatorPosition);
-    	NIVision.IMAQdxStartAcquisition(RobotMap.session);
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
     	if (autonomousCommand != null) autonomousCommand.cancel();
@@ -91,7 +90,6 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
     	Scheduler.getInstance().removeAll();
     	Robot.elevator.runElevator(0);
-    	NIVision.IMAQdxStopAcquisition(RobotMap.session);
     	new ZeroEncoders().start();
     	new SetCoastMode().start();
     }
@@ -100,8 +98,6 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	//System.out.println(Robot.arm.getWristPos() + "+" + Robot.arm.getArmPos());
     	//System.out.println(Robot.driveTrain.backLeftPos() + "+" + Robot.driveTrain.backRightPos());
-        NIVision.IMAQdxGrab(RobotMap.session, RobotMap.frame, 1);
-        CameraServer.getInstance().setImage(RobotMap.frame);
     	Scheduler.getInstance().run();
     }
 
