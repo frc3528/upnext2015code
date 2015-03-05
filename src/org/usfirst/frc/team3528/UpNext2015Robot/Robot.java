@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
 	public static Elevator elevator;
 	public static Arm arm;
 	public static Flipper flipper;
-	
+	public static Camera camera;
 	
 	//Operator Interface
 	public static OI oi;
@@ -48,7 +48,8 @@ public class Robot extends IterativeRobot {
     	elevator = new Elevator();
 		arm = new Arm();
 		flipper = new Flipper();
-	
+		camera = new Camera();
+		
 		//Operator Interface
 		oi = new OI();
        
