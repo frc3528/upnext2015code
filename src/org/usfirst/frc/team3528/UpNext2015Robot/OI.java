@@ -2,6 +2,7 @@ package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -21,6 +22,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public Joystick controlStick;
 		public JoystickButton backDrive;
 		public JoystickButton backControl;
+		public JoystickButton startDrive;
 		public JoystickButton start;
 		public JoystickButton a;
 		public JoystickButton b;
@@ -41,15 +43,39 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			backDrive = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
 			backDrive.whenPressed(new DecreaseSensitivity());
 			
-			start = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
-			start.whenPressed(new IncreaseSensitivity());
+			startDrive = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
+			startDrive.whenPressed(new IncreaseSensitivity());
 			//start.whenPressed(new AutoRecycleAndTote());
 			
 			//Control Stick
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
-		
-
+			
+			//Arm
+			//reset arm
+			a = new JoystickButton (controlStick, RobotMap.A);
+			a.whenPressed(new StoreArm());
+	
+			
+			//Picking up totes off the ground
+			b = new JoystickButton(controlStick, RobotMap.B);
+			b.whenPressed(new PickUpBin());
+	
+			
+			//Scoring on stacks of three
+			y = new JoystickButton(controlStick, RobotMap.X);
+			y.whenPressed(new StackOnThree());
+	
+			
+			//Scoring on stacks of four
+			x = new JoystickButton(controlStick, RobotMap.Y);
+			x.whenPressed(new StackBin());
+			
+			
+			start = new JoystickButton(controlStick, 8);
+			start.whenPressed(new PickUpFromStep());
+			
+			
 			//Elevator
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());
