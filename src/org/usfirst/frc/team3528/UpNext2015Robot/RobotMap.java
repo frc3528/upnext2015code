@@ -152,8 +152,8 @@ public class RobotMap {
 
 	public static final int ARM_STEP_PICK_UP = 4220;
 	public static final int ARM_STEP_PULL = 3528;
-	public static final int ARM_STACK_FOUR = 1820;
-	public static final int ARM_STACK_THREE = 3400;
+	public static final int ARM_STACK_FOUR = 1840;
+	public static final int ARM_STACK_THREE = 3300;
 	
 	public static final int ARM_IN = 7;
 	public static final int ARM_OUT = 8;

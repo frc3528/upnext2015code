@@ -63,17 +63,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 	
 			
 			//Scoring on stacks of three
-			y = new JoystickButton(controlStick, RobotMap.X);
+			y = new JoystickButton(controlStick, RobotMap.Y);
 			y.whenPressed(new StackOnThree());
 	
 			
 			//Scoring on stacks of four
-			x = new JoystickButton(controlStick, RobotMap.Y);
+			x = new JoystickButton(controlStick, RobotMap.X);
 			x.whenPressed(new StackBin());
 			
 			
 			start = new JoystickButton(controlStick, 8);
-			start.whenPressed(new PickUpFromStep());
+			start.whenPressed(new StepPickUp());
 			
 			
 			//Elevator
