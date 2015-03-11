@@ -14,6 +14,7 @@ public class AutoOneObject extends CommandGroup {
     	addSequential(new SetBrakeMode());
     	addSequential(new RaiseElevatorStep());
     	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));//Negatives for driving backward
+    	addSequential(new ALilTwist());
     	addSequential(new SetCoastMode());
     }
 }

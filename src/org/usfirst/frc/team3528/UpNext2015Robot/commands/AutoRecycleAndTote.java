@@ -22,6 +22,7 @@ public class AutoRecycleAndTote extends CommandGroup {
     	addSequential(new ZeroEncoders());
     	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.STRAFETIME, RobotMap.STRAFEPOWER));
     	addSequential(new LowerElevatorStep());
+    	addSequential(new ALilTwist());
     	addSequential(new SetCoastMode());
     }
 }

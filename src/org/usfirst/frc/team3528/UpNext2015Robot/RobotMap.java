@@ -6,16 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -52,14 +48,6 @@ public class RobotMap {
 	public static String positionString;
 	public static Path file;
 	
-	/*
-	public static File positionFile;
-	public static FileReader fileReader; 
-	public static BufferedReader bufferedReader;
-	public static FileWriter fileWriter;
-	public static BufferedWriter bufferedWriter;
-	*/
-	
 	
 	// Arm
 	public static VictorSP arm;
@@ -73,11 +61,8 @@ public class RobotMap {
 	// Flipper
 	public static Relay flipperRelay;
 	
-
-	// Camera
-	//public static CameraServer server;
-	//public static int session;
-    //public static Image frame;
+	public static int flipperPos = 1;
+	
 	
 //======================Constants===========================\\
 	
@@ -89,15 +74,13 @@ public class RobotMap {
 	public static final int B = 2;
 	public static final int X = 3;
 	public static final int Y = 4;
-	public static final int BACKBUTTON = 7;
-	public static final int STARTBUTTON = 8;
 	public static final int LEFTTRIGGER = 5;
 	public static final int RIGHTTRIGGER = 6;
-	public static final int RIGHTSTICKCLICK = 10;	
+	public static final int BACKBUTTON = 7;
+	public static final int STARTBUTTON = 8;
 	public static final int LEFTSTICKCLICK = 9;
-	public static final int JOYSTICKBUTTON3 = 3;
-	public static final int JOYSTICKBUTTON4 = 4;
-	
+	public static final int RIGHTSTICKCLICK = 10;	
+
 	
 	//DriveTrain
 	public static double SENSITIVITY = .6;
@@ -109,8 +92,8 @@ public class RobotMap {
 	
 	public static final int GYRO = 0;
 	
+	
 	// ********** Wheels and Encoders and Distance Oh My **********
-
 	// Wheel Size
 	public static final double WHEEL_DIAMETER = 8.0;
 	
@@ -134,6 +117,8 @@ public class RobotMap {
 	public static final double STRAFEPOWER = 0.5;
 	public static final double STRAFETIME = 2.0;
 	public static final double STRAFEFEET = 1.4;
+	
+	
 	//Elevator
 	public static final int ELEVATOR_VICTOR = 0;
 	
@@ -150,10 +135,10 @@ public class RobotMap {
 	public static final int ARM_ENCODER_A = 5; 
 	public static final int ARM_ENCODER_B = 6;
 
-	public static final int ARM_STEP_PICK_UP = 4220;
-	public static final int ARM_STEP_PULL = 3528;
-	public static final int ARM_STACK_FOUR = 1840;
-	public static final int ARM_STACK_THREE = 3300;
+	public static final int ARM_STEP_PICK_UP = 1595;
+	public static final int ARM_STEP_PULL = 1334;
+	public static final int ARM_STACK_FOUR = 695;
+	public static final int ARM_STACK_THREE = 1247;
 	
 	public static final int ARM_IN = 7;
 	public static final int ARM_OUT = 8;
@@ -161,14 +146,11 @@ public class RobotMap {
 	
 	//Flipper
 	public static final int FLIPPER_RELAY = 1;
-	
-	public static int flipperPos = 1;
-	
+
 	
 //===================InitializeMap===================\\
 	public static void init() {
-		//System.out.println("IN ROBOTMAP");
-		
+			
 		
 		// DriveTrain
 		frontLeftMotor = new CANTalon(DRIVE_LEFT_FRONT_TALON);
@@ -216,11 +198,6 @@ public class RobotMap {
 		
 		//Flipper
 		flipperRelay = new Relay(FLIPPER_RELAY);
-		
-		//Camera
-		//server = CameraServer.getInstance();
-		//server.setQuality(50);
-		//server.startAutomaticCapture("cam1");
 	}	
 
 	

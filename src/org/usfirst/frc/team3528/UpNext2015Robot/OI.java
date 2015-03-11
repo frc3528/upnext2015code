@@ -2,7 +2,6 @@ package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.triggers.*;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -21,9 +20,11 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 		public Joystick testStick;
 		public Joystick driveStick;
 		public Joystick controlStick;
-		public JoystickButton backDrive;
-		public JoystickButton backControl;
+		
 		public JoystickButton startDrive;
+		public JoystickButton backDrive;
+		
+		public JoystickButton backControl;
 		public JoystickButton start;
 		public JoystickButton a;
 		public JoystickButton b;
@@ -32,8 +33,10 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 		public JoystickButton leftTrigger;
 		public JoystickButton rightTrigger;
 		public JoystickButton rightStick;
-		public JoystickButton rightStickTEST;
 		public JoystickButton leftStick;
+		
+		public JoystickButton rightStickTEST;
+		
 		public Trigger flipperUp;
 		public Trigger flipperDown;
 		
@@ -44,12 +47,12 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
 			
 			
-			backDrive = new JoystickButton(driveStick, RobotMap.BACKBUTTON);
+			backDrive = new JoystickButton(driveStick, RobotMap.X); //X is button three on flightstick
 			backDrive.whenPressed(new DecreaseSensitivity());
 			
-			startDrive = new JoystickButton(driveStick, RobotMap.STARTBUTTON);
+			startDrive = new JoystickButton(driveStick, RobotMap.Y); //Y is button four on flightstick
 			startDrive.whenPressed(new IncreaseSensitivity());
-			//start.whenPressed(new AutoRecycleAndTote());
+			
 			
 			//Control Stick
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
@@ -90,22 +93,18 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 
 			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
 			backControl.whenPressed(new ResetElevator());
+
+
+			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
+			leftStick.whenPressed(new ManualElevatorReset());
 			
 			
 			//Flipper
-			//rightStick = new JoystickButton(controlStick, RobotMap.RIGHTSTICKCLICK);
-			//rightStick.whenPressed(new FlipTote());
-			
-			
 			flipperUp = new FlipperUp(controlStick);
 			flipperUp.whenActive(new FlipTote());
 			
 			
 			flipperDown = new FlipperUp(controlStick);
 			flipperDown.whenActive(new FlipTote());
-			
-			
-			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
-			leftStick.whenPressed(new ManualElevatorReset());
 		}
 }

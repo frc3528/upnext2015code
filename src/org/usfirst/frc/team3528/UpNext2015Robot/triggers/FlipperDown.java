@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  */
 public class FlipperDown extends Trigger {
     
-    
 	private Joystick joy;
 	
 	public FlipperDown(Joystick joy) {

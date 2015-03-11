@@ -9,24 +9,33 @@ Raise Elevator by one step
 ---Back Button---
 Reset Elevator
 
+
+---Left Joystick Pressed + axis---
+Manual reset of elevator position
+
+
 ---A Button---
 Reset Arm
 
 
 ---B Button---
-Lift bin to place on tote stack
-
-
----X Button---
 Pick up tote from ground
 
 
----Y Button---
-Pick up from step
+---X Button---
+Run the arm manually 
+ 
 
----Right Joystick Up + Pressed---
+---Y Button---
+
+
+---Right Joystick Axis---
+Manual control of arm
+
+
+---Right Trigger---
 Raise Flipper (Flip Tote)
 
 
----Right Joystick Down + Pressed---
+---Left Trigger---
 Lower Flipper
