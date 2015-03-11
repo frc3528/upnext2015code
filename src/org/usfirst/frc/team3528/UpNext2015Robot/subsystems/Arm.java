@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.RunArmManual;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -49,7 +50,7 @@ public class Arm extends Subsystem {
 
 
 	public void initDefaultCommand() {
-	
+		setDefaultCommand(new RunArmManual());
 	}
 
 }

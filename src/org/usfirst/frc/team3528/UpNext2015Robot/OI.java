@@ -1,10 +1,11 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
-
+import org.usfirst.frc.team3528.UpNext2015Robot.triggers.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 //import org.usfirst.frc.team3528.UpNext2015Robot.commands.ExampleCommand;
 
@@ -33,6 +34,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 		public JoystickButton rightStick;
 		public JoystickButton rightStickTEST;
 		public JoystickButton leftStick;
+		public Trigger flipperUp;
+		public Trigger flipperDown;
+		
 		
 		public OI() {
 			
@@ -63,17 +67,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 	
 			
 			//Scoring on stacks of three
-			y = new JoystickButton(controlStick, RobotMap.Y);
-			y.whenPressed(new StackOnThree());
+			//y = new JoystickButton(controlStick, RobotMap.Y);
+			//y.whenPressed(new StackOnThree());
 	
 			
 			//Scoring on stacks of four
 			x = new JoystickButton(controlStick, RobotMap.X);
-			x.whenPressed(new StackBin());
+			x.whenPressed(new RunArmManual());
 			
 			
-			start = new JoystickButton(controlStick, 8);
-			start.whenPressed(new StepPickUp());
+			//start = new JoystickButton(controlStick, 8);
+			//start.whenPressed(new StepPickUp());
 			
 			
 			//Elevator
@@ -89,10 +93,18 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 			
 			
 			//Flipper
-			rightStick = new JoystickButton(controlStick, RobotMap.RIGHTSTICKCLICK);
-			rightStick.whenPressed(new FlipTote());
+			//rightStick = new JoystickButton(controlStick, RobotMap.RIGHTSTICKCLICK);
+			//rightStick.whenPressed(new FlipTote());
 			
-		
+			
+			flipperUp = new FlipperUp(controlStick);
+			flipperUp.whenActive(new FlipTote());
+			
+			
+			flipperDown = new FlipperUp(controlStick);
+			flipperDown.whenActive(new FlipTote());
+			
+			
 			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
 			leftStick.whenPressed(new ManualElevatorReset());
 		}
