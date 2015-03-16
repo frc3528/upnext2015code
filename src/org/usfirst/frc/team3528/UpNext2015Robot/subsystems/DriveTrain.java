@@ -39,7 +39,7 @@ public class DriveTrain extends Subsystem {
     
  
     public void drive(double x, double y, double rotation, double gyroAngle) {
-    	//robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), gyroAngle); //Field Oriented
+    	//robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(rotation, RobotMap.SENSITIVITY), gyroAngle); //Field Oriented
     	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed((rotation * .9), RobotMap.SENSITIVITY), 0); //Non-Field Oriented
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0); //Non-Ramping
     }
@@ -56,14 +56,14 @@ public class DriveTrain extends Subsystem {
     }
     
     
-    public void increaseSensitivity() {
+    public void decreaseSensitivity() {
         if(RobotMap.SENSITIVITY < .9) {
             RobotMap.SENSITIVITY += .1;
         }
     }
 
     
-    public void decreaseSensitivity() {
+    public void increaseSensitivity() {
         if(RobotMap.SENSITIVITY > .2) {
             RobotMap.SENSITIVITY -= .1;
         }

@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  * interface to the commands and command groups that allow control of the robot.
  */
 
-	
 
 	public class OI {
 	
@@ -47,11 +46,11 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			driveStick = new Joystick(RobotMap.DRIVESTICK);
 			
 			
-			backDrive = new JoystickButton(driveStick, RobotMap.X); //X is button three on flightstick
-			backDrive.whenPressed(new DecreaseSensitivity());
+			backDrive = new JoystickButton(driveStick, RobotMap.Y); //X is button three on flightstick
+			backDrive.whenPressed(new IncreaseSensitivity());
 			
-			startDrive = new JoystickButton(driveStick, RobotMap.Y); //Y is button four on flightstick
-			startDrive.whenPressed(new IncreaseSensitivity());
+			startDrive = new JoystickButton(driveStick, RobotMap.X); //Y is button four on flightstick
+			startDrive.whenPressed(new DecreaseSensitivity());
 			
 			
 			//Control Stick
@@ -62,22 +61,18 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			//reset arm
 			a = new JoystickButton (controlStick, RobotMap.A);
 			a.whenPressed(new StoreArm());
-	
-			
+
 			//Picking up totes off the ground
 			b = new JoystickButton(controlStick, RobotMap.B);
 			b.whenPressed(new PickUpBin());
-	
-			
+		
 			//Scoring on stacks of three
 			//y = new JoystickButton(controlStick, RobotMap.Y);
 			//y.whenPressed(new StackOnThree());
 	
-			
 			//Scoring on stacks of four
-			x = new JoystickButton(controlStick, RobotMap.X);
-			x.whenPressed(new StackBinOnFour());
-			
+			//x = new JoystickButton(controlStick, RobotMap.X);
+			//x.whenPressed(new StackBinOnFour());
 			
 			//start = new JoystickButton(controlStick, 8);
 			//start.whenPressed(new StepPickUp());
@@ -86,14 +81,12 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			//Elevator
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());
-			
-			
+						
 			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
 			rightTrigger.whenPressed(new RaiseElevatorStep());
 
 			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
 			backControl.whenPressed(new ResetElevator());
-
 
 			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
 			leftStick.whenPressed(new ManualElevatorReset());

@@ -1,18 +1,14 @@
 
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
-
-import com.ni.vision.NIVision;
 
 
 public class Robot extends IterativeRobot {
@@ -23,8 +19,10 @@ public class Robot extends IterativeRobot {
 	public static Arm arm;
 	public static Flipper flipper;
 	
+	
 	//Operator Interface
 	public static OI oi;
+	
 	
 	//Autonomous Stuff
     Command autonomousCommand;
@@ -60,7 +58,7 @@ public class Robot extends IterativeRobot {
 		
 		
 		//Look for Elevator Position
-		RobotMap.checkForfile();
+		RobotMap.checkForFile();
     }
 	
 	
@@ -99,7 +97,6 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	System.out.println(driveTrain.backLeftPos());
     	Scheduler.getInstance().run();
     }
 

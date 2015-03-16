@@ -6,12 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
-
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
-
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
-
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -22,13 +17,11 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.vision.USBCamera;
-
 
 
 public class RobotMap {
     
-	
+
 //======================Objects===========================\\
 	
 	
@@ -58,7 +51,7 @@ public class RobotMap {
 	public static Path file;
 	
 	
-	// Arm
+	//Arm
 	public static VictorSP arm;
 	
 	public static Encoder armEncoder;
@@ -67,11 +60,13 @@ public class RobotMap {
 	public static DigitalInput armOut;
 	
 	
-	// Flipper
+	//Flipper
 	public static Relay flipperRelay;
 	
 	public static int flipperPos = 1;
+
 	
+	//Camera
 	public static CameraServer server;
 	
 	
@@ -116,7 +111,6 @@ public class RobotMap {
 	
 	// Calculate how many inches are in one encoder count/tick
 	public static final double INCHES_PER_COUNT = INCHES_PER_REV / COUNTS_PER_REV;
-
 	// ********** And they all lived happily ever after. The End. **********
 	
 	// Auto Stuff \\
@@ -211,6 +205,7 @@ public class RobotMap {
 		flipperRelay = new Relay(FLIPPER_RELAY);
 		
 		
+		//Camera
 		server = CameraServer.getInstance();
         server.setQuality(50);
         server.startAutomaticCapture("cam1");
@@ -219,6 +214,7 @@ public class RobotMap {
 	
 	//Read Elevator Position File\\
 	public static int readElevatorPosition() {
+		checkForFile();
 		
 		try {
 			positionString = Files.lines(file).collect(Collectors.joining());
@@ -252,7 +248,7 @@ public class RobotMap {
 	}
 	
 	
-	public static void checkForfile() {
+	public static void checkForFile() {
 		if(!Files.exists(file)) {
 			try {
 			Files.write(file, "0".getBytes());
@@ -261,6 +257,7 @@ public class RobotMap {
 			}
 		}
 	}
+	
 	
 	public static Command selectAuto() {
 	if (SmartDashboard.getBoolean("DB/Button 0")) {
@@ -277,8 +274,6 @@ public class RobotMap {
 		return new AutoRecycleAndTote();
 	} else {
 		return new AutoDoNothing();
-	}
+		}
 	}
 }
-
-
