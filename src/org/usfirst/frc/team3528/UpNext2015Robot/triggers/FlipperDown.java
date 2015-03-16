@@ -15,7 +15,7 @@ public class FlipperDown extends Trigger {
 	}
 	
     public boolean get() {
-    	if(joy.getRawAxis(2) >= .8) {
+    	if(joy.getRawAxis(2) >= .6) {
     		return true;
     	} else {
     	return false;

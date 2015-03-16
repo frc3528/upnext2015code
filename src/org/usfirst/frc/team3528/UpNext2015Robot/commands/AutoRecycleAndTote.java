@@ -20,9 +20,9 @@ public class AutoRecycleAndTote extends CommandGroup {
     	addParallel(new RaiseElevatorStep());
     	addSequential(new DriveByFeet(RobotMap.SHORTDRIVEFEET, RobotMap.DRIVEFORWARDTIME, -RobotMap.DRIVEFORWARDPOWER));//Negative To Drive Forward
     	addSequential(new ZeroEncoders());
-    	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.STRAFETIME, RobotMap.STRAFEPOWER));
+    	addSequential(new DriveByFeet(RobotMap.DRIVEFORWARDFEET, RobotMap.STRAFETIME, RobotMap.STRAFEPOWER));
     	addSequential(new LowerElevatorStep());
-    	addSequential(new ALilTwist());
+    	addSequential(new ALilTwistRight());
     	addSequential(new SetCoastMode());
     }
 }

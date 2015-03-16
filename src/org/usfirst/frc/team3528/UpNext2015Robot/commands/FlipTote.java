@@ -27,12 +27,12 @@ public class FlipTote extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if (Robot.oi.controlStick.getRawAxis(3) > .8 && RobotMap.flipperPos <= 0) {
+    	if (Robot.oi.controlStick.getRawAxis(3) >= .6 && RobotMap.flipperPos <= 0) { 
     		Robot.flipper.flipperForward();
     		RobotMap.flipperPos++;
     		}
     
-    	if (Robot.oi.controlStick.getRawAxis(2) > .8 && RobotMap.flipperPos >= 0) {
+    	if (Robot.oi.controlStick.getRawAxis(2) >= .6 && RobotMap.flipperPos >= 0) {
     		Robot.flipper.flipperReverse();
     		RobotMap.flipperPos--;
     	}

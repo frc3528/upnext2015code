@@ -76,7 +76,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			
 			//Scoring on stacks of four
 			x = new JoystickButton(controlStick, RobotMap.X);
-			x.whenPressed(new RunArmManual());
+			x.whenPressed(new StackBinOnFour());
 			
 			
 			//start = new JoystickButton(controlStick, 8);
@@ -104,7 +104,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			flipperUp.whenActive(new FlipTote());
 			
 			
-			flipperDown = new FlipperUp(controlStick);
+			flipperDown = new FlipperDown(controlStick);
 			flipperDown.whenActive(new FlipTote());
 		}
 }

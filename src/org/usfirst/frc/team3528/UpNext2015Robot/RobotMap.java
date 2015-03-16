@@ -6,14 +6,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
+
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
+
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 
 
@@ -63,6 +72,8 @@ public class RobotMap {
 	
 	public static int flipperPos = 1;
 	
+	public static CameraServer server;
+	
 	
 //======================Constants===========================\\
 	
@@ -83,7 +94,7 @@ public class RobotMap {
 
 	
 	//DriveTrain
-	public static double SENSITIVITY = .6;
+	public static double SENSITIVITY = .8;
 	
 	public static final int DRIVE_LEFT_FRONT_TALON = 1;
 	public static final int DRIVE_LEFT_BACK_TALON = 3;
@@ -109,9 +120,9 @@ public class RobotMap {
 	// ********** And they all lived happily ever after. The End. **********
 	
 	// Auto Stuff \\
-	public static final double DRIVEFORWARDPOWER = 0.5;
+	public static final double DRIVEFORWARDPOWER = 0.75;
 	public static final double DRIVEFORWARDTIME = 8.0;
-	public static final double DRIVEFORWARDFEET = 9.0;
+	public static final double DRIVEFORWARDFEET = 5.0;
 	public static final double SHORTDRIVEFEET = 0.3;
 	
 	public static final double STRAFEPOWER = 0.5;
@@ -198,6 +209,11 @@ public class RobotMap {
 		
 		//Flipper
 		flipperRelay = new Relay(FLIPPER_RELAY);
+		
+		
+		server = CameraServer.getInstance();
+        server.setQuality(50);
+        server.startAutomaticCapture("cam1");
 	}	
 
 	
@@ -209,9 +225,15 @@ public class RobotMap {
 		} catch(IOException e) {
 			System.out.println("error reading file");
 			e.printStackTrace();
-		}
+		} 
 
-		readPos = Integer.parseInt(positionString);
+		try {
+			readPos = Integer.parseInt(positionString);
+		} catch(NumberFormatException e) {
+			System.out.println("Number Format Exception Setting to 0");
+			positionString = "0";
+		}
+		
 		return readPos;
 	}
 
@@ -225,8 +247,8 @@ public class RobotMap {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		SmartDashboard.putNumber("Elevator Position: ", elevatorPosition);
-		//SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + positionString);
+		//SmartDashboard.putNumber("Elevator Position: ", elevatorPosition);
+		SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + positionString);
 	}
 	
 	
@@ -238,6 +260,24 @@ public class RobotMap {
 			e.printStackTrace();
 			}
 		}
+	}
+	
+	public static Command selectAuto() {
+	if (SmartDashboard.getBoolean("DB/Button 0")) {
+		//System.out.println("0");	
+		return new AutoDoNothing(); 
+	} else if (SmartDashboard.getBoolean("DB/Button 1")) {
+		//System.out.println("1");
+		return new AutoDriveForward();
+	} else if (SmartDashboard.getBoolean("DB/Button 2")) {
+		//System.out.println("2");
+		return new AutoOneObject();
+	} else if (SmartDashboard.getBoolean("DB/Button 3")) {
+		//System.out.println("3");
+		return new AutoRecycleAndTote();
+	} else {
+		return new AutoDoNothing();
+	}
 	}
 }
 

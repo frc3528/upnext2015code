@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ALilTwist extends Command {
+public class ALilTwistLeft extends Command {
 
-	double power = .5;
-	double timeout = 1.3;
+	double power = -0.6;
+	double timeout = 2.3;
 	
-    public ALilTwist() {
+    public ALilTwistLeft() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
     }

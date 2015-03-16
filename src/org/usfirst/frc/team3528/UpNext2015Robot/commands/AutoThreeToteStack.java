@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
+import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -10,18 +12,29 @@ public class AutoThreeToteStack extends CommandGroup {
     public  AutoThreeToteStack() {
     	
     	addSequential(new ZeroEncoders());
-    	addSequential(new RaiseElevatorStep());
-    	addSequential(new DriveByFeet(-3.0, 5.0, -0.4));
-    	addSequential(new DriveByFeetSideways(3.0, 5.0, 0.5));
-    	addSequential(new DriveByFeet(3.0, 5.0, 0.5));
-    	addParallel(new DriveByFeet(0.5, 3.0, 0.5));
-    	addSequential(new RaiseElevatorStep());
-    	addSequential(new DriveByFeet(-3.0, 5.0, -0.4));
-    	addSequential(new DriveByFeetSideways(3.0, 5.0, 0.5));
-    	addSequential(new DriveByFeet(14.0, 10.0, 0.5));
-    	addSequential(new LowerElevatorStep());
-    	addSequential(new LowerElevatorStep());
-    	addSequential(new DriveByFeet(-0.5, 2.0, -0.4));
+    	addSequential(new SetBrakeMode());
+    	addSequential(new RaiseElevatorStep());//one second
+    	addSequential(new ALilTwistLeft());//one second
+    	addSequential(new ZeroEncoders());
+    	addSequential(new DriveByFeet(-4.0, 5.0, 0.75));//two seconds
+    	addSequential(new ALilTwistRight());//one second
+    	addSequential(new ZeroEncoders());
+    	addParallel(new DriveByFeet(-1.0, 0.5, -0.5));//half a second
+    	addSequential(new RaiseElevatorStep());//one second
+    	addSequential(new DriveByFeet(-1.0, 0.5, 0.5));//half a second
+    	addSequential(new ALilTwistLeft());//one second
+    	addSequential(new ZeroEncoders());
+    	addSequential(new DriveByFeet(-4.0, 5.0, 0.75));//two seconds
+    	addSequential(new ALilTwistRight());//one seconds
+    	addSequential(new ZeroEncoders());
+    	addParallel(new DriveByFeet(-1.0, 0.5, -0.5));//half a second
+    	addSequential(new RaiseElevatorStep());//one second
+    	addSequential(new ZeroEncoders());
+    	addSequential(new DriveByFeet(-RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));//two and a half seconds
+    	addSequential(new ALilTwistRight());//one second
+    	addSequential(new ResetElevator());//three seconds
+    	addSequential(new DriveByFeet(-1.0, 0.5, -0.5));//half a second
+    	addSequential(new SetCoastMode());
     	
     }
 }

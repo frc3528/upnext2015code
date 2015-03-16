@@ -22,7 +22,6 @@ public class Robot extends IterativeRobot {
 	public static Elevator elevator;
 	public static Arm arm;
 	public static Flipper flipper;
-	public static Camera camera;
 	
 	//Operator Interface
 	public static OI oi;
@@ -42,7 +41,6 @@ public class Robot extends IterativeRobot {
     	elevator = new Elevator();
 		arm = new Arm();
 		flipper = new Flipper();
-		camera = new Camera();
 		
 		
 		//Operator Interface
@@ -50,11 +48,11 @@ public class Robot extends IterativeRobot {
 
 		
 		//AutoChooser
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Drive Forward", new AutoDriveForward());
-		autoChooser.addObject("Recycle Bin & Tote", new AutoRecycleAndTote());
-		autoChooser.addObject("Recycle Bin or Tote", new AutoOneObject());
-		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+		//autoChooser = new SendableChooser();
+		//autoChooser.addDefault("Drive Forward", new AutoDriveForward());
+		//autoChooser.addObject("Recycle Bin & Tote", new AutoRecycleAndTote());
+		//autoChooser.addObject("Recycle Bin or Tote", new AutoOneObject());
+		//SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 		
 		//Start Gyro
@@ -74,7 +72,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
         new ZeroEncoders().start();
         new SetBrakeMode().start();
-        autonomousCommand = (Command) autoChooser.getSelected();
+        autonomousCommand = RobotMap.selectAuto();
         autonomousCommand.start();
     }
 
@@ -101,6 +99,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
+    	System.out.println(driveTrain.backLeftPos());
     	Scheduler.getInstance().run();
     }
 

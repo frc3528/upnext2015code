@@ -40,7 +40,7 @@ public class DriveByFeet extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.drive(0, power, 0, 0);
+        Robot.driveTrain.drive(0, -power, 0, 0);
         
         setTimeout(timeout);
     }
@@ -67,7 +67,7 @@ public class DriveByFeet extends Command {
      
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.driveTrain.backLeftPos() >= encoderCounts || isTimedOut();
+    	return Robot.driveTrain.backLeftPos() <= encoderCounts || isTimedOut();
 
     }
 

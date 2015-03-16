@@ -15,7 +15,7 @@ public class FlipperUp extends Trigger {
 	}
 	
     public boolean get() {
-    	if(joy.getRawAxis(3) >= .8) {
+    	if(joy.getRawAxis(3) >= .6) {
     		return true;
     	} else {
     	return false;

@@ -37,10 +37,10 @@ public class DriveTrain extends Subsystem {
     	drive(joystick.getX(), joystick.getY(), joystick.getThrottle(), gyro.getAngle()); //Flight Stick
     }
     
-    
+ 
     public void drive(double x, double y, double rotation, double gyroAngle) {
     	//robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), gyroAngle); //Field Oriented
-    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(1 * rotation, RobotMap.SENSITIVITY), 0); //Non-Field Oriented
+    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed((rotation * .9), RobotMap.SENSITIVITY), 0); //Non-Field Oriented
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0); //Non-Ramping
     }
 
