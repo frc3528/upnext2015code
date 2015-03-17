@@ -271,7 +271,7 @@ public class RobotMap {
 		return new AutoOneObject();
 	} else if (SmartDashboard.getBoolean("DB/Button 3")) {
 		//System.out.println("3");
-		return new AutoRecycleAndTote();
+		return new AutoGreyTotes();
 	} else {
 		return new AutoDoNothing();
 		}

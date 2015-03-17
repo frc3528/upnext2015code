@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveByFeet extends Command {
+public class DriveByFeetBackward extends Command {
 
 	double distance = 0;
 	double encoderCounts = 0;
@@ -18,13 +18,13 @@ public class DriveByFeet extends Command {
 	double startingRightPos = 0;
 	double error = 0;
 	
-    public DriveByFeet(double distance, double timeout, double power) {
+    public DriveByFeetBackward(double distance, double timeout, double power) {
         
     	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
         
         // grab distance and convert from feet to inches
-        this.distance = distance * 12;
+        this.distance = (distance * 12) * -1;
         this.power = power;
         this.timeout = timeout;
     }
@@ -40,7 +40,7 @@ public class DriveByFeet extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.drive(0, -power, 0, 0);
+        Robot.driveTrain.drive(0, power, 0, 0);
         
         setTimeout(timeout);
     }

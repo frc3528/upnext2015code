@@ -11,7 +11,7 @@ public class AutoStrafe extends CommandGroup {
 
     	addSequential(new SetBrakeMode());
     	addSequential(new ZeroEncoders());
-    	addSequential(new DriveByFeetSideways(4, 6.0, 0.50));
+    	addSequential(new StrafeByFeetRight(4, 6.0, 0.50));
     	addSequential(new ZeroEncoders());
     	
     }

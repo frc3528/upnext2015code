@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
-import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
+import org.usfirst.frc.team3528.UpNext2015Robot.Robot; 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveByFeetSideways extends Command {
+public class DriveByFeetForward extends Command {
 
 	double distance = 0;
 	double encoderCounts = 0;
@@ -18,7 +18,7 @@ public class DriveByFeetSideways extends Command {
 	double startingRightPos = 0;
 	double error = 0;
 	
-    public DriveByFeetSideways(double distance, double timeout, double power) {
+    public DriveByFeetForward(double distance, double timeout, double power) {
         
     	// Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
@@ -32,7 +32,7 @@ public class DriveByFeetSideways extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	startingLeftPos = Robot.driveTrain.frontLeftPos();
+    	startingLeftPos = Robot.driveTrain.backLeftPos();
     	startingRightPos = Robot.driveTrain.backRightPos();
     	
     	// calculate the number of encoderCounts to drive
@@ -40,24 +40,41 @@ public class DriveByFeetSideways extends Command {
 
         encoderCounts = encoderCounts + startingLeftPos;
         
-        Robot.driveTrain.drive(power, 0, 0, 0);
+        Robot.driveTrain.drive(0, -power, 0, 0);
         
         setTimeout(timeout);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double leftPos = Robot.driveTrain.backLeftPos();
+    	double rightPos = Robot.driveTrain.backRightPos();
+    	error = leftPos - rightPos;
+    	
+    	if (error < -10 ) {
+    		 Robot.driveTrain.drive(0, -power, 0.1, 0);
+    	} else {
+    		Robot.driveTrain.drive(0, -power, 0, 0);
+    	}
+    	
+    	if (error > 10) {
+    		Robot.driveTrain.drive(0, -power, -0.1, 0);
+    	} else {
+    		Robot.driveTrain.drive(0, -power, 0, 0);
+    	}
+    	System.out.println(error);
      }
      
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.driveTrain.frontLeftPos() >= encoderCounts || isTimedOut();
+    	return Robot.driveTrain.backLeftPos() >= encoderCounts || isTimedOut();
 
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.driveTrain.drive(0, 0, 0, 0);
+    	System.out.println("done");
     }
 
     // Called when another command which requires one or more of the same
@@ -65,4 +82,3 @@ public class DriveByFeetSideways extends Command {
     protected void interrupted() {
     }
 }
-
