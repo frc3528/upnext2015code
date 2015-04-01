@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -61,7 +62,8 @@ public class RobotMap {
 	
 	
 	//Flipper
-	public static Relay flipperRelay;
+	//public static Relay flipperRelay;
+	public static Talon flipperTalon;
 	
 	public static int flipperPos = 1;
 
@@ -202,7 +204,8 @@ public class RobotMap {
 		
 		
 		//Flipper
-		flipperRelay = new Relay(FLIPPER_RELAY);
+		//flipperRelay = new Relay(FLIPPER_RELAY);
+		flipperTalon = new Talon(6);
 		
 		
 		//Camera

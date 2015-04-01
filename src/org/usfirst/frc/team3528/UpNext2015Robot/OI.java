@@ -74,8 +74,8 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			//x = new JoystickButton(controlStick, RobotMap.X);
 			//x.whenPressed(new StackBinOnFour());
 			
-			//start = new JoystickButton(controlStick, 8);
-			//start.whenPressed(new StepPickUp());
+			start = new JoystickButton(controlStick, 8);
+			start.whenPressed(new StackTotes());
 			
 			
 			//Elevator
