@@ -71,8 +71,8 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			//y.whenPressed(new StackOnThree());
 	
 			//Scoring on stacks of four
-			//x = new JoystickButton(controlStick, RobotMap.X);
-			//x.whenPressed(new StackBinOnFour());
+			x = new JoystickButton(controlStick, RobotMap.X);
+			x.whenPressed(new StackBinOnFour());
 			
 			start = new JoystickButton(controlStick, 8);
 			start.whenPressed(new StackTotes());

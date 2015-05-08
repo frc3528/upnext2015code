@@ -14,6 +14,13 @@ public class Utils {
     	if (IsInDeadband(input)) {
     		return 0;
     }
+    	if (IsAtTop(input)) {
+    		return .75;
+    	}
+    	
+    	if(IsAtBottom(input)) {
+    		return -.75;
+    	}
 
     	//formula for ramping: f(x) = ax^3 + (1-a)x where a is the sensitivity and x is the input
     	return (sensitivity * input * input * input + (1 - sensitivity) * input);
@@ -24,4 +31,13 @@ public class Utils {
 		return input > -.1 && input < .1;
 	}
 
+	
+	private static boolean IsAtTop(double input) {
+		return input >= .75;
+	}
+	
+	
+	private static boolean IsAtBottom(double input) {
+		return input <= -.75; 
+	}
 }

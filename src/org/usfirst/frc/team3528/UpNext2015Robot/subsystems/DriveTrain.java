@@ -40,7 +40,7 @@ public class DriveTrain extends Subsystem {
  
     public void drive(double x, double y, double rotation, double gyroAngle) {
     	//robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed(rotation, RobotMap.SENSITIVITY), gyroAngle); //Field Oriented
-    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed(x, RobotMap.SENSITIVITY), Utils.rampSpeed(y, RobotMap.SENSITIVITY), Utils.rampSpeed((rotation * .9), RobotMap.SENSITIVITY), 0); //Non-Field Oriented
+    	robotDrive.mecanumDrive_Cartesian(Utils.rampSpeed((x), RobotMap.SENSITIVITY), Utils.rampSpeed((y), RobotMap.SENSITIVITY), Utils.rampSpeed((rotation * .9), RobotMap.SENSITIVITY), 0); //Non-Field Oriented
     	//robotDrive.mecanumDrive_Cartesian(x, y, rotation, 0); //Non-Ramping
     }
 

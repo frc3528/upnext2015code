@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
 import org.usfirst.frc.team3528.UpNext2015Robot.subsystems.*;
 
@@ -97,6 +98,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
+    	System.out.println(Utils.rampSpeed(Robot.oi.driveStick.getRawAxis(1) * .9));
     	Scheduler.getInstance().run();
     }
 

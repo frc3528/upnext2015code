@@ -27,7 +27,7 @@ public class StackBin extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.arm.getArmPos() >= 550 || Robot.arm.armOut() || isTimedOut();
+        return Robot.arm.getArmPos() >= 720 || Robot.arm.armOut() || isTimedOut();
     }
 
     // Called once after isFinished returns true
