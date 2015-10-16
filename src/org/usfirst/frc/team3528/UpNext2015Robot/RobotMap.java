@@ -93,9 +93,14 @@ public class RobotMap {
 	//DriveTrain
 	public static double SENSITIVITY = .8;
 	
-	public static final double SENSITIVITY_X = .75;
-	public static final double SENSITIVITY_Y = .75;
-	public static final double SENSITIVITY_Z = .75;
+	//public static final double SENSITIVITY_X = 1;
+	//public static final double SENSITIVITY_Y = 1;
+	//public static final double SENSITIVITY_Z = 1;
+	
+	// Sensitivity Variables
+	public static double SENSITIVITY_X = 1;
+	public static double SENSITIVITY_Y = 1;
+	public static double SENSITIVITY_Z = 1;
 	
 	public static final int DRIVE_LEFT_FRONT_TALON = 1;
 	public static final int DRIVE_LEFT_BACK_TALON = 3;

@@ -17,7 +17,11 @@ public class IncreaseSensitivity extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.decreaseSensitivity();
+    	//Robot.driveTrain.decreaseSensitivity();
+    	RobotMap.SENSITIVITY_X = 1;
+    	RobotMap.SENSITIVITY_Y = 1;
+    	RobotMap.SENSITIVITY_Z = 1;
+    	System.out.println("---Raised sensitivity---");
     }
 
     // Called repeatedly when this Command is scheduled to run

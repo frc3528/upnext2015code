@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoGreyTotes extends CommandGroup {
     
     public  AutoGreyTotes() {
+    	addSequential(new IncreaseSensitivity());
     	addSequential(new ZeroEncoders());
     	addSequential(new SetBrakeMode());
     	addSequential(new DriveByFeetForward(0.6, 0.5, 0.6));

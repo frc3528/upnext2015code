@@ -21,7 +21,11 @@ public class DecreaseSensitivity extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.increaseSensitivity();
+    	//Robot.driveTrain.increaseSensitivity();
+    	RobotMap.SENSITIVITY_X = 1;
+    	RobotMap.SENSITIVITY_Y = .75;
+    	RobotMap.SENSITIVITY_Z = .75;
+    	System.out.println("---Lowered sensitivity---");
     }
 
     // Make this return true when this Command no longer needs to run execute()
