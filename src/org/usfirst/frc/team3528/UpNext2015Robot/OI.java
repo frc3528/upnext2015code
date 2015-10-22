@@ -56,6 +56,9 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			//Control Stick
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
+			//Test Stick
+			testStick = new Joystick(RobotMap.TESTSTICK);
+			
 			
 			//Arm
 			//reset arm
@@ -99,5 +102,15 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			
 			flipperDown = new FlipperDown(controlStick);
 			flipperDown.whenActive(new FlipTote());
+			
+			
+			
+			// test stick stuff
+			//leftTrigger = new JoystickButton(testStick, RobotMap.LEFTTRIGGER);
+			//leftTrigger.whenPressed(new LowerElevatorStepv2());
+						
+			rightTrigger = new JoystickButton(testStick, RobotMap.RIGHTTRIGGER);
+			rightTrigger.whenPressed(new RaiseElevatorStepv2());			
+			
 		}
 }

@@ -31,7 +31,7 @@ public class Robot extends IterativeRobot {
 
     
     public void robotInit() {
-		System.out.println("====> UpNext2015Robot <====");
+		System.out.println("====> UpNext2015Robot - CTTD Remix <====");
 		RobotMap.init();
 		
 		
@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	System.out.println(Utils.rampSpeed(Robot.oi.driveStick.getRawAxis(1) * .9));
+    	//System.out.println(Utils.rampSpeed(Robot.oi.driveStick.getRawAxis(1) * .9));
     	Scheduler.getInstance().run();
     }
 
