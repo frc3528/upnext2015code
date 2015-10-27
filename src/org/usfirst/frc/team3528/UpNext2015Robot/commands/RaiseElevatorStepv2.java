@@ -35,10 +35,10 @@ public class RaiseElevatorStepv2 extends Command {
     	
     	this.setTimeout(3);
     	
-    	if (elevator.getElevatorPosition() < 4) {
+    	if ( elevator.getLastPosition() < 4 ) {
     		elevator.runElevator(upPower);
     	} else {
-    		this.setTimeout(0);    		
+    		this.setTimeout(0);
     	}
     	
     }

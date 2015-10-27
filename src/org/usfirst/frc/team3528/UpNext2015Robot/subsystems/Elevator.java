@@ -209,7 +209,14 @@ public class Elevator extends Subsystem {
 	
 	
 	public void setLastPosition() {
-		lastPosition = elevatorPosition;
+		if ( elevatorPosition != -1 ) {
+			lastPosition = elevatorPosition;
+		}
+	}
+	
+	
+	public int getLastPosition() {
+		return lastPosition;
 	}
 	
 	
