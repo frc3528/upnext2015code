@@ -116,7 +116,7 @@ public class Elevator extends Subsystem {
 			onPoint = true;
 		}
 		
-		System.out.println( "pos: " + elevatorPosition );
+		//System.out.println( "pos: " + elevatorPosition );
     	
     }
     
@@ -208,8 +208,8 @@ public class Elevator extends Subsystem {
 	}
 	
 	
-	public void setLastPosition() {
-		if ( elevatorPosition != -1 ) {
+	public void setLastPosition(int limit) {
+		if ( elevatorPosition != -1 && elevatorPosition != limit ) {
 			lastPosition = elevatorPosition;
 		}
 	}
