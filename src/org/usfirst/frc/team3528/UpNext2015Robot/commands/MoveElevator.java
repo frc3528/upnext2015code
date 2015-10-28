@@ -15,7 +15,9 @@ public class MoveElevator extends Command {
 	double power = 0;
 	int limit;
 	Elevator elevator;
-	
+	float timeout;
+	float singleTimeout = 4;
+	float stackTimeout = 10;
 
     public MoveElevator() {
         // Use requires() here to declare subsystem dependencies
@@ -25,7 +27,7 @@ public class MoveElevator extends Command {
     	elevator = Robot.elevator;
     	
     	setInterruptible(false);
-    	requires(elevator);    	
+    	requires(elevator);
     	
     }
     
@@ -34,12 +36,35 @@ public class MoveElevator extends Command {
     public MoveElevator(String indicator) {
     	this();
     	
+    	//clear skipList array
+    	elevator.clearSkip();
+    	
+    	//default to skipping current position unless we're at -1
+    	if ( elevator.getElevatorPosition() != -1 ) {
+    		elevator.setSkip( elevator.getElevatorPosition() );
+    	}
+    	
+    	
+    	// set default timeout
+    	timeout = singleTimeout;
+    	
     	if ( indicator == "up" ) {
     		power = upPower;
     		limit = 4;
     	} else if ( indicator == "down" ) {
     		power = downPower;
     		limit = 0;
+    	} else if ( indicator == "stack" ) {
+    		power = downPower;
+    		limit = 0;
+    		
+    		// skip everything except 0
+    		for (int i = 1; i < 5; i++) {
+    			elevator.setSkip(i);
+    		}
+    		
+    		// set stack timeout
+    		timeout = stackTimeout;
     	}
     	
     }
@@ -54,7 +79,7 @@ public class MoveElevator extends Command {
     	System.out.println();
     	
     	// set a timeout as a safety
-    	this.setTimeout(4);
+    	this.setTimeout(timeout);
     	
     	// move if we're not at the limit for our direction OR we're not a -1
     	if ( elevator.getElevatorPosition() != limit || elevator.getElevatorPosition() == -1 ) {

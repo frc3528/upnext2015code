@@ -110,7 +110,13 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			leftTrigger.whenPressed(new MoveElevator("down"));
 						
 			rightTrigger = new JoystickButton(testStick, RobotMap.RIGHTTRIGGER);
-			rightTrigger.whenPressed(new MoveElevator("up"));			
+			rightTrigger.whenPressed(new MoveElevator("up"));
+			
+			backControl = new JoystickButton(testStick, RobotMap.BACKBUTTON);
+			backControl.whenPressed(new MoveElevator("stack"));
+
+			leftStick = new JoystickButton(testStick, RobotMap.LEFTSTICKCLICK);
+			leftStick.whenPressed(new UnlockElevator());
 			
 		}
 }

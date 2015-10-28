@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Vector;
 import java.util.stream.Collectors;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
@@ -26,10 +27,12 @@ public class Elevator extends Subsystem {
 	DigitalInput setPoint4 = RobotMap.setPoint4;
 	
 	boolean[] elevatorPoints = new boolean[5];
+	boolean[] skipList = new boolean[5];
 	
 	Path elevatorPositionFile;
 	int elevatorPosition;
 	boolean onPoint;
+	
 
 	
 	
@@ -93,6 +96,15 @@ public class Elevator extends Subsystem {
     	// turn our last position to false (ignore it)
     	elevatorPoints[elevatorPosition] = false;
     	
+    	// run through skipList and turn any points false in the list
+    	// this is used primarily for skipping our current position
+    	// and is also used for skipping a bunch of points, for example: all but 0 for stack
+    	for ( int i = 0; i < 5; i++ ) {
+    		if (skipList[i]) {
+    			elevatorPoints[i] = false;
+    		}
+    	}
+    	
     	
     	// loop through and figure out where we are
     	for ( int i = 0; i < 5 && !onPoint; i++ ) {
@@ -110,6 +122,12 @@ public class Elevator extends Subsystem {
 
     public int getElevatorPosition() {
     	return elevatorPosition;
+    }
+    
+    
+    public void setElevatorPosition(int pos) {
+    	writeElevatorPositionFile(pos);
+    	elevatorPosition = pos;
     }
  
     
@@ -194,7 +212,25 @@ public class Elevator extends Subsystem {
 				e.printStackTrace();
 			}
 		}
-	}	
+	}
+	
+	
+	public void setSkip(int skipme) {
+		
+		skipList[skipme] = true;
+	}
+	
+	
+	public void setSkipList(boolean[] s) {
+		skipList = s;
+	}
+	
+	
+	public void clearSkip() {
+		for (int i = 0; i < 5; i++) {
+			skipList[i] = false;
+		}
+	}
 	
     
 }
