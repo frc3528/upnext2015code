@@ -25,8 +25,7 @@ public class MoveElevator extends Command {
     	elevator = Robot.elevator;
     	
     	setInterruptible(false);
-    	requires(elevator);
-    	
+    	requires(elevator);    	
     	
     }
     
@@ -50,17 +49,21 @@ public class MoveElevator extends Command {
     	
     	System.out.println( "------------------> in MoveElevator initialize <------------------- " );
     	System.out.println("pos: " + elevator.getElevatorPosition() );
-    	System.out.println("last: " + elevator.getLastPosition() );
     	System.out.println("limit: " + limit );
     	System.out.println("power: " + power );
     	System.out.println();
     	
-    	elevator.setLastPosition(limit);
+    	// set a timeout as a safety
+    	this.setTimeout(4);
     	
-    	this.setTimeout(3);
-    	
-    	if ( elevator.getLastPosition() != limit || elevator.getElevatorPosition() == -1 ) {
+    	// move if we're not at the limit for our direction OR we're not a -1
+    	if ( elevator.getElevatorPosition() != limit || elevator.getElevatorPosition() == -1 ) {
     		System.out.println("====> moving");
+    		
+    		// write a -1 to our file in case we lose connection
+    		elevator.writeElevatorPositionFile(-1);
+    		
+    		// move the elevator
     		elevator.runElevator(power);
     	} else {
     		this.setTimeout(0);
@@ -78,11 +81,15 @@ public class MoveElevator extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	
+    	// timeout when we find a point or timeout period expires
         return elevator.getOnPoint() || this.isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	// stop running -- display position -- write position to file
     	elevator.runElevator(0);
     	elevator.displayElevatorPositionDashboard();
     	elevator.writeElevatorPositionFile();

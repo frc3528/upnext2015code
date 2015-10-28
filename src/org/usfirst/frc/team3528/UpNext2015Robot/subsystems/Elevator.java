@@ -29,9 +29,7 @@ public class Elevator extends Subsystem {
 	
 	Path elevatorPositionFile;
 	int elevatorPosition;
-	//int readPos;
 	boolean onPoint;
-	int lastPosition;
 
 	
 	
@@ -93,31 +91,18 @@ public class Elevator extends Subsystem {
     	elevatorPoints[4] = setPoint4.get();
     	
     	// turn our last position to false (ignore it)
-    	elevatorPoints[lastPosition] = false;
-
-    	
-    	int count = 0; // count of magnets read on this pass
+    	elevatorPoints[elevatorPosition] = false;
     	
     	
     	// loop through and figure out where we are
-    	for ( int i = 0; i < 5; i++ ) {
+    	for ( int i = 0; i < 5 && !onPoint; i++ ) {
     		
     		// if we have a hit on a point (true) increase count and set position
     		if ( elevatorPoints[i] ) {
-    			count++;
+    			onPoint = true;
     			elevatorPosition = i;
-    		}    		
+    		}
     	}
-    	
-    	// return our position only if we've read one and only one position switch/magnet - otherwise return -1
-		if ( count != 1 ) {
-			elevatorPosition = -1;
-		} else {
-			onPoint = true;
-		}
-		
-		//System.out.println( "pos: " + elevatorPosition );
-    	
     }
     
     
@@ -185,14 +170,18 @@ public class Elevator extends Subsystem {
 
 
 	//Write To Position File
-	public void writeElevatorPositionFile() {
-		String elevatorPositionString = "" + elevatorPosition;
+	public void writeElevatorPositionFile(int pos) {
+		String elevatorPositionString = "" + pos;
 		
 		try {
 			Files.write(elevatorPositionFile, elevatorPositionString.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void writeElevatorPositionFile() {
+		writeElevatorPositionFile( elevatorPosition );
 	}
 	
 	
@@ -205,20 +194,7 @@ public class Elevator extends Subsystem {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	
-	public void setLastPosition(int limit) {
-		if ( elevatorPosition != -1 && elevatorPosition != limit ) {
-			lastPosition = elevatorPosition;
-		}
-	}
-	
-	
-	public int getLastPosition() {
-		return lastPosition;
-	}
-	
+	}	
 	
     
 }
