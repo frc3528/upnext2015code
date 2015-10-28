@@ -16,13 +16,13 @@ public class AutoGreyTotes extends CommandGroup {
     	addSequential(new DriveByFeetForward(0.6, 0.5, 0.6));
     	addSequential(new DriveByFeetForward(0.1, 1.0, 0.55));
     	addParallel(new DriveByFeetForward(0.2, 0.5, 0.3));
-    	addSequential(new RaiseElevatorStep());
+    	addSequential(new MoveElevator("up"));
     	addSequential(new Wait(1.0));
     	addSequential(new ZeroEncoders());
     	addSequential(new DriveByFeetForward(1.6, 1.0, 0.6));
     	addSequential(new DriveByFeetForward(0.1, 1.0, 0.55));
     	addParallel(new DriveByFeetForward(0.2, 0.5, 0.3));
-    	addSequential(new RaiseElevatorStep());
+    	addSequential(new MoveElevator("up"));
     	addSequential(new ZeroEncoders());
     	//addSequential(new DriveByFeetBackward(2.5, 2.0, 0.6));
     	//addSequential(new ZeroEncoders());
