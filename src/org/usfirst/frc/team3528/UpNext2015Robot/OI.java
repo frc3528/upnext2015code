@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 		public JoystickButton backDrive;
 		
 		public JoystickButton backControl;
-		public JoystickButton start;
+		public JoystickButton startControl;
 		public JoystickButton a;
 		public JoystickButton b;
 		public JoystickButton x;
@@ -57,7 +57,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			controlStick = new Joystick(RobotMap.CONTROLSTICK);
 			
 			//Test Stick
-			testStick = new Joystick(RobotMap.TESTSTICK);
+			//testStick = new Joystick(RobotMap.TESTSTICK);
 			
 			
 			//Arm
@@ -77,11 +77,11 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			x = new JoystickButton(controlStick, RobotMap.X);
 			x.whenPressed(new StackBinOnFour());
 			
-			start = new JoystickButton(controlStick, 8);
-			start.whenPressed(new StackTotes());
+
 			
 			
 			//Elevator
+			/*
 			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
 			leftTrigger.whenPressed(new LowerElevatorStep());
 						
@@ -94,29 +94,40 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
 			leftStick.whenPressed(new ManualElevatorReset());
 			
+			start = new JoystickButton(controlStick, 8);
+			start.whenPressed(new StackTotes());
+			*/
+			
+
+			leftTrigger = new JoystickButton(controlStick, RobotMap.LEFTTRIGGER);
+			leftTrigger.whenPressed(new MoveElevator("down"));
+						
+			rightTrigger = new JoystickButton(controlStick, RobotMap.RIGHTTRIGGER);
+			rightTrigger.whenPressed(new MoveElevator("up"));
+			
+			backControl = new JoystickButton(controlStick, RobotMap.BACKBUTTON);
+			backControl.whenPressed(new MoveElevator("stack"));
+			
+			startControl = new JoystickButton(controlStick, RobotMap.STARTBUTTON);
+			startControl.whenPressed(new MoveElevator("stack"));
+
+			leftStick = new JoystickButton(controlStick, RobotMap.LEFTSTICKCLICK);
+			leftStick.whenPressed(new UnlockElevator());
+			
+			
 			
 			//Flipper
+			/*
 			flipperUp = new FlipperUp(controlStick);
 			flipperUp.whenActive(new FlipTote());
 			
 			
 			flipperDown = new FlipperDown(controlStick);
 			flipperDown.whenActive(new FlipTote());
+			*/
 			
 			
-			
-			// test stick stuff
-			leftTrigger = new JoystickButton(testStick, RobotMap.LEFTTRIGGER);
-			leftTrigger.whenPressed(new MoveElevator("down"));
-						
-			rightTrigger = new JoystickButton(testStick, RobotMap.RIGHTTRIGGER);
-			rightTrigger.whenPressed(new MoveElevator("up"));
-			
-			backControl = new JoystickButton(testStick, RobotMap.BACKBUTTON);
-			backControl.whenPressed(new MoveElevator("stack"));
 
-			leftStick = new JoystickButton(testStick, RobotMap.LEFTSTICKCLICK);
-			leftStick.whenPressed(new UnlockElevator());
 			
 		}
 }

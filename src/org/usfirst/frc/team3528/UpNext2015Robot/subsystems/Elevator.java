@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Vector;
 import java.util.stream.Collectors;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
@@ -27,7 +26,7 @@ public class Elevator extends Subsystem {
 	DigitalInput setPoint4 = RobotMap.setPoint4;
 	
 	boolean[] elevatorPoints = new boolean[5];
-	boolean[] skipList = new boolean[5];
+	int skip;
 	
 	Path elevatorPositionFile;
 	int elevatorPosition;
@@ -94,15 +93,28 @@ public class Elevator extends Subsystem {
     	elevatorPoints[4] = setPoint4.get();
     	
     	// turn our last position to false (ignore it)
-    	elevatorPoints[elevatorPosition] = false;
+    	//elevatorPoints[elevatorPosition] = false;
     	
     	// run through skipList and turn any points false in the list
     	// this is used primarily for skipping our current position
     	// and is also used for skipping a bunch of points, for example: all but 0 for stack
+    	/*
     	for ( int i = 0; i < 5; i++ ) {
     		if (skipList[i]) {
     			elevatorPoints[i] = false;
     		}
+    	}
+    	*/
+    	
+    	
+    	if ( skip == -1 ) {
+    		// skip/mask everything except 0
+    		for (int i = 1; i < 5; i++) {
+    			elevatorPoints[i] = false;
+    		}
+    		
+    	} else if ( skip >= 0 && skip <= 4 ) {
+    		elevatorPoints[skip] = false;
     	}
     	
     	
@@ -115,6 +127,23 @@ public class Elevator extends Subsystem {
     			elevatorPosition = i;
     		}
     	}
+    }
+    
+    
+    public void skipCurrentPosition() {
+    	if ( elevatorPosition != -1 ) {
+    		skip = elevatorPosition;
+    	}
+    }
+    
+    
+    public void skipAllButZero() {
+    	skip = -1;    	
+    }
+    
+    
+    public int getSkip() {
+    	return skip;
     }
     
     
@@ -189,6 +218,10 @@ public class Elevator extends Subsystem {
 
 	//Write To Position File
 	public void writeElevatorPositionFile(int pos) {
+		
+		//System.out.println("+++++++++++> writing: " + pos);
+		
+		
 		String elevatorPositionString = "" + pos;
 		
 		try {
@@ -212,26 +245,7 @@ public class Elevator extends Subsystem {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	
-	public void setSkip(int skipme) {
-		
-		skipList[skipme] = true;
-	}
-	
-	
-	public void setSkipList(boolean[] s) {
-		skipList = s;
-	}
-	
-	
-	public void clearSkip() {
-		for (int i = 0; i < 5; i++) {
-			skipList[i] = false;
-		}
-	}
-	
+	}	
     
 }
 

@@ -18,6 +18,7 @@ public class MoveElevator extends Command {
 	float timeout;
 	float singleTimeout = 4;
 	float stackTimeout = 10;
+	String indicator;
 
     public MoveElevator() {
         // Use requires() here to declare subsystem dependencies
@@ -36,14 +37,8 @@ public class MoveElevator extends Command {
     public MoveElevator(String indicator) {
     	this();
     	
-    	//clear skipList array
-    	elevator.clearSkip();
-    	
-    	//default to skipping current position unless we're at -1
-    	if ( elevator.getElevatorPosition() != -1 ) {
-    		elevator.setSkip( elevator.getElevatorPosition() );
-    	}
-    	
+    	// set local inidicator so we can use it later
+    	this.indicator = indicator;    	
     	
     	// set default timeout
     	timeout = singleTimeout;
@@ -58,11 +53,6 @@ public class MoveElevator extends Command {
     		power = downPower;
     		limit = 0;
     		
-    		// skip everything except 0
-    		for (int i = 1; i < 5; i++) {
-    			elevator.setSkip(i);
-    		}
-    		
     		// set stack timeout
     		timeout = stackTimeout;
     	}
@@ -72,18 +62,34 @@ public class MoveElevator extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	System.out.println( "------------------> in MoveElevator initialize <------------------- " );
-    	System.out.println("pos: " + elevator.getElevatorPosition() );
-    	System.out.println("limit: " + limit );
-    	System.out.println("power: " + power );
-    	System.out.println();
+
     	
     	// set a timeout as a safety
     	this.setTimeout(timeout);
     	
+    	
+    	// set skip
+    	if ( indicator == "stack" ) {
+    		elevator.skipAllButZero();
+    	} else {    	
+    		elevator.skipCurrentPosition();
+    	}
+    	
+    	
+    	/*
+    	System.out.println( "------------------> in MoveElevator initialize <------------------- " );
+    	System.out.println("pos: " + elevator.getElevatorPosition() );
+    	System.out.println("limit: " + limit );
+    	System.out.println("power: " + power );
+    	System.out.println("skip: " + elevator.getSkip() );
+    	System.out.println("indicator: " + indicator);
+    	System.out.println();
+    	*/
+    	
+    	
     	// move if we're not at the limit for our direction OR we're not a -1
     	if ( elevator.getElevatorPosition() != limit || elevator.getElevatorPosition() == -1 ) {
-    		System.out.println("====> moving");
+    		//System.out.println("====> moving");
     		
     		// write a -1 to our file in case we lose connection
     		elevator.writeElevatorPositionFile(-1);
@@ -113,6 +119,8 @@ public class MoveElevator extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	//System.out.println(" ......... ending ........... ");
     	
     	// stop running -- display position -- write position to file
     	elevator.runElevator(0);
