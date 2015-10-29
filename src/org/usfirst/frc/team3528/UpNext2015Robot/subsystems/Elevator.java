@@ -175,13 +175,18 @@ public class Elevator extends Subsystem {
     
     public void displayElevatorPositionDashboard() {		
 		
+    	int point = 4;
+    	
 		for ( int i = 0; i < 5; i++ ) {
 			
-			if (elevatorPosition == i) {
-				SmartDashboard.putString("DB/String " + i, "Position " + i + ": XXXXX");
+			if (elevatorPosition == point) {
+				SmartDashboard.putString("DB/String " + i, "Position " + point + ": XXXXX");
 			} else {
-				SmartDashboard.putString("DB/String " + i, "Position " + i + ":");
+				SmartDashboard.putString("DB/String " + i, "Position " + point + ":");
 			}
+			
+			point--;
+			
 		}
 		
 		SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + elevatorPosition);

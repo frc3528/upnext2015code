@@ -222,7 +222,7 @@ public class RobotMap {
 		//Camera
 		server = CameraServer.getInstance();
         server.setQuality(50);
-        server.startAutomaticCapture("cam1");
+        server.startAutomaticCapture("cam0");
 	}	
 
 	
