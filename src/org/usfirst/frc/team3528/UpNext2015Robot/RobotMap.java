@@ -1,20 +1,17 @@
 package org.usfirst.frc.team3528.UpNext2015Robot;
 
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Collectors;
-import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoDoNothing;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoDriveForward;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoGreyTotes;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoOneObject;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -46,27 +43,13 @@ public class RobotMap {
 	public static DigitalInput setPoint3;
 	public static DigitalInput setPoint4;
 	
-	public static int elevatorPosition;
-	public static int readPos;
-	public static String positionString;
-	public static Path file;
-	
 	
 	//Arm
 	public static VictorSP arm;
-	
-	public static Encoder armEncoder;
-	
+	public static Encoder armEncoder;	
 	public static DigitalInput armIn;
 	public static DigitalInput armOut;
 	
-	
-	//Flipper
-	//public static Relay flipperRelay;
-	public static Talon flipperTalon;
-	
-	public static int flipperPos = 1;
-
 	
 	//Camera
 	public static CameraServer server;
@@ -161,9 +144,6 @@ public class RobotMap {
 	public static final int ARM_IN = 7;
 	public static final int ARM_OUT = 8;
 	
-	
-	//Flipper
-	public static final int FLIPPER_RELAY = 1;
 
 	
 //===================InitializeMap===================\\
@@ -199,10 +179,6 @@ public class RobotMap {
 		setPoint2 = new DigitalInput(SETPOINT2);
 		setPoint3 = new DigitalInput(SETPOINT3);
 		setPoint4 = new DigitalInput(SETPOINT4);
-		
-		file = Paths.get("/home/lvuser/last_known_elevator.txt");
-		
-		elevatorPosition = readElevatorPosition();
 
 		
 		//Arm
@@ -214,11 +190,6 @@ public class RobotMap {
 		armOut = new DigitalInput(ARM_OUT);
 		
 		
-		//Flipper
-		//flipperRelay = new Relay(FLIPPER_RELAY);
-		flipperTalon = new Talon(6);
-		
-		
 		//Camera
 		server = CameraServer.getInstance();
         server.setQuality(50);
@@ -226,51 +197,6 @@ public class RobotMap {
 	}	
 
 	
-	//Read Elevator Position File\\
-	public static int readElevatorPosition() {
-		checkForFile();
-		
-		try {
-			positionString = Files.lines(file).collect(Collectors.joining());
-		} catch(IOException e) {
-			System.out.println("error reading file");
-			e.printStackTrace();
-		} 
-
-		try {
-			readPos = Integer.parseInt(positionString);
-		} catch(NumberFormatException e) {
-			System.out.println("Number Format Exception Setting to 0");
-			positionString = "0";
-		}
-		
-		return readPos;
-	}
-
-
-	//Write To Position File\\
-	public static void writeElevatorPosition(int elevatorPosition) {
-		positionString = "" + elevatorPosition;
-		
-		try {
-			Files.write(file, positionString.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		//SmartDashboard.putNumber("Elevator Position: ", elevatorPosition);
-		SmartDashboard.putString("DB/String 5", "ElevatorPosition:" + positionString);
-	}
-	
-	
-	public static void checkForFile() {
-		if(!Files.exists(file)) {
-			try {
-			Files.write(file, "0".getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-			}
-		}
-	}
 	
 	
 	public static Command selectAuto() {

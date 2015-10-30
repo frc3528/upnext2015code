@@ -1,14 +1,13 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.subsystems;
 
-import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
 import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import org.usfirst.frc.team3528.UpNext2015Robot.Utils;
-import org.usfirst.frc.team3528.UpNext2015Robot.commands.*;
+import org.usfirst.frc.team3528.UpNext2015Robot.commands.DriveWithJoystick;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**

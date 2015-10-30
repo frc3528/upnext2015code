@@ -18,7 +18,6 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
 	public static Arm arm;
-	public static Flipper flipper;
 	
 	
 	//Operator Interface
@@ -39,7 +38,6 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain();
     	elevator = new Elevator();
 		arm = new Arm();
-		flipper = new Flipper();
 		
 		
 		//Operator Interface
@@ -59,7 +57,7 @@ public class Robot extends IterativeRobot {
 		
 		
 		//Look for Elevator Position
-		RobotMap.checkForFile();
+		//RobotMap.checkForFile();
     }
 	
 	

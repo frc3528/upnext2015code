@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3528.UpNext2015Robot.commands;
 
 import org.usfirst.frc.team3528.UpNext2015Robot.Robot;
-import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 

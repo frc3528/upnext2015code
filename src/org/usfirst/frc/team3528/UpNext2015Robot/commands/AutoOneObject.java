@@ -12,7 +12,7 @@ public class AutoOneObject extends CommandGroup {
     public  AutoOneObject() {
     	addSequential(new ZeroEncoders());
     	addSequential(new SetBrakeMode());
-    	addSequential(new RaiseElevatorStep());
+    	addSequential(new MoveElevator("up"));
     	addSequential(new DriveByFeetBackward(RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));
     	addSequential(new ALilTwistRight());
     	addSequential(new SetCoastMode());

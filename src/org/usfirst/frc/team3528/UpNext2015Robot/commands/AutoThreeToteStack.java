@@ -13,14 +13,14 @@ public class AutoThreeToteStack extends CommandGroup {
     	
     	addSequential(new ZeroEncoders());
     	addSequential(new SetBrakeMode());
-    	addSequential(new RaiseElevatorStep());//one second
+    	addSequential(new MoveElevator("up"));//one second
     	addSequential(new ALilTwistLeft());//one second
     	addSequential(new ZeroEncoders());
     	addSequential(new DriveByFeetBackward(4.0, 5.0, 0.75));//two seconds
     	addSequential(new ALilTwistRight());//one second
     	addSequential(new ZeroEncoders());
     	addParallel(new DriveByFeetForward(1.0, 0.5, 0.5));//half a second
-    	addSequential(new RaiseElevatorStep());//one second
+    	addSequential(new MoveElevator("up"));//one second
     	addSequential(new DriveByFeetBackward(1.0, 0.5, 0.5));//half a second
     	addSequential(new ALilTwistLeft());//one second
     	addSequential(new ZeroEncoders());
@@ -28,11 +28,11 @@ public class AutoThreeToteStack extends CommandGroup {
     	addSequential(new ALilTwistRight());//one seconds
     	addSequential(new ZeroEncoders());
     	addParallel(new DriveByFeetForward(1.0, 0.5, 0.5));//half a second
-    	addSequential(new RaiseElevatorStep());//one second
+    	addSequential(new MoveElevator("up"));//one second
     	addSequential(new ZeroEncoders());
     	addSequential(new DriveByFeetBackward(RobotMap.DRIVEFORWARDFEET, RobotMap.DRIVEFORWARDTIME, RobotMap.DRIVEFORWARDPOWER));//two and a half seconds
     	addSequential(new ALilTwistRight());//one second
-    	addSequential(new ResetElevator());//three seconds
+    	addSequential(new MoveElevator("stack"));//three seconds
     	addSequential(new DriveByFeetBackward(1.0, 0.5, 0.5));//half a second
     	addSequential(new SetCoastMode());
     	
