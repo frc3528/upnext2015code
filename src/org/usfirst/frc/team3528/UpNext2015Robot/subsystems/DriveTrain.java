@@ -4,11 +4,12 @@ import org.usfirst.frc.team3528.UpNext2015Robot.RobotMap;
 import org.usfirst.frc.team3528.UpNext2015Robot.Utils;
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.DriveWithJoystick;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  *
@@ -20,7 +21,7 @@ public class DriveTrain extends Subsystem {
     CANTalon frontRightMotor = RobotMap.frontRightMotor;
     CANTalon backRightMotor = RobotMap.backRightMotor;
     
-    Gyro gyro = RobotMap.gyro;
+    AnalogGyro gyro = RobotMap.gyro;
     
     RobotDrive robotDrive = RobotMap.driveTrain;
 

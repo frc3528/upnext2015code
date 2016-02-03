@@ -6,11 +6,11 @@ import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoDriveForward;
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoGreyTotes;
 import org.usfirst.frc.team3528.UpNext2015Robot.commands.AutoOneObject;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
@@ -29,7 +29,7 @@ public class RobotMap {
 	public static CANTalon frontRightMotor;
 	public static CANTalon backRightMotor;
 	
-	public static Gyro gyro;
+	public static AnalogGyro gyro;
 	
 	public static RobotDrive driveTrain;
 	
@@ -161,7 +161,7 @@ public class RobotMap {
 		frontRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		backRightMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 
-		gyro = new Gyro(GYRO);
+		gyro = new AnalogGyro(GYRO);
 		
 		driveTrain = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
 		
