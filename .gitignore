@@ -1,17 +1,17 @@
-# Directories #
+# Eclipse Specific #
 /build/
 /bin/
+/dist/
 target/
- 
-# OS Files #
-.DS_Store
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
 
 
 # FRC Specific #
-
-# build.xml is needed
-# build.xml
-
 # sysProps.xml will be regenerated on usb deploy
 sysProps.xml
 sysProps.xml.orig
@@ -24,66 +24,3 @@ sysProps.xml.orig
 *.jar
 *.war
 *.ear
-*.db
-
-
-
-
-######################
-# Windows
-######################
- 
-# Windows image file caches
-Thumbs.db 
- 
-# Folder config file
-Desktop.ini
- 
-######################
-# OSX
-######################
- 
-.DS_Store
-.svn
- 
-# Thumbnails
-._*
- 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
- 
- 
-######################
-# Eclipse
-######################
- 
-*.pydevproject
-.project
-.metadata
-bin/**
-tmp/**
-tmp/**/*
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
-/src/main/resources/rebel.xml
-# External tool builders
-.externalToolBuilders/
- 
-# Locally stored "Eclipse launch configurations"
-*.launch
- 
-# CDT-specific
-.cproject
- 
-# PDT-specific
-.buildpath
-
-
-
